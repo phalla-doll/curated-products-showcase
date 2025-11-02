@@ -62,7 +62,7 @@ function Footer() {
             {/* Main Navigation Links */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div>
-                <h3 className="font-semibold text-zinc-900 mb-4">Navigation</h3>
+                <h3 className="font-medium text-zinc-600 mb-4">Navigation</h3>
                 <ul className="space-y-2">
                   {['Discover', 'Lists', 'Brands', 'Categories', 'Index'].map((link) => (
                     <li key={link}>
@@ -78,7 +78,7 @@ function Footer() {
               </div>
 
               <div>
-                <h3 className="font-semibold text-zinc-900 mb-4">About</h3>
+                <h3 className="font-medium text-zinc-600 mb-4">About</h3>
                 <ul className="space-y-2">
                   {['Info', 'Blog', 'Legal'].map((link) => (
                     <li key={link}>
@@ -94,7 +94,7 @@ function Footer() {
               </div>
 
               <div>
-                <h3 className="font-semibold text-zinc-900 mb-4">Contact</h3>
+                <h3 className="font-medium text-zinc-600 mb-4">Contact</h3>
                 <ul className="space-y-2">
                   {['Twitter', 'Email'].map((link) => (
                     <li key={link}>
@@ -113,7 +113,7 @@ function Footer() {
             {/* Detailed Footer Lists */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-auto">
               <div>
-                <h3 className="font-semibold text-zinc-900 mb-4">Categories</h3>
+                <h3 className="font-medium text-zinc-600 mb-4">Categories</h3>
                 <ul className="space-y-2">
                   {['Tech', 'Home', 'Workspace', 'Carry', 'Lifestyle', 'Personal', 'Books', 'Travel'].map((link) => (
                     <li key={link}>
@@ -129,7 +129,7 @@ function Footer() {
               </div>
 
               <div>
-                <h3 className="font-semibold text-zinc-900 mb-4">Brands</h3>
+                <h3 className="font-medium text-zinc-600 mb-4">Brands</h3>
                 <ul className="space-y-2">
                   {['Apple', 'Nomad', 'Grovemade', 'Dyson', 'Herman Miller', 'Ferrari', 'Omega', 'Rolex'].map((link) => (
                     <li key={link}>
@@ -145,7 +145,7 @@ function Footer() {
               </div>
 
               <div>
-                <h3 className="font-semibold text-zinc-900 mb-4">Lists</h3>
+                <h3 className="font-medium text-zinc-600 mb-4">Lists</h3>
                 <ul className="space-y-2">
                   {[
                     'Brutalist Picks',

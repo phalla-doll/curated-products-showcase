@@ -3,11 +3,12 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import CategoryFilters from './components/CategoryFilters';
 import ProductGrid from './components/ProductGrid';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="bg-zinc-50 text-zinc-900 min-h-screen">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-zinc-50 text-zinc-900 min-h-screen flex flex-col">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
         <Header />
         <main>
           <Hero />
@@ -15,6 +16,7 @@ function App() {
           <ProductGrid />
         </main>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -28,7 +28,7 @@ function Header() {
            <AsteriskIcon className="w-6 h-6 text-zinc-900" />
         </div>
         
-        <div className="flex-shrink-0">
+        <div className="shrink-0">
           <div className="flex items-center bg-white border border-zinc-200/80 rounded-full shadow-sm p-1">
             <NavLink active>Discover</NavLink>
             <NavLink>Browse</NavLink>

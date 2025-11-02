@@ -6,7 +6,7 @@ function Hero() {
       <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-zinc-900 max-w-3xl mx-auto">
         Discover well-designed, carefully curated products
       </h1>
-      <p className="mt-6 max-w-xl mx-auto text-lg text-zinc-500">
+      <p className="mt-3 max-w-xl mx-auto text-base text-zinc-500">
         Subscribe for weekly emails featuring timeless, design-led products across home, work, and life.
       </p>
       <form className="mt-8 max-w-md mx-auto flex items-center bg-white border border-zinc-200/80 rounded-full shadow-sm pr-2">

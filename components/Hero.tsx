@@ -3,7 +3,7 @@ import React from 'react';
 function Hero() {
   return (
     <section className="text-center py-20 sm:py-28">
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 max-w-3xl mx-auto">
+      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-zinc-900 max-w-3xl mx-auto">
         Discover well-designed, carefully curated products
       </h1>
       <p className="mt-6 max-w-xl mx-auto text-lg text-zinc-500">
@@ -13,7 +13,7 @@ function Hero() {
         <input
           type="email"
           placeholder="name@email.com"
-          className="flex-grow bg-transparent px-5 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none"
+          className="grow bg-transparent px-5 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none"
         />
         <button
           type="submit"

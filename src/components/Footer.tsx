@@ -179,7 +179,11 @@ function Footer() {
               >
                 @mantha
               </a>
-              <div className="w-6 h-6 rounded-full bg-zinc-300"></div>
+              <img 
+                src="/mantha-profile-pic-sm.png" 
+                alt="Mantha profile" 
+                className="w-6 h-6 rounded-full object-cover"
+              />
             </div>
           </div>
         </div>

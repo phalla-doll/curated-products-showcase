@@ -177,7 +177,7 @@ function Footer() {
                 href="#"
                 className="hover:text-zinc-900 transition-colors duration-200 font-medium"
               >
-                @justinmfarrugia
+                @mantha
               </a>
               <div className="w-6 h-6 rounded-full bg-zinc-300"></div>
             </div>

@@ -28,24 +28,29 @@ A modern, responsive web application for discovering well-designed, carefully cu
 
 ```
 product-showcase/
-├── components/           # React components
-│   ├── Header.tsx        # Navigation header with search
-│   ├── Hero.tsx          # Hero section with subscription form
-│   ├── CategoryFilters.tsx  # Category filter buttons
-│   ├── ProductGrid.tsx   # Product grid layout
-│   ├── ProductCard.tsx   # Individual product card component
-│   └── icons/            # Icon components
-│       ├── CategoryIcons.tsx  # Category-specific icons
-│       └── CoreIcons.tsx      # Core UI icons
-├── lib/                  # Utility libraries
-│   └── fonts.ts          # Font configuration
+├── src/                  # Source code directory
+│   ├── components/       # React components
+│   │   ├── Header.tsx    # Navigation header with search
+│   │   ├── Hero.tsx      # Hero section with subscription form
+│   │   ├── CategoryFilters.tsx  # Category filter buttons
+│   │   ├── ProductGrid.tsx      # Product grid layout
+│   │   ├── ProductCard.tsx      # Individual product card component
+│   │   └── icons/        # Icon components
+│   │       ├── CategoryIcons.tsx  # Category-specific icons
+│   │       └── CoreIcons.tsx      # Core UI icons
+│   ├── hooks/            # Custom React hooks (ready for future use)
+│   ├── lib/              # Utility libraries
+│   │   └── fonts.ts      # Font configuration
+│   ├── utils/            # Utility functions (ready for future use)
+│   ├── App.tsx           # Main application component
+│   ├── index.tsx         # Application entry point
+│   ├── index.css         # Global styles
+│   ├── types.ts          # TypeScript type definitions
+│   └── constants.ts      # App constants (products, categories)
 ├── public/               # Static assets
 │   └── workLouder.webp   # Product images
-├── App.tsx               # Main application component
-├── index.tsx             # Application entry point
-├── index.css             # Global styles
-├── types.ts              # TypeScript type definitions
-├── constants.ts           # App constants (products, categories)
+├── .env.example          # Environment variables template
+├── index.html            # HTML entry point
 ├── vite.config.ts        # Vite configuration
 ├── tsconfig.json         # TypeScript configuration
 └── package.json          # Dependencies and scripts
@@ -73,7 +78,12 @@ product-showcase/
 
 3. **Set up environment variables** (optional)
    
-   Create a `.env.local` file in the root directory if you need to configure the Gemini API key:
+   Copy `.env.example` to `.env.local` and configure your Gemini API key:
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Then edit `.env.local` and add your API key:
    ```env
    GEMINI_API_KEY=your_api_key_here
    ```
@@ -91,7 +101,7 @@ product-showcase/
 
 ## 📜 Available Scripts
 
-- `npm run dev` - Start the development server
+- `npm run dev` - Start the development server (runs on port 3000)
 - `npm run build` - Build the application for production
 - `npm run preview` - Preview the production build locally
 
@@ -129,7 +139,7 @@ product-showcase/
 
 ## 🎯 Product Data Structure
 
-Products are defined in `constants.ts` with the following structure:
+Products are defined in `src/constants.ts` with the following structure:
 
 ```typescript
 interface Product {
@@ -170,6 +180,7 @@ Categories include:
 - React plugin enabled
 - Path alias `@` configured for root directory
 - Environment variables support for Gemini API key
+- Source files organized in `src/` directory (standard Vite convention)
 
 ### TypeScript Configuration
 - Strict type checking enabled
@@ -213,8 +224,10 @@ The built application can be deployed to any static hosting service:
 - TypeScript interfaces ensure type safety
 - Component props are properly typed
 - Icons are implemented as React components
-- Product data is currently static (stored in `constants.ts`)
+- Product data is currently static (stored in `src/constants.ts`)
 - Category filtering state is managed locally in `CategoryFilters` component
+- Project follows standard React/Vite folder structure with `src/` directory organization
+- Ready-to-use folders (`hooks/`, `utils/`) for future expansion
 
 ## 🔮 Future Enhancements
 

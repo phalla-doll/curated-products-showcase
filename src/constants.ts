@@ -222,7 +222,7 @@ export const products: Product[] = [
     id: 28,
     brand: 'Nothing',
     category: 'Tech',
-    name: 'Phone (3)',
+    name: 'Nothing Phone (3)',
     imageUrl: '/Nothing_Phone(3).webp',
   },
   {

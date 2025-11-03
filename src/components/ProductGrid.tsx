@@ -80,7 +80,7 @@ function ProductGrid() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="py-16 text-center">
                     <div className="max-w-md mx-auto">
-                        <h2 className="text-2xl font-semibold text-zinc-900 mb-2">
+                        <h2 className="text-2xl font-semibold text-zinc-900 tracking-tight mb-2">
                             No products found
                         </h2>
                         <p className="text-zinc-600 text-sm">

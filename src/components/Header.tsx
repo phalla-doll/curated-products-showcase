@@ -10,7 +10,7 @@ interface NavLinkProps {
 const NavLink = ({ children, active = false }: NavLinkProps) => (
   <a
     href="/"
-    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+    className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
       active ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-500 hover:text-zinc-900'
     }`}
   >

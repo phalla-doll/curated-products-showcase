@@ -52,13 +52,6 @@ function Footer() {
 
           {/* Right Column */}
           <div className="flex flex-col">
-            {/* Show More Button */}
-            <div className="flex justify-end mb-8">
-              <button className="px-4 py-2 rounded-full border border-zinc-200 bg-white text-zinc-900 hover:bg-zinc-50 transition-colors duration-200 text-sm font-medium">
-                Show More
-              </button>
-            </div>
-
             {/* Main Navigation Links */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div>

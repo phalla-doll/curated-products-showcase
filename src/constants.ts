@@ -50,6 +50,7 @@ export const products: Product[] = [
     brand: 'Apple',
     category: 'Tech',
     name: 'iPhone 14 Pro',
+    // TODO: Replace imageUrl with correct iPhone 14 Pro image - currently using placeholder
     imageUrl: '/workLouder.webp',
     isStaffPick: true,
   },
@@ -80,7 +81,7 @@ export const products: Product[] = [
     id: 8,
     brand: 'Apple',
     category: 'Tech',
-    name: 'iPhone Pro 17',
+    name: 'iPhone 17 Pro',
     imageUrl: '/Apple_iPhone Pro 17.webp',
   },
   {
@@ -129,14 +130,14 @@ export const products: Product[] = [
     id: 15,
     brand: 'Dyson',
     category: 'Home',
-    name: 'Solarcycle Morph Floor',
+    name: 'Solarcycle Morph',
     imageUrl: '/Dyson_Solarcycle Morph Floor.webp',
   },
   {
     id: 16,
     brand: 'Fellow',
     category: 'Home',
-    name: 'Stagg',
+    name: 'Stagg EKG',
     imageUrl: '/fellow_stagg.webp',
   },
   {
@@ -199,9 +200,9 @@ export const products: Product[] = [
   },
   {
     id: 25,
-    brand: 'Noguchi',
+    brand: 'Herman Miller',
     category: 'Home',
-    name: 'Table',
+    name: 'Noguchi Table',
     imageUrl: '/noguchi_table.webp',
   },
   {
@@ -215,7 +216,7 @@ export const products: Product[] = [
     id: 27,
     brand: 'Nothing',
     category: 'Tech',
-    name: 'Headphones',
+    name: 'Ear (stick)',
     imageUrl: '/Nothing_Headphones(1).webp',
   },
   {
@@ -260,7 +261,7 @@ export const products: Product[] = [
     brand: 'Serica',
     category: 'Lifestyle',
     name: 'Réf. 1174-1 Parade',
-    imageUrl: '/Serica_Réf. 1174-1 Parade.webp',
+    imageUrl: '/Serica_Réf1174-1 Parade.webp',
   },
   {
     id: 34,

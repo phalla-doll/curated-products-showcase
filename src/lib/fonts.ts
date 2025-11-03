@@ -4,9 +4,13 @@
  */
 
 export const fonts = {
-  inter: {
-    variable: '--font-inter',
-    className: 'font-inter',
+  bonaNova: {
+    variable: '--font-bona-nova',
+    className: 'font-bona-nova',
+  },
+  spaceGrotesk: {
+    variable: '--font-space-grotesk',
+    className: 'font-space-grotesk',
   },
 } as const;
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { SearchIcon, XIcon } from "./icons/CoreIcons";
+import { SearchIcon, XIcon } from "@/components/icons/CoreIcons";
 
 function Hero() {
     const [searchValue, setSearchValue] = useState("");

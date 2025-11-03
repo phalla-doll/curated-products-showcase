@@ -24,7 +24,7 @@ function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between">
         <div className="flex-1 flex items-center justify-start">
-          <AsteriskIcon className="w-6 h-6 text-zinc-900" />
+          <AsteriskIcon className="size-6 text-zinc-900" />
         </div>
 
         <div className="shrink-0">
@@ -42,7 +42,7 @@ function Header() {
             className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
             aria-label="Search"
           >
-            <SearchIcon className="w-5 h-5 text-zinc-500" />
+            <SearchIcon className="size-5 text-zinc-500" />
           </button>
         </div>
       </nav>

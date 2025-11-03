@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { Product } from '../types';
+import type { Product } from '@/types';
 import { ExpandIcon, StaffPickIcon } from './icons/CoreIcons';
 
 interface ProductCardProps {

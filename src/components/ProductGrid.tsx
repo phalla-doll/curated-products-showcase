@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { products } from '../constants';
+import { products } from '@/constants';
 import ProductCard from './ProductCard';
 
 function ProductGrid() {

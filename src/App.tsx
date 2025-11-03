@@ -1,8 +1,8 @@
-import CategoryFilters from './components/CategoryFilters';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import ProductGrid from './components/ProductGrid';
+import CategoryFilters from '@/components/CategoryFilters';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import ProductGrid from '@/components/ProductGrid';
 
 function App() {
   return (

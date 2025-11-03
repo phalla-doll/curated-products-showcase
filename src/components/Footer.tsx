@@ -190,7 +190,7 @@ function Footer() {
             <div className="flex items-center gap-1.5 text-sm text-zinc-500 mt-auto pt-8 justify-end">
               <span>Made by</span>
               <a
-                href="https://twitter.com/mantha"
+                href="https://mantha.vercel.app/"
                 className="hover:text-zinc-900 transition-colors duration-200 font-medium tracking-tight"
               >
                 @mantha

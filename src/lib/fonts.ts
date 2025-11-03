@@ -4,12 +4,12 @@
  */
 
 export const fonts = {
-  bonaNova: {
-    variable: '--font-bona-nova',
-    className: 'font-bona-nova',
-  },
-  spaceGrotesk: {
-    variable: '--font-space-grotesk',
-    className: 'font-space-grotesk',
-  },
+    bonaNova: {
+        variable: '--font-bona-nova',
+        className: 'font-bona-nova',
+    },
+    spaceGrotesk: {
+        variable: '--font-space-grotesk',
+        className: 'font-space-grotesk',
+    },
 } as const;

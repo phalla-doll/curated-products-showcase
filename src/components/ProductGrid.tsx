@@ -60,6 +60,22 @@ function ProductGrid() {
     };
   }, [filterProducts]);
 
+  // Show empty state if no products match the filter
+  if (filteredProducts.length === 0) {
+    return (
+      <div className="py-16 text-center">
+        <div className="max-w-md mx-auto">
+          <h2 className="text-2xl font-semibold text-zinc-900 mb-2">
+            No products found
+          </h2>
+          <p className="text-zinc-600 text-sm">
+            We couldn't find any products matching your filter. Try selecting a different category or browse all products.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

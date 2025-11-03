@@ -1,5 +1,5 @@
 import type React from 'react';
-import { AsteriskIcon, SearchIcon } from './icons/CoreIcons';
+import { AsteriskIcon, SearchIcon } from '@/components/icons/CoreIcons';
 
 // FIX: Extracted props to a dedicated interface to resolve potential type inference issues with inline types.
 interface NavLinkProps {

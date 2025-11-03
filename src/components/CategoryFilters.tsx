@@ -77,7 +77,7 @@ function CategoryFilters() {
 
   return (
     <div className="py-8">
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-2 -mb-2 sm:flex-wrap sm:overflow-x-visible sm:pb-0 sm:-mb-0">
         {categories.map((category) => (
           <CategoryButton
             key={category.id}

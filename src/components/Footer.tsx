@@ -43,10 +43,11 @@ function Footer() {
                             </form>
                         </div>
 
-                        {/* Affiliate Disclosure */}
+                        {/* About This Project */}
                         <p className="text-sm text-zinc-500 mb-auto">
-                            Select links may be affiliate based. I back what I share, and only
-                            recommend products I use, trust or see real value in.
+                            I built this because I was inspired by UI designs I've seen on the
+                            internet, with some of my own tweaks and creativity. This page currently
+                            serves no purpose other than an experiment.
                         </p>
 
                         {/* Copyright */}

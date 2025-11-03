@@ -199,6 +199,8 @@ function Footer() {
                             <a
                                 href="https://mantha.vercel.app/"
                                 className="hover:text-zinc-900 transition-colors duration-200 font-medium tracking-tight"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 @mantha_dev
                             </a>

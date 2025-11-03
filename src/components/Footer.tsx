@@ -193,7 +193,7 @@ function Footer() {
                         </div>
 
                         {/* Attribution */}
-                        <div className="flex items-center gap-1.5 text-sm text-zinc-500 mt-auto pt-8 justify-end">
+                        <div className="flex items-center gap-1.5 text-sm text-zinc-500 mt-auto pt-8 justify-center md:justify-end">
                             <span>Made by</span>
                             <a
                                 href="https://mantha.vercel.app/"

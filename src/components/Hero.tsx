@@ -113,8 +113,7 @@ function Hero() {
                     Discover well-designed, carefully curated products
                 </h1>
                 <p className="mt-3 max-w-xl mx-auto text-base text-zinc-500">
-                    Subscribe for weekly emails featuring timeless, design-led products across home,
-                    work, and life.
+                    Explore a curated collection of timeless, design-led products across home, work, and life.
                 </p>
                 <form
                     onSubmit={handleSubmit}

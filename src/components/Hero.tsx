@@ -12,6 +12,7 @@ function Hero() {
     // Initialize state directly from URL to avoid race conditions
     const [searchValue, setSearchValue] = useState(getInitialSearchValue);
     const isInitialMount = useRef(true);
+    const searchInputRef = useRef<HTMLInputElement>(null);
 
     // Mark initialization as complete after first render
     useEffect(() => {
@@ -32,6 +33,27 @@ function Hero() {
         return () => {
             window.removeEventListener('popstate', handleUrlChange);
             window.removeEventListener('searchchange', handleUrlChange);
+        };
+    }, []);
+
+    // Listen for focus search event from Header
+    useEffect(() => {
+        const handleFocusSearch = () => {
+            // Scroll to Hero section smoothly
+            const heroSection = document.querySelector('section');
+            if (heroSection) {
+                heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            // Focus the input after a short delay to ensure scroll has started
+            setTimeout(() => {
+                searchInputRef.current?.focus();
+            }, 100);
+        };
+
+        window.addEventListener('focussearch', handleFocusSearch);
+
+        return () => {
+            window.removeEventListener('focussearch', handleFocusSearch);
         };
     }, []);
 
@@ -99,6 +121,7 @@ function Hero() {
                     className="mt-8 max-w-md mx-auto flex items-center bg-white border border-zinc-200/80 rounded-full shadow-sm pr-2"
                 >
                     <input
+                        ref={searchInputRef}
                         type="text"
                         placeholder="Search products..."
                         value={searchValue}

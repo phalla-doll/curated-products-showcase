@@ -64,6 +64,10 @@ function Header() {
                     <div className="flex-1 flex items-center justify-end">
                         <button
                             type="button"
+                            onClick={() => {
+                                // Dispatch custom event to focus search input in Hero
+                                window.dispatchEvent(new CustomEvent('focussearch'));
+                            }}
                             className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
                             aria-label="Search"
                         >

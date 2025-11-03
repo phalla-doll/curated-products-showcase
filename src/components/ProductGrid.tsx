@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { products } from '@/constants';
-import ProductCard from './ProductCard';
+import ProductCard from '@/components/ProductCard';
 
 function ProductGrid() {
     const [filteredProducts, setFilteredProducts] = useState(products);

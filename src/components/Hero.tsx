@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 function Hero() {
+    const [searchValue, setSearchValue] = useState("");
+
     return (
         <section className="text-center py-20 sm:py-28">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,11 +17,17 @@ function Hero() {
                     <input
                         type="text"
                         placeholder="Search products..."
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
                         className="grow bg-transparent px-5 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none"
                     />
                     <button
                         type="submit"
-                        className="px-4 py-2 text-sm font-medium text-zinc-900 bg-zinc-100 rounded-full hover:bg-zinc-200 transition-colors duration-200"
+                        className={`px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
+                            searchValue
+                                ? "bg-zinc-900 text-white hover:bg-zinc-800"
+                                : "text-zinc-900 bg-zinc-100 hover:bg-zinc-200"
+                        }`}
                     >
                         Search
                     </button>

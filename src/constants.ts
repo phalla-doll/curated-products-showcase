@@ -87,8 +87,8 @@ export const products: Product[] = [
     id: 9,
     brand: 'Bang',
     category: 'Home',
-    name: 'Lớp Small Square in Orange Acrylic CE',
-    imageUrl: '/Bang_Lớp small square in orange acrylic CE.webp',
+    name: 'Small Square in Orange Acrylic CE',
+    imageUrl: '/Bang_Small_Square_Orange_Acrylic_CE.webp',
   },
   {
     id: 10,

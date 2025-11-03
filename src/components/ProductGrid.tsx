@@ -39,7 +39,7 @@ function ProductGrid() {
         }
 
         // Apply search filter
-        if (searchParam && searchParam.trim()) {
+        if (searchParam?.trim()) {
             const searchLower = searchParam.toLowerCase().trim();
             filtered = filtered.filter((product) => {
                 const brandMatch = product.brand.toLowerCase().includes(searchLower);

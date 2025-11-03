@@ -1,6 +1,6 @@
 import type React from 'react';
 import { useState } from 'react';
-import { AsteriskIcon } from './icons/CoreIcons';
+import { AsteriskIcon } from '@/components/icons/CoreIcons';
 
 function Footer() {
   const [email, setEmail] = useState('');
@@ -198,7 +198,7 @@ function Footer() {
               <img
                 src="/mantha-profile-pic-sm.png"
                 alt="Mantha profile"
-                className="w-6 h-6 rounded-full object-cover"
+                className="size-6 rounded-full object-cover"
               />
             </div>
           </div>

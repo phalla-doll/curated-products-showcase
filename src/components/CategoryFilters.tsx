@@ -1,7 +1,7 @@
 import type React from 'react';
 import { useEffect, useState } from 'react';
-import { categories } from '../constants';
-import type { Category } from '../types';
+import { categories } from '@/constants';
+import type { Category } from '@/types';
 
 // FIX: Defined a proper props interface and used React.FC to correctly type the component,
 // which resolves the issue with the 'key' prop and improves type safety for the 'category' prop.

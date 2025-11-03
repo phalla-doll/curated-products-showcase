@@ -336,4 +336,12 @@ export const products: Product[] = [
         imageUrl: '/xbloomstudio.webp',
         price: 1299,
     },
+    {
+        id: 39,
+        brand: 'Apple',
+        category: 'Tech',
+        name: 'Pro Display XDR',
+        imageUrl: '/apple-pro-display-xdr.png',
+        price: 4999,
+    },
 ];

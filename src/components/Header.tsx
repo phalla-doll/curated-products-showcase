@@ -34,16 +34,28 @@ function Header() {
 
                     <div className="shrink-0">
                         <div className="flex items-center bg-white border border-zinc-200/80 rounded-full shadow-sm p-1">
-                            <NavLink active={activeTab === 'Discover'} onClick={() => setActiveTab('Discover')}>
+                            <NavLink
+                                active={activeTab === 'Discover'}
+                                onClick={() => setActiveTab('Discover')}
+                            >
                                 Discover
                             </NavLink>
-                            <NavLink active={activeTab === 'Browse'} onClick={() => setActiveTab('Browse')}>
+                            <NavLink
+                                active={activeTab === 'Browse'}
+                                onClick={() => setActiveTab('Browse')}
+                            >
                                 Browse
                             </NavLink>
-                            <NavLink active={activeTab === 'Blog'} onClick={() => setActiveTab('Blog')}>
+                            <NavLink
+                                active={activeTab === 'Blog'}
+                                onClick={() => setActiveTab('Blog')}
+                            >
                                 Blog
                             </NavLink>
-                            <NavLink active={activeTab === 'Info'} onClick={() => setActiveTab('Info')}>
+                            <NavLink
+                                active={activeTab === 'Info'}
+                                onClick={() => setActiveTab('Info')}
+                            >
                                 Info
                             </NavLink>
                         </div>

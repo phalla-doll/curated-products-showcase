@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from "react";
-import { SearchIcon, XIcon } from "@/components/icons/CoreIcons";
+import { useEffect, useRef, useState } from 'react';
+import { SearchIcon, XIcon } from '@/components/icons/CoreIcons';
 
 function Hero() {
-    const [searchValue, setSearchValue] = useState("");
+    const [searchValue, setSearchValue] = useState('');
     const isInitialMount = useRef(true);
 
     // Read search param from URL on mount and when URL changes
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
-        const searchParam = params.get("search");
+        const searchParam = params.get('search');
         if (searchParam) {
             setSearchValue(searchParam);
         }
@@ -20,16 +20,16 @@ function Hero() {
     useEffect(() => {
         const handleUrlChange = () => {
             const params = new URLSearchParams(window.location.search);
-            const searchParam = params.get("search");
-            setSearchValue(searchParam || "");
+            const searchParam = params.get('search');
+            setSearchValue(searchParam || '');
         };
 
-        window.addEventListener("popstate", handleUrlChange);
-        window.addEventListener("searchchange", handleUrlChange);
+        window.addEventListener('popstate', handleUrlChange);
+        window.addEventListener('searchchange', handleUrlChange);
 
         return () => {
-            window.removeEventListener("popstate", handleUrlChange);
-            window.removeEventListener("searchchange", handleUrlChange);
+            window.removeEventListener('popstate', handleUrlChange);
+            window.removeEventListener('searchchange', handleUrlChange);
         };
     }, []);
 
@@ -41,7 +41,7 @@ function Hero() {
         }
 
         const params = new URLSearchParams(window.location.search);
-        const currentSearchParam = params.get("search") || "";
+        const currentSearchParam = params.get('search') || '';
         const newSearchValue = searchValue.trim();
 
         // Only update URL if the value actually changed
@@ -50,36 +50,36 @@ function Hero() {
         }
 
         if (newSearchValue) {
-            params.set("search", newSearchValue);
+            params.set('search', newSearchValue);
         } else {
-            params.delete("search");
+            params.delete('search');
         }
 
         // Update URL without page reload
-        const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
-        window.history.pushState({}, "", newUrl);
+        const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
+        window.history.pushState({}, '', newUrl);
 
         // Dispatch custom event to notify ProductGrid
-        window.dispatchEvent(new CustomEvent("searchchange"));
+        window.dispatchEvent(new CustomEvent('searchchange'));
     }, [searchValue]);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        
+
         const params = new URLSearchParams(window.location.search);
-        
+
         if (searchValue.trim()) {
-            params.set("search", searchValue.trim());
+            params.set('search', searchValue.trim());
         } else {
-            params.delete("search");
+            params.delete('search');
         }
 
         // Update URL without page reload
-        const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
-        window.history.pushState({}, "", newUrl);
+        const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
+        window.history.pushState({}, '', newUrl);
 
         // Dispatch custom event to notify ProductGrid
-        window.dispatchEvent(new CustomEvent("searchchange"));
+        window.dispatchEvent(new CustomEvent('searchchange'));
     };
 
     return (
@@ -92,7 +92,10 @@ function Hero() {
                     Subscribe for weekly emails featuring timeless, design-led products across home,
                     work, and life.
                 </p>
-                <form onSubmit={handleSubmit} className="mt-8 max-w-md mx-auto flex items-center bg-white border border-zinc-200/80 rounded-full shadow-sm pr-2">
+                <form
+                    onSubmit={handleSubmit}
+                    className="mt-8 max-w-md mx-auto flex items-center bg-white border border-zinc-200/80 rounded-full shadow-sm pr-2"
+                >
                     <input
                         type="text"
                         placeholder="Search products..."
@@ -103,7 +106,7 @@ function Hero() {
                     {searchValue ? (
                         <button
                             type="button"
-                            onClick={() => setSearchValue("")}
+                            onClick={() => setSearchValue('')}
                             className="px-3 flex items-center text-zinc-400 hover:text-zinc-600 transition-colors"
                             aria-label="Clear search"
                         >

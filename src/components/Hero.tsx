@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { SearchIcon, XIcon } from "./icons/CoreIcons";
 
 function Hero() {
     const [searchValue, setSearchValue] = useState("");
@@ -99,16 +100,24 @@ function Hero() {
                         onChange={(e) => setSearchValue(e.target.value)}
                         className="grow bg-transparent px-5 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none"
                     />
-                    <button
-                        type="submit"
-                        className={`px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
-                            searchValue
-                                ? "bg-zinc-900 text-white hover:bg-zinc-800"
-                                : "text-zinc-900 bg-zinc-100 hover:bg-zinc-200"
-                        }`}
-                    >
-                        Search
-                    </button>
+                    {searchValue ? (
+                        <button
+                            type="button"
+                            onClick={() => setSearchValue("")}
+                            className="px-3 flex items-center text-zinc-400 hover:text-zinc-600 transition-colors"
+                            aria-label="Clear search"
+                        >
+                            <XIcon className="size-5" />
+                        </button>
+                    ) : (
+                        <button
+                            type="submit"
+                            className="px-3 flex items-center text-zinc-400 hover:text-zinc-600 transition-colors"
+                            aria-label="Search"
+                        >
+                            <SearchIcon className="size-5" />
+                        </button>
+                    )}
                 </form>
             </div>
         </section>

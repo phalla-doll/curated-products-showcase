@@ -6,6 +6,7 @@ export interface Product {
     category: string;
     name: string;
     imageUrl: string;
+    price: number;
     isStaffPick?: boolean;
 }
 

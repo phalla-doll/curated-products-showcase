@@ -30,6 +30,7 @@ export const products: Product[] = [
         category: 'Tech',
         name: 'Studio Display',
         imageUrl: '/studio display.webp',
+        price: 1599,
     },
     {
         id: 2,
@@ -37,6 +38,7 @@ export const products: Product[] = [
         category: 'Carry',
         name: '151 Stealth Backpack',
         imageUrl: '/Grams28_151 Stealth Backpack.webp',
+        price: 299,
     },
     {
         id: 3,
@@ -44,6 +46,7 @@ export const products: Product[] = [
         category: 'Workspace',
         name: 'Aeron',
         imageUrl: '/aeron.webp',
+        price: 1395,
     },
     {
         id: 4,
@@ -52,6 +55,7 @@ export const products: Product[] = [
         name: 'iPhone 14 Pro',
         // TODO: Replace imageUrl with correct iPhone 14 Pro image - currently using placeholder
         imageUrl: '/workLouder.webp',
+        price: 999,
         isStaffPick: true,
     },
     {
@@ -60,6 +64,7 @@ export const products: Product[] = [
         category: 'Lifestyle',
         name: '911 Turbo S',
         imageUrl: '/911.webp',
+        price: 207000,
         isStaffPick: true,
     },
     {
@@ -68,6 +73,7 @@ export const products: Product[] = [
         category: 'Lifestyle',
         name: 'Speedmaster',
         imageUrl: '/Omega_Speedmaster.webp',
+        price: 6400,
         isStaffPick: true,
     },
     {
@@ -76,6 +82,7 @@ export const products: Product[] = [
         category: 'Tech',
         name: 'iPhone Air',
         imageUrl: '/Apple_iPhone Air.webp',
+        price: 599,
     },
     {
         id: 8,
@@ -83,6 +90,7 @@ export const products: Product[] = [
         category: 'Tech',
         name: 'iPhone 17 Pro',
         imageUrl: '/Apple_iPhone Pro 17.webp',
+        price: 1199,
     },
     {
         id: 9,
@@ -90,6 +98,7 @@ export const products: Product[] = [
         category: 'Home',
         name: 'Small Square in Orange Acrylic CE',
         imageUrl: '/Bang_Small_Square_Orange_Acrylic_CE.webp',
+        price: 85,
     },
     {
         id: 10,
@@ -97,6 +106,7 @@ export const products: Product[] = [
         category: 'Home',
         name: 'Valet Tray',
         imageUrl: '/Bionic_Valet Tray.webp',
+        price: 125,
     },
     {
         id: 11,
@@ -104,6 +114,7 @@ export const products: Product[] = [
         category: 'Workspace',
         name: 'Desktop Folder',
         imageUrl: '/Blanked_Desktop Folder.webp',
+        price: 95,
     },
     {
         id: 12,
@@ -111,6 +122,7 @@ export const products: Product[] = [
         category: 'Workspace',
         name: 'Industrial Bookstand',
         imageUrl: '/Blanked_Industrial Bookstand.webp',
+        price: 145,
     },
     {
         id: 13,
@@ -118,6 +130,7 @@ export const products: Product[] = [
         category: 'Lifestyle',
         name: 'Pulse (Tandem)',
         imageUrl: '/Breda_Pulse (Tandem).webp',
+        price: 129,
     },
     {
         id: 14,
@@ -125,6 +138,7 @@ export const products: Product[] = [
         category: 'Home',
         name: 'P–1 Pepper Mill',
         imageUrl: '/Crust_P–1 Pepper Mill.webp',
+        price: 155,
     },
     {
         id: 15,
@@ -132,6 +146,7 @@ export const products: Product[] = [
         category: 'Home',
         name: 'Solarcycle Morph',
         imageUrl: '/Dyson_Solarcycle Morph Floor.webp',
+        price: 649,
     },
     {
         id: 16,
@@ -139,6 +154,7 @@ export const products: Product[] = [
         category: 'Home',
         name: 'Stagg EKG',
         imageUrl: '/fellow_stagg.webp',
+        price: 189,
     },
     {
         id: 17,
@@ -146,6 +162,7 @@ export const products: Product[] = [
         category: 'Lifestyle',
         name: 'Roma',
         imageUrl: '/Ferrari_Roma.webp',
+        price: 247000,
         isStaffPick: true,
     },
     {
@@ -154,6 +171,7 @@ export const products: Product[] = [
         category: 'Home',
         name: 'Salt',
         imageUrl: '/Grau_Salt.webp',
+        price: 75,
     },
     {
         id: 19,
@@ -161,6 +179,7 @@ export const products: Product[] = [
         category: 'Home',
         name: 'ClockClock 24',
         imageUrl: '/HS82_ClockClock 24.webp',
+        price: 4495,
     },
     {
         id: 20,
@@ -168,6 +187,7 @@ export const products: Product[] = [
         category: 'Home',
         name: 'Doric Lamp 01',
         imageUrl: '/Kismas_Doric Lamp 01.webp',
+        price: 495,
     },
     {
         id: 21,
@@ -175,6 +195,7 @@ export const products: Product[] = [
         category: 'Lifestyle',
         name: 'Icons 10295 Porsche 911',
         imageUrl: '/Lego _ Icons 10295 Porsche 911.webp',
+        price: 169,
     },
     {
         id: 22,
@@ -182,6 +203,7 @@ export const products: Product[] = [
         category: 'Tech',
         name: 'Q3',
         imageUrl: '/Leica Q3.webp',
+        price: 5995,
         isStaffPick: true,
     },
     {
@@ -190,6 +212,7 @@ export const products: Product[] = [
         category: 'Home',
         name: 'Togo Loveseat',
         imageUrl: '/ligneroset_TogoLoveseat.webp',
+        price: 5495,
     },
     {
         id: 24,
@@ -197,6 +220,7 @@ export const products: Product[] = [
         category: 'Workspace',
         name: 'Flow 2',
         imageUrl: '/Lofree_ Flow 2.webp',
+        price: 149,
     },
     {
         id: 25,
@@ -204,6 +228,7 @@ export const products: Product[] = [
         category: 'Home',
         name: 'Noguchi Table',
         imageUrl: '/noguchi_table.webp',
+        price: 3795,
     },
     {
         id: 26,
@@ -211,6 +236,7 @@ export const products: Product[] = [
         category: 'Tech',
         name: 'Base One Max 3-in-1',
         imageUrl: '/Nomad_ Base One Max 3-in-1.webp',
+        price: 249,
     },
     {
         id: 27,
@@ -218,6 +244,7 @@ export const products: Product[] = [
         category: 'Tech',
         name: 'Ear (stick)',
         imageUrl: '/Nothing_Headphones(1).webp',
+        price: 99,
     },
     {
         id: 28,
@@ -225,6 +252,7 @@ export const products: Product[] = [
         category: 'Tech',
         name: 'Nothing Phone (3)',
         imageUrl: '/Nothing_Phone(3).webp',
+        price: 699,
     },
     {
         id: 29,
@@ -232,6 +260,7 @@ export const products: Product[] = [
         category: 'Books',
         name: 'Dieter Rams: The Complete Works',
         imageUrl: '/Phaidon_Dieter Rams_ The Complete Works.webp',
+        price: 75,
     },
     {
         id: 30,
@@ -239,6 +268,7 @@ export const products: Product[] = [
         category: 'Books',
         name: 'The Design Book',
         imageUrl: '/Phaidon_The Design Book.webp',
+        price: 65,
     },
     {
         id: 31,
@@ -246,6 +276,7 @@ export const products: Product[] = [
         category: 'Carry',
         name: 'Classic Cabin',
         imageUrl: '/Rimowa_Classic Cabin.webp',
+        price: 1650,
         isStaffPick: true,
     },
     {
@@ -254,6 +285,7 @@ export const products: Product[] = [
         category: 'Lifestyle',
         name: 'Datejust',
         imageUrl: '/Rolex_Datejust.webp',
+        price: 8950,
         isStaffPick: true,
     },
     {
@@ -262,6 +294,7 @@ export const products: Product[] = [
         category: 'Lifestyle',
         name: 'Réf. 1174-1 Parade',
         imageUrl: '/Serica_Réf1174-1 Parade.webp',
+        price: 899,
     },
     {
         id: 34,
@@ -269,6 +302,7 @@ export const products: Product[] = [
         category: 'Tech',
         name: 'BF',
         imageUrl: '/Sigma_BF.webp',
+        price: 199,
     },
     {
         id: 35,
@@ -276,6 +310,7 @@ export const products: Product[] = [
         category: 'Tech',
         name: 'WH-1000XM5',
         imageUrl: '/Sony_WH 1000XM5.webp',
+        price: 399,
     },
     {
         id: 36,
@@ -283,6 +318,7 @@ export const products: Product[] = [
         category: 'Home',
         name: 'Subscale',
         imageUrl: '/Subminimal_Subscale.webp',
+        price: 175,
     },
     {
         id: 37,
@@ -290,6 +326,7 @@ export const products: Product[] = [
         category: 'Books',
         name: 'Virgil Abloh. Nike. ICONS',
         imageUrl: '/Taschen_Virgil Abloh. Nike. ICONS.webp',
+        price: 150,
     },
     {
         id: 38,
@@ -297,5 +334,6 @@ export const products: Product[] = [
         category: 'Home',
         name: 'Studio',
         imageUrl: '/xbloomstudio.webp',
+        price: 1299,
     },
 ];

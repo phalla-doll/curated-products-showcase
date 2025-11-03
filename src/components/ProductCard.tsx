@@ -28,6 +28,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         <span>Staff Pick</span>
                     </div>
                 )}
+                <p className="absolute bottom-3 right-3 px-3 py-1.5 bg-white/50 backdrop-blur-sm rounded-full text-sm font-semibold text-zinc-900">
+                    ${product.price.toLocaleString()}
+                </p>
             </div>
             <div className="pt-4">
                 <p className="text-sm text-zinc-500">

@@ -23,29 +23,29 @@ function Header() {
     <header className="py-6">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between">
-        <div className="flex-1 flex items-center justify-start">
-          <AsteriskIcon className="size-6 text-zinc-900" />
-        </div>
-
-        <div className="shrink-0">
-          <div className="flex items-center bg-white border border-zinc-200/80 rounded-full shadow-sm p-1">
-            <NavLink active>Discover</NavLink>
-            <NavLink>Browse</NavLink>
-            <NavLink>Blog</NavLink>
-            <NavLink>Info</NavLink>
+          <div className="flex-1 flex items-center justify-start">
+            <AsteriskIcon className="size-6 text-zinc-900" />
           </div>
-        </div>
 
-        <div className="flex-1 flex items-center justify-end">
-          <button
-            type="button"
-            className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
-            aria-label="Search"
-          >
-            <SearchIcon className="size-5 text-zinc-500" />
-          </button>
-        </div>
-      </nav>
+          <div className="shrink-0">
+            <div className="flex items-center bg-white border border-zinc-200/80 rounded-full shadow-sm p-1">
+              <NavLink active>Discover</NavLink>
+              <NavLink>Browse</NavLink>
+              <NavLink>Blog</NavLink>
+              <NavLink>Info</NavLink>
+            </div>
+          </div>
+
+          <div className="flex-1 flex items-center justify-end">
+            <button
+              type="button"
+              className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
+              aria-label="Search"
+            >
+              <SearchIcon className="size-5 text-zinc-500" />
+            </button>
+          </div>
+        </nav>
       </div>
     </header>
   );

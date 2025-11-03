@@ -74,31 +74,26 @@ function ProductGrid() {
         };
     }, [filterProducts]);
 
-    // Show empty state if no products match the filter
-    if (filteredProducts.length === 0) {
-        return (
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="py-16 text-center">
-                    <div className="max-w-md mx-auto">
-                        <h2 className="text-2xl font-semibold text-zinc-900 tracking-tight mb-2">
-                            No products found
-                        </h2>
-                        <p className="text-zinc-600 text-sm">
-                            We couldn't find any products matching your filter. Try selecting a
-                            different category or browse all products.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                ))}
+            <div className="pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px]">
+                {filteredProducts.length === 0 ? (
+                    <div className="col-span-full flex items-center justify-center py-16">
+                        <div className="max-w-md mx-auto text-center">
+                            <h2 className="text-2xl font-semibold text-zinc-900 tracking-tight mb-2">
+                                No products found
+                            </h2>
+                            <p className="text-zinc-600 text-sm">
+                                We couldn't find any products matching your filter. Try selecting a
+                                different category or browse all products.
+                            </p>
+                        </div>
+                    </div>
+                ) : (
+                    filteredProducts.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                    ))
+                )}
             </div>
             {/* Show More Button */}
             {/* <div className="flex justify-center mb-8">

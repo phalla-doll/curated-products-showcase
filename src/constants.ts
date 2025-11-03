@@ -50,12 +50,11 @@ export const products: Product[] = [
     },
     {
         id: 4,
-        brand: 'Apple',
+        brand: 'WorkLouder',
         category: 'Tech',
-        name: 'iPhone 14 Pro',
-        // TODO: Replace imageUrl with correct iPhone 14 Pro image - currently using placeholder
+        name: 'Mechanical Keyboard',
         imageUrl: '/workLouder.webp',
-        price: 999,
+        price: 299,
         isStaffPick: true,
     },
     {

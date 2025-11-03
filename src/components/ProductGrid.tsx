@@ -1,11 +1,69 @@
+import { useCallback, useEffect, useState } from 'react';
 import { products } from '../constants';
 import ProductCard from './ProductCard';
 
 function ProductGrid() {
+  const [filteredProducts, setFilteredProducts] = useState(products);
+
+  // Filter products based on URL category parameter
+  const filterProducts = useCallback(() => {
+    const params = new URLSearchParams(window.location.search);
+    const categoryParam = params.get('category');
+
+    if (!categoryParam || categoryParam === 'all') {
+      setFilteredProducts(products);
+      return;
+    }
+
+    // Map category IDs to category names (handle special cases)
+    const categoryMap: Record<string, string> = {
+      tech: 'Tech',
+      workspace: 'Workspace',
+      home: 'Home',
+      carry: 'Carry',
+      books: 'Books',
+      lifestyle: 'Lifestyle',
+      picks: 'Picks', // Filter by isStaffPick
+      new: 'New', // You might want to add a date field for this
+    };
+
+    const categoryName = categoryMap[categoryParam];
+
+    if (categoryParam === 'picks') {
+      // Filter by staff picks
+      setFilteredProducts(products.filter((product) => product.isStaffPick === true));
+    } else if (categoryName) {
+      // Filter by category name
+      setFilteredProducts(products.filter((product) => product.category === categoryName));
+    } else {
+      setFilteredProducts(products);
+    }
+  }, []);
+
+  // Initial filter on mount
+  useEffect(() => {
+    filterProducts();
+  }, [filterProducts]);
+
+  // Listen for URL changes (when category filter changes or browser back/forward)
+  useEffect(() => {
+    const handleUrlChange = () => {
+      filterProducts();
+    };
+
+    window.addEventListener('popstate', handleUrlChange);
+    window.addEventListener('categorychange', handleUrlChange);
+    
+    return () => {
+      window.removeEventListener('popstate', handleUrlChange);
+      window.removeEventListener('categorychange', handleUrlChange);
+    };
+  }, [filterProducts]);
+
   return (
     <div>
       <div className="pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

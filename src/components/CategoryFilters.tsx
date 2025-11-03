@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { categories } from '../constants';
 import type { Category } from '../types';
 
@@ -33,6 +33,48 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({ category, isActive, onC
 function CategoryFilters() {
   const [activeCategory, setActiveCategory] = useState('all');
 
+  // Read category from URL on mount and when URL changes
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const categoryParam = params.get('category');
+    if (categoryParam) {
+      setActiveCategory(categoryParam);
+    }
+  }, []);
+
+  // Listen for popstate events (back/forward button)
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const categoryParam = params.get('category');
+      setActiveCategory(categoryParam || 'all');
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const handleCategoryClick = (categoryId: string) => {
+    setActiveCategory(categoryId);
+    
+    // Update URL without page reload
+    const params = new URLSearchParams(window.location.search);
+    if (categoryId === 'all') {
+      params.delete('category');
+    } else {
+      params.set('category', categoryId);
+    }
+    
+    const newUrl = params.toString() 
+      ? `${window.location.pathname}?${params.toString()}`
+      : window.location.pathname;
+    
+    window.history.pushState({}, '', newUrl);
+    
+    // Dispatch custom event to notify ProductGrid of URL change
+    window.dispatchEvent(new CustomEvent('categorychange'));
+  };
+
   return (
     <div className="py-8">
       <div className="flex items-center justify-between gap-4">
@@ -42,7 +84,7 @@ function CategoryFilters() {
               key={category.id}
               category={category}
               isActive={activeCategory === category.id}
-              onClick={setActiveCategory}
+              onClick={handleCategoryClick}
             />
           ))}
         </div>

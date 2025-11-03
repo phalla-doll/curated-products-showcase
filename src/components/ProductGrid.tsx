@@ -5,39 +5,51 @@ import ProductCard from './ProductCard';
 function ProductGrid() {
     const [filteredProducts, setFilteredProducts] = useState(products);
 
-    // Filter products based on URL category parameter
+    // Filter products based on URL category and search parameters
     const filterProducts = useCallback(() => {
         const params = new URLSearchParams(window.location.search);
         const categoryParam = params.get('category');
+        const searchParam = params.get('search');
 
-        if (!categoryParam || categoryParam === 'all') {
-            setFilteredProducts(products);
-            return;
+        let filtered = products;
+
+        // Apply category filter
+        if (categoryParam && categoryParam !== 'all') {
+            // Map category IDs to category names (handle special cases)
+            const categoryMap: Record<string, string> = {
+                tech: 'Tech',
+                workspace: 'Workspace',
+                home: 'Home',
+                carry: 'Carry',
+                books: 'Books',
+                lifestyle: 'Lifestyle',
+                picks: 'Picks', // Filter by isStaffPick
+                new: 'New', // You might want to add a date field for this
+            };
+
+            const categoryName = categoryMap[categoryParam];
+
+            if (categoryParam === 'picks') {
+                // Filter by staff picks
+                filtered = filtered.filter((product) => product.isStaffPick === true);
+            } else if (categoryName) {
+                // Filter by category name
+                filtered = filtered.filter((product) => product.category === categoryName);
+            }
         }
 
-        // Map category IDs to category names (handle special cases)
-        const categoryMap: Record<string, string> = {
-            tech: 'Tech',
-            workspace: 'Workspace',
-            home: 'Home',
-            carry: 'Carry',
-            books: 'Books',
-            lifestyle: 'Lifestyle',
-            picks: 'Picks', // Filter by isStaffPick
-            new: 'New', // You might want to add a date field for this
-        };
-
-        const categoryName = categoryMap[categoryParam];
-
-        if (categoryParam === 'picks') {
-            // Filter by staff picks
-            setFilteredProducts(products.filter((product) => product.isStaffPick === true));
-        } else if (categoryName) {
-            // Filter by category name
-            setFilteredProducts(products.filter((product) => product.category === categoryName));
-        } else {
-            setFilteredProducts(products);
+        // Apply search filter
+        if (searchParam && searchParam.trim()) {
+            const searchLower = searchParam.toLowerCase().trim();
+            filtered = filtered.filter((product) => {
+                const brandMatch = product.brand.toLowerCase().includes(searchLower);
+                const nameMatch = product.name.toLowerCase().includes(searchLower);
+                const categoryMatch = product.category.toLowerCase().includes(searchLower);
+                return brandMatch || nameMatch || categoryMatch;
+            });
         }
+
+        setFilteredProducts(filtered);
     }, []);
 
     // Initial filter on mount
@@ -45,7 +57,7 @@ function ProductGrid() {
         filterProducts();
     }, [filterProducts]);
 
-    // Listen for URL changes (when category filter changes or browser back/forward)
+    // Listen for URL changes (when category filter changes, search changes, or browser back/forward)
     useEffect(() => {
         const handleUrlChange = () => {
             filterProducts();
@@ -53,10 +65,12 @@ function ProductGrid() {
 
         window.addEventListener('popstate', handleUrlChange);
         window.addEventListener('categorychange', handleUrlChange);
+        window.addEventListener('searchchange', handleUrlChange);
 
         return () => {
             window.removeEventListener('popstate', handleUrlChange);
             window.removeEventListener('categorychange', handleUrlChange);
+            window.removeEventListener('searchchange', handleUrlChange);
         };
     }, [filterProducts]);
 

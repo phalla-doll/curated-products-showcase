@@ -22,7 +22,7 @@ A modern, responsive web application for discovering well-designed, carefully cu
 - **TypeScript** 5.8.2 - Type safety
 - **Vite** 6.2.0 - Build tool and dev server
 - **Tailwind CSS** - Utility-first CSS framework (via className)
-- **Inter Font** - Modern typography
+- **Bona Nova & Space Grotesk** - Modern typography (from Google Fonts)
 
 ## 📁 Project Structure
 
@@ -166,7 +166,7 @@ Categories include:
 ## 🎨 Design Features
 
 - **Color Scheme**: Zinc-based color palette (zinc-50, zinc-900, etc.)
-- **Typography**: Inter font family for modern readability
+- **Typography**: Space Grotesk (default) and Bona Nova fonts for modern readability
 - **Border Radius**: Rounded-full for buttons and inputs
 - **Shadows**: Subtle shadow-sm for depth
 - **Transitions**: Smooth 200-300ms transitions for hover effects

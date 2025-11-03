@@ -1,18 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import { SearchIcon, XIcon } from '@/components/icons/CoreIcons';
 
+// Helper to get initial search value from URL
+function getInitialSearchValue(): string {
+    if (typeof window === 'undefined') return '';
+    const params = new URLSearchParams(window.location.search);
+    return params.get('search') || '';
+}
+
 function Hero() {
-    const [searchValue, setSearchValue] = useState('');
+    // Initialize state directly from URL to avoid race conditions
+    const [searchValue, setSearchValue] = useState(getInitialSearchValue);
     const isInitialMount = useRef(true);
 
-    // Read search param from URL on mount and when URL changes
+    // Mark initialization as complete after first render
     useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        const searchParam = params.get('search');
-        if (searchParam) {
-            setSearchValue(searchParam);
-        }
-        // Mark initialization as complete after reading from URL
         isInitialMount.current = false;
     }, []);
 

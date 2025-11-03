@@ -101,7 +101,7 @@ function Footer() {
                                             <a
                                                 href={
                                                     link === 'Twitter'
-                                                        ? 'https://twitter.com'
+                                                        ? 'https://twitter.com/mantha_dev'
                                                         : 'mailto:'
                                                 }
                                                 className="text-zinc-600 hover:text-zinc-900 transition-colors duration-200 text-sm"
@@ -199,7 +199,7 @@ function Footer() {
                                 href="https://mantha.vercel.app/"
                                 className="hover:text-zinc-900 transition-colors duration-200 font-medium tracking-tight"
                             >
-                                @mantha
+                                @mantha_dev
                             </a>
                             <img
                                 src="/mantha-profile-pic-sm.png"

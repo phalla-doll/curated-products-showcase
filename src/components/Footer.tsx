@@ -63,7 +63,7 @@ function Footer() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div>
                 <h3 className="font-medium text-zinc-600 mb-4">Navigation</h3>
-                <ul className="space-y-2">
+                <ul className="space-y-1">
                   {['Discover', 'Lists', 'Brands', 'Categories', 'Index'].map((link) => (
                     <li key={link}>
                       <a
@@ -79,7 +79,7 @@ function Footer() {
 
               <div>
                 <h3 className="font-medium text-zinc-600 mb-4">About</h3>
-                <ul className="space-y-2">
+                <ul className="space-y-1">
                   {['Info', 'Blog', 'Legal'].map((link) => (
                     <li key={link}>
                       <a
@@ -95,7 +95,7 @@ function Footer() {
 
               <div>
                 <h3 className="font-medium text-zinc-600 mb-4">Contact</h3>
-                <ul className="space-y-2">
+                <ul className="space-y-1">
                   {['Twitter', 'Email'].map((link) => (
                     <li key={link}>
                       <a
@@ -114,7 +114,7 @@ function Footer() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-auto">
               <div>
                 <h3 className="font-medium text-zinc-600 mb-4">Categories</h3>
-                <ul className="space-y-2">
+                <ul className="space-y-1">
                   {['Tech', 'Home', 'Workspace', 'Carry', 'Lifestyle', 'Personal', 'Books', 'Travel'].map((link) => (
                     <li key={link}>
                       <a
@@ -130,7 +130,7 @@ function Footer() {
 
               <div>
                 <h3 className="font-medium text-zinc-600 mb-4">Brands</h3>
-                <ul className="space-y-2">
+                <ul className="space-y-1">
                   {['Apple', 'Nomad', 'Grovemade', 'Dyson', 'Herman Miller', 'Ferrari', 'Omega', 'Rolex'].map((link) => (
                     <li key={link}>
                       <a
@@ -146,7 +146,7 @@ function Footer() {
 
               <div>
                 <h3 className="font-medium text-zinc-600 mb-4">Lists</h3>
-                <ul className="space-y-2">
+                <ul className="space-y-1">
                   {[
                     'Brutalist Picks',
                     'Cult of Coffee',

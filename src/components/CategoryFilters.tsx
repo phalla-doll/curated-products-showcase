@@ -77,23 +77,15 @@ function CategoryFilters() {
 
   return (
     <div className="py-8">
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 -mb-2">
-          {categories.map((category) => (
-            <CategoryButton
-              key={category.id}
-              category={category}
-              isActive={activeCategory === category.id}
-              onClick={handleCategoryClick}
-            />
-          ))}
-        </div>
-        <button
-          type="button"
-          className="flex-shrink-0 px-4 py-2 text-sm font-medium border rounded-full bg-white text-zinc-700 border-zinc-200/80 hover:bg-zinc-100 hover:border-zinc-300 whitespace-nowrap"
-        >
-          See More
-        </button>
+      <div className="flex flex-wrap items-center gap-2">
+        {categories.map((category) => (
+          <CategoryButton
+            key={category.id}
+            category={category}
+            isActive={activeCategory === category.id}
+            onClick={handleCategoryClick}
+          />
+        ))}
       </div>
     </div>
   );

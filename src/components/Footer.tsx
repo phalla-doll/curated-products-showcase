@@ -19,7 +19,7 @@ function Footer() {
           {/* Left Column */}
           <div className="flex flex-col">
             {/* Asterisk Icon */}
-            <AsteriskIcon className="w-6 h-6 text-zinc-900 mb-6" />
+            <AsteriskIcon className="size-6 text-zinc-900 mb-6" />
 
             {/* Subscription Section */}
             <div className="mb-6 w-full max-w-md">

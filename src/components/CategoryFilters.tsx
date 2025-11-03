@@ -56,7 +56,7 @@ function CategoryFilters() {
 
   const handleCategoryClick = (categoryId: string) => {
     setActiveCategory(categoryId);
-    
+
     // Update URL without page reload
     const params = new URLSearchParams(window.location.search);
     if (categoryId === 'all') {
@@ -64,13 +64,13 @@ function CategoryFilters() {
     } else {
       params.set('category', categoryId);
     }
-    
-    const newUrl = params.toString() 
+
+    const newUrl = params.toString()
       ? `${window.location.pathname}?${params.toString()}`
       : window.location.pathname;
-    
+
     window.history.pushState({}, '', newUrl);
-    
+
     // Dispatch custom event to notify ProductGrid of URL change
     window.dispatchEvent(new CustomEvent('categorychange'));
   };

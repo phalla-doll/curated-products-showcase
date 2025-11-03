@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { AsteriskIcon, SearchIcon } from './icons/CoreIcons';
 
 // FIX: Extracted props to a dedicated interface to resolve potential type inference issues with inline types.
@@ -9,11 +9,9 @@ interface NavLinkProps {
 
 const NavLink = ({ children, active = false }: NavLinkProps) => (
   <a
-    href="#"
+    href="/"
     className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
-      active
-        ? 'bg-zinc-100 text-zinc-900'
-        : 'text-zinc-500 hover:text-zinc-900'
+      active ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-500 hover:text-zinc-900'
     }`}
   >
     {children}
@@ -25,9 +23,9 @@ function Header() {
     <header className="py-6">
       <nav className="flex items-center justify-between">
         <div className="flex-1 flex items-center justify-start">
-           <AsteriskIcon className="w-6 h-6 text-zinc-900" />
+          <AsteriskIcon className="w-6 h-6 text-zinc-900" />
         </div>
-        
+
         <div className="shrink-0">
           <div className="flex items-center bg-white border border-zinc-200/80 rounded-full shadow-sm p-1">
             <NavLink active>Discover</NavLink>
@@ -38,7 +36,11 @@ function Header() {
         </div>
 
         <div className="flex-1 flex items-center justify-end">
-          <button className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200">
+          <button
+            type="button"
+            className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
+            aria-label="Search"
+          >
             <SearchIcon className="w-5 h-5 text-zinc-500" />
           </button>
         </div>

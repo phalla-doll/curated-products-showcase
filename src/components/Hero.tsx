@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Hero() {
   return (
     <section className="text-center py-20 sm:py-28">
@@ -7,7 +5,8 @@ function Hero() {
         Discover well-designed, carefully curated products
       </h1>
       <p className="mt-3 max-w-xl mx-auto text-base text-zinc-500">
-        Subscribe for weekly emails featuring timeless, design-led products across home, work, and life.
+        Subscribe for weekly emails featuring timeless, design-led products across home, work, and
+        life.
       </p>
       <form className="mt-8 max-w-md mx-auto flex items-center bg-white border border-zinc-200/80 rounded-full shadow-sm pr-2">
         <input

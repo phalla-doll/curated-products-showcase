@@ -1,5 +1,15 @@
-import type { Product, Category } from './types';
-import { LayersIcon, SparklesIcon, TagIcon, SmartphoneIcon, DesktopIcon, HomeIcon, BackpackIcon, BookIcon, MixIcon } from './components/icons/CategoryIcons';
+import {
+  BackpackIcon,
+  BookIcon,
+  DesktopIcon,
+  HomeIcon,
+  LayersIcon,
+  MixIcon,
+  SmartphoneIcon,
+  SparklesIcon,
+  TagIcon,
+} from './components/icons/CategoryIcons';
+import type { Category, Product } from './types';
 
 export const categories: Category[] = [
   { id: 'all', name: 'All', count: 0, icon: LayersIcon },

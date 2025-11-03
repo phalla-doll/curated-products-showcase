@@ -13,4 +13,3 @@ export const fonts = {
     className: 'font-space-grotesk',
   },
 } as const;
-

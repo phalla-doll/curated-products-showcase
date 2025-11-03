@@ -1,9 +1,8 @@
-import React from 'react';
+import CategoryFilters from './components/CategoryFilters';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import CategoryFilters from './components/CategoryFilters';
 import ProductGrid from './components/ProductGrid';
-import Footer from './components/Footer';
 
 function App() {
   return (

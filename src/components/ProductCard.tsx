@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import type { Product } from '../types';
 import { ExpandIcon, StaffPickIcon } from './icons/CoreIcons';
 
@@ -15,7 +15,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           alt={product.name}
           className="w-full h-full object-contain p-8 transition-transform duration-300 group-hover:scale-105"
         />
-        <button className="absolute top-3 right-3 p-2 bg-white/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <button
+          type="button"
+          className="absolute top-3 right-3 p-2 bg-white/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          aria-label="Expand product"
+        >
           <ExpandIcon className="w-4 h-4 text-zinc-800" />
         </button>
         {product.isStaffPick && (
@@ -26,7 +30,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         )}
       </div>
       <div className="pt-4">
-        <p className="text-sm text-zinc-500">{product.brand} &middot; {product.category}</p>
+        <p className="text-sm text-zinc-500">
+          {product.brand} &middot; {product.category}
+        </p>
         <h3 className="text-base font-medium text-zinc-900">{product.name}</h3>
       </div>
     </div>

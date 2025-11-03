@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 import { AsteriskIcon } from './icons/CoreIcons';
 
 function Footer() {
@@ -19,10 +20,13 @@ function Footer() {
           <div className="flex flex-col">
             {/* Asterisk Icon */}
             <AsteriskIcon className="w-6 h-6 text-zinc-900 mb-6" />
-            
+
             {/* Subscription Section */}
             <div className="mb-6 w-full max-w-md">
-              <form onSubmit={handleSubscribe} className="flex gap-0 rounded-full border border-zinc-200 bg-white p-1">
+              <form
+                onSubmit={handleSubscribe}
+                className="flex gap-0 rounded-full border border-zinc-200 bg-white p-1"
+              >
                 <input
                   type="email"
                   value={email}
@@ -38,12 +42,13 @@ function Footer() {
                 </button>
               </form>
             </div>
-            
+
             {/* Affiliate Disclosure */}
             <p className="text-sm text-zinc-500 mb-auto">
-              Select links may be affiliate based. I back what I share, and only recommend products I use, trust or see real value in.
+              Select links may be affiliate based. I back what I share, and only recommend products
+              I use, trust or see real value in.
             </p>
-            
+
             {/* Copyright */}
             <p className="text-sm text-zinc-500 mt-auto pt-8">
               © 2025 Curated Supply. All rights reserved.
@@ -60,7 +65,7 @@ function Footer() {
                   {['Discover', 'Lists', 'Brands', 'Categories', 'Index'].map((link) => (
                     <li key={link}>
                       <a
-                        href="#"
+                        href={`/${link.toLowerCase()}`}
                         className="text-zinc-600 hover:text-zinc-900 transition-colors duration-200 text-sm"
                       >
                         {link}
@@ -76,7 +81,7 @@ function Footer() {
                   {['Info', 'Blog', 'Legal'].map((link) => (
                     <li key={link}>
                       <a
-                        href="#"
+                        href={`/${link.toLowerCase()}`}
                         className="text-zinc-600 hover:text-zinc-900 transition-colors duration-200 text-sm"
                       >
                         {link}
@@ -92,7 +97,7 @@ function Footer() {
                   {['Twitter', 'Email'].map((link) => (
                     <li key={link}>
                       <a
-                        href="#"
+                        href={link === 'Twitter' ? 'https://twitter.com' : 'mailto:'}
                         className="text-zinc-600 hover:text-zinc-900 transition-colors duration-200 text-sm"
                       >
                         {link}
@@ -108,10 +113,19 @@ function Footer() {
               <div>
                 <h3 className="font-medium text-zinc-600 mb-4">Categories</h3>
                 <ul className="space-y-1">
-                  {['Tech', 'Home', 'Workspace', 'Carry', 'Lifestyle', 'Personal', 'Books', 'Travel'].map((link) => (
+                  {[
+                    'Tech',
+                    'Home',
+                    'Workspace',
+                    'Carry',
+                    'Lifestyle',
+                    'Personal',
+                    'Books',
+                    'Travel',
+                  ].map((link) => (
                     <li key={link}>
                       <a
-                        href="#"
+                        href={`/categories/${link.toLowerCase()}`}
                         className="text-zinc-600 hover:text-zinc-900 transition-colors duration-200 text-sm"
                       >
                         {link}
@@ -124,10 +138,19 @@ function Footer() {
               <div>
                 <h3 className="font-medium text-zinc-600 mb-4">Brands</h3>
                 <ul className="space-y-1">
-                  {['Apple', 'Nomad', 'Grovemade', 'Dyson', 'Herman Miller', 'Ferrari', 'Omega', 'Rolex'].map((link) => (
+                  {[
+                    'Apple',
+                    'Nomad',
+                    'Grovemade',
+                    'Dyson',
+                    'Herman Miller',
+                    'Ferrari',
+                    'Omega',
+                    'Rolex',
+                  ].map((link) => (
                     <li key={link}>
                       <a
-                        href="#"
+                        href={`/brands/${link.toLowerCase().replace(/\s+/g, '-')}`}
                         className="text-zinc-600 hover:text-zinc-900 transition-colors duration-200 text-sm"
                       >
                         {link}
@@ -152,7 +175,7 @@ function Footer() {
                   ].map((link) => (
                     <li key={link}>
                       <a
-                        href="#"
+                        href={`/lists/${link.toLowerCase().replace(/\s+/g, '-')}`}
                         className="text-zinc-600 hover:text-zinc-900 transition-colors duration-200 text-sm"
                       >
                         {link}
@@ -167,14 +190,14 @@ function Footer() {
             <div className="flex items-center gap-1.5 text-sm text-zinc-500 mt-auto pt-8 justify-end">
               <span>Made by</span>
               <a
-                href="#"
+                href="https://twitter.com/mantha"
                 className="hover:text-zinc-900 transition-colors duration-200 font-medium tracking-tight"
               >
                 @mantha
               </a>
-              <img 
-                src="/mantha-profile-pic-sm.png" 
-                alt="Mantha profile" 
+              <img
+                src="/mantha-profile-pic-sm.png"
+                alt="Mantha profile"
                 className="w-6 h-6 rounded-full object-cover"
               />
             </div>
@@ -186,4 +209,3 @@ function Footer() {
 }
 
 export default Footer;
-

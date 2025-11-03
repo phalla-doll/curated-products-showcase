@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 import { categories } from '../constants';
 import type { Category } from '../types';
 
@@ -14,6 +15,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({ category, isActive, onC
   const Icon = category.icon;
   return (
     <button
+      type="button"
       onClick={() => onClick(category.id)}
       className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 text-sm font-medium border rounded-full transition-colors duration-200 whitespace-nowrap ${
         isActive
@@ -44,7 +46,10 @@ function CategoryFilters() {
             />
           ))}
         </div>
-        <button className="flex-shrink-0 px-4 py-2 text-sm font-medium border rounded-full bg-white text-zinc-700 border-zinc-200/80 hover:bg-zinc-100 hover:border-zinc-300 whitespace-nowrap">
+        <button
+          type="button"
+          className="flex-shrink-0 px-4 py-2 text-sm font-medium border rounded-full bg-white text-zinc-700 border-zinc-200/80 hover:bg-zinc-100 hover:border-zinc-300 whitespace-nowrap"
+        >
           See More
         </button>
       </div>

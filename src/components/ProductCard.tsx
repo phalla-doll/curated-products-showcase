@@ -1,6 +1,6 @@
 import type React from 'react';
-import type { Product } from '@/types';
 import { ExpandIcon, StaffPickIcon } from '@/components/icons/CoreIcons';
+import type { Product } from '@/types';
 
 interface ProductCardProps {
     product: Product;

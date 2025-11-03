@@ -21,7 +21,8 @@ const NavLink = ({ children, active = false }: NavLinkProps) => (
 function Header() {
   return (
     <header className="py-6">
-      <nav className="flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="flex items-center justify-between">
         <div className="flex-1 flex items-center justify-start">
           <AsteriskIcon className="w-6 h-6 text-zinc-900" />
         </div>
@@ -45,6 +46,7 @@ function Header() {
           </button>
         </div>
       </nav>
+      </div>
     </header>
   );
 }

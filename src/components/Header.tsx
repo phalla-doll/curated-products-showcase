@@ -114,10 +114,15 @@ function Header() {
                             <button
                                 type="button"
                                 onClick={() => setIsDrawerOpen(true)}
-                                className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
+                                className="relative p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
                                 aria-label="Open bag"
                             >
                                 <BagIcon className="size-5 text-zinc-500" />
+                                {cartItems.length > 0 && (
+                                    <span className="absolute top-0 right-0 flex items-center justify-center min-w-[18px] h-[18px] px-1 bg-zinc-900 text-white text-[10px] font-semibold rounded-full">
+                                        {cartItems.reduce((total, item) => total + item.quantity, 0)}
+                                    </span>
+                                )}
                             </button>
                         </div>
                     </nav>

@@ -1,13 +1,11 @@
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import Drawer from '@/components/Drawer';
+import CartItemsList from '@/components/CartItemsList';
 import {
     AsteriskIcon,
     BagIcon,
-    MinusIcon,
-    PlusIcon,
     SearchIcon,
-    XIcon,
 } from '@/components/icons/CoreIcons';
 import type { CartItem } from '@/types';
 import { getCartItems, getCartTotal, removeFromCart, updateCartItemQuantity } from '@/utils/cart';
@@ -161,104 +159,12 @@ function Header() {
                         </button>
                     </div>
                 ) : (
-                    <>
-                        {/* Cart Items List - Scrollable */}
-                        <div className="flex-1 overflow-y-auto p-6">
-                            <div className="space-y-4">
-                                {cartItems.map((item) => (
-                                    <div
-                                        key={item.product.id}
-                                        className="flex gap-4 p-4 border border-zinc-200 rounded-lg"
-                                    >
-                                        {/* Product Image */}
-                                        <div className="w-20 h-20 bg-zinc-100 rounded-lg overflow-hidden flex-shrink-0">
-                                            <img
-                                                src={item.product.imageUrl}
-                                                alt={item.product.name}
-                                                className="w-full h-full object-contain p-2"
-                                            />
-                                        </div>
-
-                                        {/* Product Details */}
-                                        <div className="flex-1 min-w-0">
-                                            <h3 className="text-sm font-medium text-zinc-900 truncate">
-                                                {item.product.name}
-                                            </h3>
-                                            <p className="text-xs text-zinc-500 mt-1">
-                                                {item.product.brand}
-                                            </p>
-                                            <p className="text-base font-semibold text-zinc-900 mt-2">
-                                                ${item.product.price.toLocaleString()}
-                                            </p>
-
-                                            {/* Quantity Controls */}
-                                            <div className="flex items-center gap-3 mt-3">
-                                                <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
-                                                    <button
-                                                        type="button"
-                                                        onClick={() =>
-                                                            handleUpdateQuantity(
-                                                                item.product.id,
-                                                                item.quantity - 1
-                                                            )
-                                                        }
-                                                        className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
-                                                        aria-label="Decrease quantity"
-                                                    >
-                                                        <MinusIcon className="w-3.5 h-3.5 text-zinc-700" />
-                                                    </button>
-                                                    <span className="w-8 text-center text-sm font-medium text-zinc-900">
-                                                        {item.quantity}
-                                                    </span>
-                                                    <button
-                                                        type="button"
-                                                        onClick={() =>
-                                                            handleUpdateQuantity(
-                                                                item.product.id,
-                                                                item.quantity + 1
-                                                            )
-                                                        }
-                                                        className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
-                                                        aria-label="Increase quantity"
-                                                    >
-                                                        <PlusIcon className="w-3.5 h-3.5 text-zinc-700" />
-                                                    </button>
-                                                </div>
-
-                                                {/* Remove Button */}
-                                                <button
-                                                    type="button"
-                                                    onClick={() =>
-                                                        handleRemoveItem(item.product.id)
-                                                    }
-                                                    className="p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
-                                                    aria-label="Remove item"
-                                                >
-                                                    <XIcon className="w-4 h-4 text-zinc-500" />
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Cart Footer with Total - Fixed at bottom */}
-                        <div className="border-t border-zinc-200 p-6 bg-white">
-                            <div className="flex justify-between items-center mb-4">
-                                <span className="text-lg font-semibold text-zinc-900">Total</span>
-                                <span className="text-xl font-bold text-zinc-900">
-                                    ${cartTotal.toLocaleString()}
-                                </span>
-                            </div>
-                            <button
-                                type="button"
-                                className="w-full px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200"
-                            >
-                                Checkout
-                            </button>
-                        </div>
-                    </>
+                    <CartItemsList
+                        cartItems={cartItems}
+                        cartTotal={cartTotal}
+                        onUpdateQuantity={handleUpdateQuantity}
+                        onRemoveItem={handleRemoveItem}
+                    />
                 )}
             </Drawer>
         </>

@@ -1,6 +1,6 @@
 import type React from 'react';
 import { useEffect, useState } from 'react';
-import { BagIcon, MinusIcon, PlusIcon, StaffPickIcon, XIcon } from '@/components/icons/CoreIcons';
+import { BagIcon, CheckIcon, MinusIcon, PlusIcon, StaffPickIcon, XIcon } from '@/components/icons/CoreIcons';
 import type { Product } from '@/types';
 import { addToCart } from '@/utils/cart';
 
@@ -13,11 +13,13 @@ interface ProductDialogProps {
 
 const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose, onAddToCart }) => {
     const [quantity, setQuantity] = useState(1);
+    const [isAddedToCart, setIsAddedToCart] = useState(false);
 
     useEffect(() => {
-        // Reset quantity when dialog opens or product changes
+        // Reset quantity and added state when dialog opens or product changes
         if (isOpen && product) {
             setQuantity(1);
+            setIsAddedToCart(false);
         }
     }, [isOpen, product]);
 
@@ -55,16 +57,22 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
 
     const handleAddToCart = () => {
         if (product) {
-            // Add to localStorage
-            addToCart(product, quantity);
+            // Update button state immediately
+            setIsAddedToCart(true);
 
-            // Also call the optional callback if provided
-            if (onAddToCart) {
-                onAddToCart(product, quantity);
-            }
+            // Wait 750ms before actually adding to cart
+            setTimeout(() => {
+                // Add to localStorage
+                addToCart(product, quantity);
 
-            // Close the dialog after adding to cart
-            onClose();
+                // Also call the optional callback if provided
+                if (onAddToCart) {
+                    onAddToCart(product, quantity);
+                }
+
+                // Close the dialog after adding to cart
+                onClose();
+            }, 750);
         }
     };
 
@@ -217,10 +225,20 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                 <button
                                     type="button"
                                     onClick={handleAddToCart}
-                                    className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200"
+                                    disabled={isAddedToCart}
+                                    className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200 disabled:opacity-75 disabled:cursor-not-allowed"
                                 >
-                                    <BagIcon className="w-5 h-5" />
-                                    <span>Add to Cart</span>
+                                    {isAddedToCart ? (
+                                        <>
+                                            <CheckIcon className="w-5 h-5" />
+                                            <span>Added to Cart</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <BagIcon className="w-5 h-5" />
+                                            <span>Add to Cart</span>
+                                        </>
+                                    )}
                                 </button>
                             </div>
                         </div>

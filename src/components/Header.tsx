@@ -228,7 +228,9 @@ function Header() {
                                                 {/* Remove Button */}
                                                 <button
                                                     type="button"
-                                                    onClick={() => handleRemoveItem(item.product.id)}
+                                                    onClick={() =>
+                                                        handleRemoveItem(item.product.id)
+                                                    }
                                                     className="p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
                                                     aria-label="Remove item"
                                                 >

@@ -128,7 +128,7 @@ const CartItemsList = ({
                         'Checkout'
                     )}
                 </button>
-                <p className="text-xs text-zinc-500 text-center mt-2">
+                <p className="text-xs text-zinc-600/90 text-center mt-2">
                     This is a demo checkout &mdash; no payment required
                 </p>
             </div>

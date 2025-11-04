@@ -87,7 +87,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
             />
 
             {/* Dialog */}
-            <div className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden grid grid-cols-1 md:grid-cols-2">
+            <div className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto md:overflow-hidden grid grid-cols-1 md:grid-cols-2">
                 {/* Close Button */}
                 <button
                     type="button"
@@ -115,7 +115,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                 </div>
 
                 {/* Info Block - Right */}
-                <div className="flex flex-col p-8 md:p-12 overflow-y-auto">
+                <div className="flex flex-col p-8 md:p-12 md:overflow-y-auto">
                     <div className="flex-1">
                         {/* Brand & Category */}
                         <p className="text-sm text-zinc-500 mb-2">

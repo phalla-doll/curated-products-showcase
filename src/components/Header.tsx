@@ -29,10 +29,10 @@ function Header() {
     return (
         <>
             <header className="py-6">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <nav className="flex items-center justify-between">
+                <div className="container mx-auto px-2 sm:px-6 lg:px-8">
+                    <nav className="flex items-center gap-x-2 justify-between">
                         <div className="flex-1 flex items-center justify-start">
-                            <AsteriskIcon className="size-6 text-zinc-900" />
+                            <AsteriskIcon className="size-6 text-zinc-900 min-w-[36px]" />
                         </div>
 
                         <div className="shrink-0">
@@ -64,7 +64,7 @@ function Header() {
                             </div>
                         </div>
 
-                        <div className="flex-1 flex items-center justify-end gap-2">
+                        <div className="flex-1 flex items-center justify-end gap-0.5 sm:gap-2">
                             <button
                                 type="button"
                                 onClick={() => {

@@ -25,7 +25,7 @@ const CartItemsList = ({
                             className="flex gap-4 p-4 border border-zinc-200 rounded-lg"
                         >
                             {/* Product Image */}
-                            <div className="w-24 h-24 bg-zinc-100 rounded-lg overflow-hidden flex-shrink-0">
+                            <div className="size-24 bg-zinc-100 rounded-lg overflow-hidden flex-shrink-0">
                                 <img
                                     src={item.product.imageUrl}
                                     alt={item.product.name}

@@ -1,6 +1,6 @@
 import type React from 'react';
 import { useEffect, useState } from 'react';
-import { XIcon, StaffPickIcon, PlusIcon, MinusIcon, BagIcon } from '@/components/icons/CoreIcons';
+import { BagIcon, MinusIcon, PlusIcon, StaffPickIcon, XIcon } from '@/components/icons/CoreIcons';
 import type { Product } from '@/types';
 
 interface ProductDialogProps {
@@ -77,9 +77,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
             />
 
             {/* Dialog */}
-            <div
-                className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden grid grid-cols-1 md:grid-cols-2"
-            >
+            <div className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden grid grid-cols-1 md:grid-cols-2">
                 {/* Close Button */}
                 <button
                     type="button"
@@ -149,9 +147,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <span className="text-zinc-500">Description:</span>
-                                    <span className="font-medium">
-                                        {product.description}
-                                    </span>
+                                    <span className="font-medium">{product.description}</span>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +155,10 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                             <div className="flex flex-col gap-4">
                                 {/* Quantity Selector */}
                                 <div className="flex items-center gap-4">
-                                    <label htmlFor="quantity" className="text-sm font-medium text-zinc-900">
+                                    <label
+                                        htmlFor="quantity"
+                                        className="text-sm font-medium text-zinc-900"
+                                    >
                                         Quantity:
                                     </label>
                                     <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
@@ -209,4 +208,3 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
 };
 
 export default ProductDialog;
-

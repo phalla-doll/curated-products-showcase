@@ -79,7 +79,15 @@ function Header() {
                 <div className="container mx-auto px-2 sm:px-6 lg:px-8">
                     <nav className="flex items-center gap-x-2 justify-between">
                         <div className="flex-1 flex items-center justify-start">
-                            <AsteriskIcon className="size-6 text-zinc-900 min-w-[36px]" />
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    window.location.href = '/';
+                                }}
+                                aria-label="Home"
+                            >
+                                <AsteriskIcon className="size-6 text-zinc-900 min-w-[36px]" />
+                            </button>
                         </div>
 
                         <div className="shrink-0">

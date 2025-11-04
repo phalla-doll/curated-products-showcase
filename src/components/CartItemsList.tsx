@@ -6,6 +6,7 @@ interface CartItemsListProps {
     cartTotal: number;
     onUpdateQuantity: (productId: number, newQuantity: number) => void;
     onRemoveItem: (productId: number) => void;
+    onCheckout: () => void;
 }
 
 const CartItemsList = ({
@@ -13,6 +14,7 @@ const CartItemsList = ({
     cartTotal,
     onUpdateQuantity,
     onRemoveItem,
+    onCheckout,
 }: CartItemsListProps) => {
     return (
         <>
@@ -103,6 +105,7 @@ const CartItemsList = ({
                 </div>
                 <button
                     type="button"
+                    onClick={onCheckout}
                     className="w-full px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200"
                 >
                     Checkout

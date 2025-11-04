@@ -2,6 +2,7 @@ import type React from 'react';
 import { useEffect, useState } from 'react';
 import CartItemsList from '@/components/CartItemsList';
 import Drawer from '@/components/Drawer';
+import OrderConfirmationDialog from '@/components/OrderConfirmationDialog';
 import { AsteriskIcon, BagIcon, SearchIcon } from '@/components/icons/CoreIcons';
 import type { CartItem } from '@/types';
 import { getCartItems, getCartTotal, removeFromCart, updateCartItemQuantity } from '@/utils/cart';
@@ -28,6 +29,7 @@ const NavLink = ({ children, active = false, onClick }: NavLinkProps) => (
 function Header() {
     const [activeTab, setActiveTab] = useState<'Discover' | 'Browse' | 'Blog' | 'Info'>('Discover');
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [isConfirmationDialogOpen, setIsConfirmationDialogOpen] = useState(false);
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
     // Load cart items from localStorage
@@ -61,6 +63,15 @@ function Header() {
     };
 
     const cartTotal = getCartTotal();
+
+    const handleCheckout = () => {
+        // Close the drawer first
+        setIsDrawerOpen(false);
+        // Then show the confirmation dialog after a brief delay to allow drawer animation
+        setTimeout(() => {
+            setIsConfirmationDialogOpen(true);
+        }, 300);
+    };
 
     return (
         <>
@@ -160,9 +171,15 @@ function Header() {
                         cartTotal={cartTotal}
                         onUpdateQuantity={handleUpdateQuantity}
                         onRemoveItem={handleRemoveItem}
+                        onCheckout={handleCheckout}
                     />
                 )}
             </Drawer>
+
+            <OrderConfirmationDialog
+                isOpen={isConfirmationDialogOpen}
+                onClose={() => setIsConfirmationDialogOpen(false)}
+            />
         </>
     );
 }

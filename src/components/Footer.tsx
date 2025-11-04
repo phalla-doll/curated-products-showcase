@@ -23,6 +23,7 @@ function Footer() {
 
                         {/* Subscription Section */}
                         <div className="mb-6 w-full max-w-md">
+                        
                             <form
                                 onSubmit={handleSubscribe}
                                 className="flex gap-0 rounded-full border border-zinc-200 bg-white p-1"
@@ -41,10 +42,13 @@ function Footer() {
                                     Subscribe
                                 </button>
                             </form>
+                            <p className="text-xs text-zinc-500 mt-1 text-center">
+                                Subscribe to get notified about new products and discounts.
+                            </p>
                         </div>
 
                         {/* About This Project */}
-                        <p className="text-sm text-zinc-500 mb-auto">
+                        <p className="text-sm text-zinc-600 mb-auto">
                             I built this because I was inspired by UI designs I've seen on the
                             internet, with some of my own tweaks and creativity. This page currently
                             serves no purpose other than an experiment.

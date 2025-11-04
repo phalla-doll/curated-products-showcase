@@ -7,7 +7,7 @@ const CART_STORAGE_KEY = 'product-showcase-cart';
  */
 export function getCartItems(): CartItem[] {
     if (typeof window === 'undefined') return [];
-    
+
     try {
         const stored = localStorage.getItem(CART_STORAGE_KEY);
         if (!stored) return [];
@@ -23,12 +23,10 @@ export function getCartItems(): CartItem[] {
  */
 export function addToCart(product: Product, quantity: number): void {
     if (typeof window === 'undefined') return;
-    
+
     try {
         const cartItems = getCartItems();
-        const existingItemIndex = cartItems.findIndex(
-            (item) => item.product.id === product.id
-        );
+        const existingItemIndex = cartItems.findIndex((item) => item.product.id === product.id);
 
         if (existingItemIndex >= 0) {
             // Product already in cart, update quantity
@@ -39,7 +37,7 @@ export function addToCart(product: Product, quantity: number): void {
         }
 
         localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
-        
+
         // Dispatch custom event to notify components of cart update
         window.dispatchEvent(new CustomEvent('cartupdated'));
     } catch (error) {
@@ -52,13 +50,11 @@ export function addToCart(product: Product, quantity: number): void {
  */
 export function removeFromCart(productId: number): void {
     if (typeof window === 'undefined') return;
-    
+
     try {
-        const cartItems = getCartItems().filter(
-            (item) => item.product.id !== productId
-        );
+        const cartItems = getCartItems().filter((item) => item.product.id !== productId);
         localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
-        
+
         // Dispatch custom event to notify components of cart update
         window.dispatchEvent(new CustomEvent('cartupdated'));
     } catch (error) {
@@ -75,17 +71,15 @@ export function updateCartItemQuantity(productId: number, quantity: number): voi
         removeFromCart(productId);
         return;
     }
-    
+
     try {
         const cartItems = getCartItems();
-        const itemIndex = cartItems.findIndex(
-            (item) => item.product.id === productId
-        );
+        const itemIndex = cartItems.findIndex((item) => item.product.id === productId);
 
         if (itemIndex >= 0) {
             cartItems[itemIndex].quantity = quantity;
             localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
-            
+
             // Dispatch custom event to notify components of cart update
             window.dispatchEvent(new CustomEvent('cartupdated'));
         }
@@ -99,10 +93,10 @@ export function updateCartItemQuantity(productId: number, quantity: number): voi
  */
 export function clearCart(): void {
     if (typeof window === 'undefined') return;
-    
+
     try {
         localStorage.removeItem(CART_STORAGE_KEY);
-        
+
         // Dispatch custom event to notify components of cart update
         window.dispatchEvent(new CustomEvent('cartupdated'));
     } catch (error) {
@@ -123,9 +117,5 @@ export function getCartItemCount(): number {
  */
 export function getCartTotal(): number {
     const cartItems = getCartItems();
-    return cartItems.reduce(
-        (total, item) => total + item.product.price * item.quantity,
-        0
-    );
+    return cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0);
 }
-

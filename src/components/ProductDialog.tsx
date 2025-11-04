@@ -57,12 +57,12 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
         if (product) {
             // Add to localStorage
             addToCart(product, quantity);
-            
+
             // Also call the optional callback if provided
             if (onAddToCart) {
                 onAddToCart(product, quantity);
             }
-            
+
             // Close the dialog after adding to cart
             onClose();
         }

@@ -1,9 +1,16 @@
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import Drawer from '@/components/Drawer';
-import { AsteriskIcon, BagIcon, MinusIcon, PlusIcon, SearchIcon, XIcon } from '@/components/icons/CoreIcons';
-import { getCartItems, removeFromCart, updateCartItemQuantity, getCartTotal } from '@/utils/cart';
+import {
+    AsteriskIcon,
+    BagIcon,
+    MinusIcon,
+    PlusIcon,
+    SearchIcon,
+    XIcon,
+} from '@/components/icons/CoreIcons';
 import type { CartItem } from '@/types';
+import { getCartItems, getCartTotal, removeFromCart, updateCartItemQuantity } from '@/utils/cart';
 
 // FIX: Extracted props to a dedicated interface to resolve potential type inference issues with inline types.
 interface NavLinkProps {
@@ -120,7 +127,10 @@ function Header() {
                                 <BagIcon className="size-5 text-zinc-500" />
                                 {cartItems.length > 0 && (
                                     <span className="absolute top-0 right-0 flex items-center justify-center min-w-[18px] h-[18px] px-1 bg-zinc-900 text-white text-[10px] font-semibold rounded-full">
-                                        {cartItems.reduce((total, item) => total + item.quantity, 0)}
+                                        {cartItems.reduce(
+                                            (total, item) => total + item.quantity,
+                                            0
+                                        )}
                                     </span>
                                 )}
                             </button>

@@ -107,7 +107,6 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                 {/* Info Block - Right */}
                 <div className="flex flex-col p-8 md:p-12 overflow-y-auto">
                     <div className="flex-1">
-
                         {/* Brand & Category */}
                         <p className="text-sm text-zinc-500 mb-2">
                             {product.brand} &middot; {product.category}

@@ -45,7 +45,8 @@ function ProductGrid() {
                 const brandMatch = product.brand.toLowerCase().includes(searchLower);
                 const nameMatch = product.name.toLowerCase().includes(searchLower);
                 const categoryMatch = product.category.toLowerCase().includes(searchLower);
-                return brandMatch || nameMatch || categoryMatch;
+                const descriptionMatch = product.description?.toLowerCase().includes(searchLower);
+                return brandMatch || nameMatch || categoryMatch || descriptionMatch;
             });
         }
 

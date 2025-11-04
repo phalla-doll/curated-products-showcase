@@ -27,3 +27,12 @@ body {
 .font-space-grotesk {
     font-family: var(--font-space-grotesk);
 }
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}

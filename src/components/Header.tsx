@@ -1,6 +1,7 @@
 import type React from 'react';
 import { useState } from 'react';
-import { AsteriskIcon, SearchIcon } from '@/components/icons/CoreIcons';
+import { AsteriskIcon, SearchIcon, BagIcon } from '@/components/icons/CoreIcons';
+import Drawer from '@/components/Drawer';
 
 // FIX: Extracted props to a dedicated interface to resolve potential type inference issues with inline types.
 interface NavLinkProps {
@@ -23,60 +24,78 @@ const NavLink = ({ children, active = false, onClick }: NavLinkProps) => (
 
 function Header() {
     const [activeTab, setActiveTab] = useState<'Discover' | 'Browse' | 'Blog' | 'Info'>('Discover');
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
     return (
-        <header className="py-6">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <nav className="flex items-center justify-between">
-                    <div className="flex-1 flex items-center justify-start">
-                        <AsteriskIcon className="size-6 text-zinc-900" />
-                    </div>
-
-                    <div className="shrink-0">
-                        <div className="flex items-center bg-white border border-zinc-200/80 rounded-full shadow-sm p-1">
-                            <NavLink
-                                active={activeTab === 'Discover'}
-                                onClick={() => setActiveTab('Discover')}
-                            >
-                                Discover
-                            </NavLink>
-                            <NavLink
-                                active={activeTab === 'Browse'}
-                                onClick={() => setActiveTab('Browse')}
-                            >
-                                Browse
-                            </NavLink>
-                            <NavLink
-                                active={activeTab === 'Blog'}
-                                onClick={() => setActiveTab('Blog')}
-                            >
-                                Blog
-                            </NavLink>
-                            <NavLink
-                                active={activeTab === 'Info'}
-                                onClick={() => setActiveTab('Info')}
-                            >
-                                Info
-                            </NavLink>
+        <>
+            <header className="py-6">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <nav className="flex items-center justify-between">
+                        <div className="flex-1 flex items-center justify-start">
+                            <AsteriskIcon className="size-6 text-zinc-900" />
                         </div>
-                    </div>
 
-                    <div className="flex-1 flex items-center justify-end">
-                        <button
-                            type="button"
-                            onClick={() => {
-                                // Dispatch custom event to focus search input in Hero
-                                window.dispatchEvent(new CustomEvent('focussearch'));
-                            }}
-                            className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
-                            aria-label="Search"
-                        >
-                            <SearchIcon className="size-5 text-zinc-500" />
-                        </button>
-                    </div>
-                </nav>
-            </div>
-        </header>
+                        <div className="shrink-0">
+                            <div className="flex items-center bg-white border border-zinc-200/80 rounded-full shadow-sm p-1">
+                                <NavLink
+                                    active={activeTab === 'Discover'}
+                                    onClick={() => setActiveTab('Discover')}
+                                >
+                                    Discover
+                                </NavLink>
+                                <NavLink
+                                    active={activeTab === 'Browse'}
+                                    onClick={() => setActiveTab('Browse')}
+                                >
+                                    Browse
+                                </NavLink>
+                                <NavLink
+                                    active={activeTab === 'Blog'}
+                                    onClick={() => setActiveTab('Blog')}
+                                >
+                                    Blog
+                                </NavLink>
+                                <NavLink
+                                    active={activeTab === 'Info'}
+                                    onClick={() => setActiveTab('Info')}
+                                >
+                                    Info
+                                </NavLink>
+                            </div>
+                        </div>
+
+                        <div className="flex-1 flex items-center justify-end gap-2">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    // Dispatch custom event to focus search input in Hero
+                                    window.dispatchEvent(new CustomEvent('focussearch'));
+                                }}
+                                className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
+                                aria-label="Search"
+                            >
+                                <SearchIcon className="size-5 text-zinc-500" />
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setIsDrawerOpen(true)}
+                                className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
+                                aria-label="Open bag"
+                            >
+                                <BagIcon className="size-5 text-zinc-500" />
+                            </button>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+            <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} title="Bag" ariaLabel="Bag drawer">
+                <div className="flex flex-col items-center justify-center h-full text-zinc-500">
+                    <BagIcon className="size-16 mb-4 text-zinc-300" />
+                    <p className="text-sm">Your bag is empty. Start browsing our collection to add items to your cart.</p>
+                </div>
+            </Drawer>
+        </>
     );
 }
 

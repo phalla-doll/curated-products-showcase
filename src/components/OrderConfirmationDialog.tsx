@@ -83,7 +83,7 @@ const OrderConfirmationDialog: React.FC<OrderConfirmationDialogProps> = ({ isOpe
                                 />
                             </svg>
                         </div>
-                        <h2 className="text-2xl font-semibold text-zinc-900 mb-2">Order Placed!</h2>
+                        <h2 className="text-2xl font-semibold text-zinc-900 mb-2 tracking-tight">Order Placed!</h2>
                         <p className="text-base text-zinc-600">
                             Thank you for your order. We appreciate your business and look forward
                             to serving you again!

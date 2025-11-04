@@ -25,7 +25,7 @@ const CartItemsList = ({
                             className="flex gap-4 p-4 border border-zinc-200 rounded-lg"
                         >
                             {/* Product Image */}
-                            <div className="w-20 h-20 bg-zinc-100 rounded-lg overflow-hidden flex-shrink-0">
+                            <div className="w-24 h-24 bg-zinc-100 rounded-lg overflow-hidden flex-shrink-0">
                                 <img
                                     src={item.product.imageUrl}
                                     alt={item.product.name}
@@ -33,18 +33,17 @@ const CartItemsList = ({
                                 />
                             </div>
 
-                            {/* Product Details */}
-                            <div className="flex-1 min-w-0">
-                                <h3 className="text-sm font-medium text-zinc-900 truncate">
-                                    {item.product.name}
-                                </h3>
-                                <p className="text-xs text-zinc-500 mt-1">{item.product.brand}</p>
-                                <p className="text-base font-semibold text-zinc-900 mt-2">
-                                    ${item.product.price.toLocaleString()}
-                                </p>
+                            {/* Product Details - Left Side */}
+                            <div className="flex-1 min-w-0 flex flex-col justify-between">
+                                <div className="flex flex-col gap-1">
+                                    <h3 className="text-sm font-medium text-zinc-900 truncate">
+                                        {item.product.name}
+                                    </h3>
+                                    <p className="text-xs text-zinc-500">{item.product.brand}</p>
+                                </div>
 
-                                {/* Quantity Controls */}
-                                <div className="flex items-center gap-3 mt-3">
+                                {/* Quantity Controls and Remove Button */}
+                                <div className="flex items-center gap-3">
                                     <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
                                         <button
                                             type="button"
@@ -81,6 +80,13 @@ const CartItemsList = ({
                                         <XIcon className="w-4 h-4 text-zinc-500" />
                                     </button>
                                 </div>
+                            </div>
+
+                            {/* Right Side - Price */}
+                            <div className="flex items-start">
+                                <p className="text-base font-semibold text-zinc-900">
+                                    ${item.product.price.toLocaleString()}
+                                </p>
                             </div>
                         </div>
                     ))}

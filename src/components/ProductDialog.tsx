@@ -1,15 +1,25 @@
 import type React from 'react';
-import { useEffect } from 'react';
-import { XIcon, StaffPickIcon } from '@/components/icons/CoreIcons';
+import { useEffect, useState } from 'react';
+import { XIcon, StaffPickIcon, PlusIcon, MinusIcon, BagIcon } from '@/components/icons/CoreIcons';
 import type { Product } from '@/types';
 
 interface ProductDialogProps {
     product: Product | null;
     isOpen: boolean;
     onClose: () => void;
+    onAddToCart?: (product: Product, quantity: number) => void;
 }
 
-const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose }) => {
+const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose, onAddToCart }) => {
+    const [quantity, setQuantity] = useState(1);
+
+    useEffect(() => {
+        // Reset quantity when product changes
+        if (product) {
+            setQuantity(1);
+        }
+    }, [product]);
+
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
             if (e.key === 'Escape' && isOpen) {
@@ -31,6 +41,20 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose 
     const handleBackdropClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (e.target === e.currentTarget) {
             onClose();
+        }
+    };
+
+    const handleIncrement = () => {
+        setQuantity((prev) => prev + 1);
+    };
+
+    const handleDecrement = () => {
+        setQuantity((prev) => Math.max(1, prev - 1));
+    };
+
+    const handleAddToCart = () => {
+        if (product && onAddToCart) {
+            onAddToCart(product, quantity);
         }
     };
 
@@ -104,7 +128,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose 
                         </div>
 
                         {/* Additional Info Section */}
-                        <div className="pt-6 border-t border-zinc-200">
+                        <div className="py-6 border-t border-zinc-200">
                             <h3 className="text-sm font-semibold text-zinc-900 mb-3">
                                 Product Details
                             </h3>
@@ -129,6 +153,52 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose 
                                         {product.description}
                                     </span>
                                 </div>
+                            </div>
+                        </div>
+                        <div className="pt-6 border-t border-zinc-200">
+                            <div className="flex flex-col gap-4">
+                                {/* Quantity Selector */}
+                                <div className="flex items-center gap-4">
+                                    <label htmlFor="quantity" className="text-sm font-medium text-zinc-900">
+                                        Quantity:
+                                    </label>
+                                    <div className="flex items-center gap-2 border border-zinc-300 rounded-lg">
+                                        <button
+                                            type="button"
+                                            onClick={handleDecrement}
+                                            disabled={quantity <= 1}
+                                            className="p-2 hover:bg-zinc-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                                            aria-label="Decrease quantity"
+                                        >
+                                            <MinusIcon className="w-4 h-4 text-zinc-700" />
+                                        </button>
+                                        <span
+                                            id="quantity"
+                                            className="w-12 text-center text-base font-medium text-zinc-900"
+                                            aria-live="polite"
+                                        >
+                                            {quantity}
+                                        </span>
+                                        <button
+                                            type="button"
+                                            onClick={handleIncrement}
+                                            className="p-2 hover:bg-zinc-100 transition-colors duration-200"
+                                            aria-label="Increase quantity"
+                                        >
+                                            <PlusIcon className="w-4 h-4 text-zinc-700" />
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Add to Cart Button */}
+                                <button
+                                    type="button"
+                                    onClick={handleAddToCart}
+                                    className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200"
+                                >
+                                    <BagIcon className="w-5 h-5" />
+                                    <span>Add to Cart</span>
+                                </button>
                             </div>
                         </div>
                     </div>

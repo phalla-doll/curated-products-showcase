@@ -102,7 +102,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                 <div className="bg-zinc-100 flex items-center justify-center p-8 md:p-12 relative">
                     {/* Staff Pick Badge */}
                     {product.isStaffPick && (
-                        <div className="absolute top-4 right-4 z-10 inline-flex items-center gap-2 px-3 py-1.5 border border-amber-500/20 bg-amber-50 rounded-full text-xs font-medium text-amber-900">
+                        <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-2 px-3 py-1.5 border border-amber-500/20 bg-amber-50 rounded-full text-xs font-medium text-amber-900">
                             <StaffPickIcon className="w-4 h-4 text-amber-600" />
                             <span>Staff Pick</span>
                         </div>

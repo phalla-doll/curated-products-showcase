@@ -237,12 +237,12 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                 >
                                     {isAddedToCart ? (
                                         <>
-                                            <CheckIcon className="w-5 h-5" />
+                                            <CheckIcon className="size-5" />
                                             <span>Added to Cart</span>
                                         </>
                                     ) : (
                                         <>
-                                            <BagIcon className="w-5 h-5" />
+                                            <BagIcon className="size-5" />
                                             <span>Add to Cart</span>
                                         </>
                                     )}

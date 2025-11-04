@@ -2,8 +2,8 @@ import type React from 'react';
 import { useEffect, useState } from 'react';
 import CartItemsList from '@/components/CartItemsList';
 import Drawer from '@/components/Drawer';
-import OrderConfirmationDialog from '@/components/OrderConfirmationDialog';
 import { AsteriskIcon, BagIcon, SearchIcon } from '@/components/icons/CoreIcons';
+import OrderConfirmationDialog from '@/components/OrderConfirmationDialog';
 import type { CartItem } from '@/types';
 import { getCartItems, getCartTotal, removeFromCart, updateCartItemQuantity } from '@/utils/cart';
 

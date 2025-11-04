@@ -53,7 +53,7 @@ const CartItemsList = ({
                                             className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
                                             aria-label="Decrease quantity"
                                         >
-                                            <MinusIcon className="w-3.5 h-3.5 text-zinc-700" />
+                                            <MinusIcon className="size-3.5 text-zinc-700" />
                                         </button>
                                         <span className="w-8 text-center text-sm font-medium text-zinc-900">
                                             {item.quantity}
@@ -66,7 +66,7 @@ const CartItemsList = ({
                                             className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
                                             aria-label="Increase quantity"
                                         >
-                                            <PlusIcon className="w-3.5 h-3.5 text-zinc-700" />
+                                            <PlusIcon className="size-3.5 text-zinc-700" />
                                         </button>
                                     </div>
 
@@ -77,7 +77,7 @@ const CartItemsList = ({
                                         className="p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
                                         aria-label="Remove item"
                                     >
-                                        <XIcon className="w-4 h-4 text-zinc-500" />
+                                        <XIcon className="size-4 text-zinc-500" />
                                     </button>
                                 </div>
                             </div>

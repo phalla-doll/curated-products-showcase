@@ -23,7 +23,6 @@ function Footer() {
 
                         {/* Subscription Section */}
                         <div className="mb-6 w-full max-w-md">
-                        
                             <form
                                 onSubmit={handleSubscribe}
                                 className="flex gap-0 rounded-full border border-zinc-200 bg-white p-1"

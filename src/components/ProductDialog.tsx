@@ -154,6 +154,21 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                         ${product.price.toLocaleString()}
                                     </span>
                                 </div>
+                                <div className="flex justify-between items-center">
+                                    <span className="text-zinc-500">Reviews:</span>
+                                    <div className="flex items-center gap-1">
+                                        <button
+                                            type="button"
+                                            className="text-sm font-medium text-zinc-600 hover:text-zinc-900 underline-offset-2 hover:underline transition-colors"
+                                            onClick={() => {
+                                                // Handle view all reviews
+                                                console.log('View all reviews');
+                                            }}
+                                        >
+                                            4.6 (58.2K)
+                                        </button>
+                                    </div>
+                                </div>
                                 <div className="flex flex-col gap-2">
                                     <span className="text-zinc-500">Description:</span>
                                     <span className="font-medium">{product.description}</span>

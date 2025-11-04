@@ -161,7 +161,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                             </div>
                         </div>
                         <div className="pt-6 border-t border-zinc-200">
-                            <div className="flex flex-col gap-4">
+                            <div className="flex flex-col gap-6">
                                 {/* Quantity Selector */}
                                 <div className="flex items-center gap-4">
                                     <label

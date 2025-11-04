@@ -90,6 +90,24 @@ const OrderConfirmationDialog: React.FC<OrderConfirmationDialogProps> = ({ isOpe
                         </p>
                     </div>
 
+                    {/* Developer Note */}
+                    <div className="mt-6 pb-3 pt-6 border-t border-zinc-200">
+                        <h3 className="text-sm font-semibold text-zinc-900 mb-2">Developer Note</h3>
+                        <p className="text-sm text-zinc-600 mb-3">
+                            Thank you for your interest in this platform! If you'd like to build
+                            something cool like this, feel free to connect with me on{' '}
+                            <a
+                                href="https://linkedin.com/in/mantha_dev"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-zinc-900 font-medium hover:underline"
+                            >
+                                LinkedIn
+                            </a>
+                            .
+                        </p>
+                    </div>
+
                     <button
                         type="button"
                         onClick={onClose}

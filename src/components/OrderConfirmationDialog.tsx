@@ -115,7 +115,7 @@ const OrderConfirmationDialog: React.FC<OrderConfirmationDialogProps> = ({ isOpe
                         onClick={onClose}
                         className="w-full px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200"
                     >
-                        Continue Shopping
+                        Continue Browsing
                     </button>
                 </div>
             </div>

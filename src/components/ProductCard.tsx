@@ -26,7 +26,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <>
             {/* biome-ignore lint/a11y/useSemanticElements: Card needs to be clickable but contains nested content */}
             <div
-                className="group cursor-pointer"
+                className="group cursor-pointer focus-visible:outline-none"
                 onClick={handleClick}
                 onKeyDown={handleKeyDown}
                 role="button"

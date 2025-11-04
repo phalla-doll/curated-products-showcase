@@ -123,13 +123,13 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                         </p>
 
                         {/* Product Name */}
-                        <h2 className="text-3xl font-semibold text-zinc-900 mb-4">
+                        <h2 className="text-3xl font-semibold text-zinc-900 mb-4 tracking-tight">
                             {product.name}
                         </h2>
 
                         {/* Price */}
                         <div className="mb-6">
-                            <p className="text-4xl font-bold text-zinc-900">
+                            <p className="text-4xl font-bold text-zinc-900 tracking-tight">
                                 ${product.price.toLocaleString()}
                             </p>
                         </div>

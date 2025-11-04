@@ -98,8 +98,16 @@ function Header() {
                 <div className="flex flex-col items-center justify-center h-full text-zinc-500">
                     <BagIcon className="size-16 mb-4 text-zinc-300" />
                     <p className="text-base font-medium text-center mb-2">Your bag is empty.</p>
-                    <p className="text-sm text-center">Start browsing our collection to add items to your cart.</p>
-                    <button onClick={() => setIsDrawerOpen(false)} type="button" className="mt-4 px-4 py-2 bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm font-medium rounded-lg">Browse Collection</button>
+                    <p className="text-sm text-center">
+                        Start browsing our collection to add items to your cart.
+                    </p>
+                    <button
+                        onClick={() => setIsDrawerOpen(false)}
+                        type="button"
+                        className="mt-4 px-4 py-2 bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm font-medium rounded-lg"
+                    >
+                        Browse Collection
+                    </button>
                 </div>
             </Drawer>
         </>

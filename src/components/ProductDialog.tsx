@@ -123,6 +123,12 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose 
                                         ${product.price.toLocaleString()}
                                     </span>
                                 </div>
+                                <div className="flex flex-col gap-2">
+                                    <span className="text-zinc-500">Description:</span>
+                                    <span className="font-medium">
+                                        {product.description}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>

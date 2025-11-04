@@ -31,6 +31,7 @@ export const products: Product[] = [
         name: 'Studio Display',
         imageUrl: '/studio display.webp',
         price: 1599,
+        description: '27-inch 5K Retina display with 600 nits brightness and P3 color. Perfect for creative professionals seeking exceptional color accuracy and clarity.',
     },
     {
         id: 2,
@@ -39,6 +40,7 @@ export const products: Product[] = [
         name: '151 Stealth Backpack',
         imageUrl: '/Grams28_151 Stealth Backpack.webp',
         price: 299,
+        description: 'Minimalist backpack with premium materials and smart organization. Features multiple compartments, laptop sleeves, and ergonomic design for comfortable daily carry.',
     },
     {
         id: 3,
@@ -47,6 +49,7 @@ export const products: Product[] = [
         name: 'Aeron',
         imageUrl: '/aeron.webp',
         price: 1395,
+        description: 'Iconic ergonomic chair with PostureFit SL technology and breathable mesh. Adjustable for all body types with 12-year warranty. The gold standard in office seating.',
     },
     {
         id: 4,
@@ -56,6 +59,7 @@ export const products: Product[] = [
         imageUrl: '/workLouder.webp',
         price: 299,
         isStaffPick: true,
+        description: 'Premium mechanical keyboard with tactile switches and customizable RGB. Compact design maximizes desk space while delivering exceptional typing comfort.',
     },
     {
         id: 5,
@@ -65,6 +69,7 @@ export const products: Product[] = [
         imageUrl: '/911.webp',
         price: 207000,
         isStaffPick: true,
+        description: '640+ horsepower twin-turbo flat-six engine. Accelerates 0-60 in under 2.7 seconds. Iconic design meets cutting-edge performance for the ultimate driving experience.',
     },
     {
         id: 6,
@@ -74,6 +79,7 @@ export const products: Product[] = [
         imageUrl: '/Omega_Speedmaster.webp',
         price: 6400,
         isStaffPick: true,
+        description: 'The legendary "Moonwatch" - first watch on the moon. Iconic manual-winding chronograph with timeless design. A true icon of Swiss watchmaking excellence.',
     },
     {
         id: 7,
@@ -82,6 +88,7 @@ export const products: Product[] = [
         name: 'iPhone Air',
         imageUrl: '/Apple_iPhone Air.webp',
         price: 599,
+        description: 'Ultra-lightweight iPhone with powerful A-series chip and Liquid Retina display. Advanced camera system and 5G connectivity in a premium aluminum design.',
     },
     {
         id: 8,
@@ -90,6 +97,7 @@ export const products: Product[] = [
         name: 'iPhone 17 Pro',
         imageUrl: '/Apple_iPhone Pro 17.webp',
         price: 1199,
+        description: 'Flagship iPhone with ProMotion 120Hz display and advanced triple-camera system. Desktop-class performance for creators and professionals.',
     },
     {
         id: 9,
@@ -98,6 +106,7 @@ export const products: Product[] = [
         name: 'Small Square in Orange Acrylic CE',
         imageUrl: '/Bang_Small_Square_Orange_Acrylic_CE.webp',
         price: 85,
+        description: 'Vibrant orange acrylic square with clean geometric design. Adds modern aesthetic to any space as functional decor or artistic statement.',
     },
     {
         id: 10,
@@ -106,6 +115,7 @@ export const products: Product[] = [
         name: 'Valet Tray',
         imageUrl: '/Bionic_Valet Tray.webp',
         price: 125,
+        description: 'Elegant valet tray with multiple compartments for watches, jewelry, keys, and phones. Beautiful design that keeps essentials organized.',
     },
     {
         id: 11,
@@ -114,6 +124,7 @@ export const products: Product[] = [
         name: 'Desktop Folder',
         imageUrl: '/Blanked_Desktop Folder.webp',
         price: 95,
+        description: 'Minimalist desktop organizer with multiple compartments for papers and documents. Clean design that transforms chaotic desks into organized workspaces.',
     },
     {
         id: 12,
@@ -122,6 +133,7 @@ export const products: Product[] = [
         name: 'Industrial Bookstand',
         imageUrl: '/Blanked_Industrial Bookstand.webp',
         price: 145,
+        description: 'Industrial-style bookstand with adjustable design. Showcases books beautifully while providing comfortable reading angles. Premium metal construction.',
     },
     {
         id: 13,
@@ -130,6 +142,7 @@ export const products: Product[] = [
         name: 'Pulse (Tandem)',
         imageUrl: '/Breda_Pulse (Tandem).webp',
         price: 129,
+        description: 'Minimalist watch with clean dial design and Japanese quartz movement. Versatile style that transitions from casual to professional settings.',
     },
     {
         id: 14,
@@ -138,6 +151,7 @@ export const products: Product[] = [
         name: 'P–1 Pepper Mill',
         imageUrl: '/Crust_P–1 Pepper Mill.webp',
         price: 155,
+        description: 'Premium pepper mill with adjustable grind settings and elegant design. Solid wood and metal construction for perfect seasoning control.',
     },
     {
         id: 15,
@@ -146,6 +160,7 @@ export const products: Product[] = [
         name: 'Solarcycle Morph',
         imageUrl: '/Dyson_Solarcycle Morph Floor.webp',
         price: 649,
+        description: 'Smart lamp that adapts color temperature and brightness throughout the day. Supports circadian rhythm with precision lighting and sleek design.',
     },
     {
         id: 16,
@@ -154,6 +169,7 @@ export const products: Product[] = [
         name: 'Stagg EKG',
         imageUrl: '/fellow_stagg.webp',
         price: 189,
+        description: 'Precision electric kettle with PID temperature control and gooseneck spout. Perfect pour-over control from 104°F to 212°F with elegant design.',
     },
     {
         id: 17,
@@ -163,6 +179,7 @@ export const products: Product[] = [
         imageUrl: '/Ferrari_Roma.webp',
         price: 247000,
         isStaffPick: true,
+        description: 'Elegant Italian grand tourer with 600+ horsepower twin-turbo V8. Sophisticated design meets exhilarating performance for the ultimate driving experience.',
     },
     {
         id: 18,
@@ -171,6 +188,7 @@ export const products: Product[] = [
         name: 'Salt',
         imageUrl: '/Grau_Salt.webp',
         price: 75,
+        description: 'Minimalist salt shaker with elegant design and smooth dispensing. Premium materials that elevate any dining table setting.',
     },
     {
         id: 19,
@@ -179,6 +197,7 @@ export const products: Product[] = [
         name: 'ClockClock 24',
         imageUrl: '/HS82_ClockClock 24.webp',
         price: 4495,
+        description: 'Kinetic art clock featuring 24 synchronized analog clocks. Clock hands form numbers creating a mesmerizing visual timepiece and conversation piece.',
     },
     {
         id: 20,
@@ -187,6 +206,7 @@ export const products: Product[] = [
         name: 'Doric Lamp 01',
         imageUrl: '/Kismas_Doric Lamp 01.webp',
         price: 495,
+        description: 'Floor lamp inspired by Doric columns with fluted design. Adjustable head provides directional lighting with sculptural elegance.',
     },
     {
         id: 21,
@@ -195,6 +215,7 @@ export const products: Product[] = [
         name: 'Icons 10295 Porsche 911',
         imageUrl: '/Lego _ Icons 10295 Porsche 911.webp',
         price: 169,
+        description: '1,400+ piece Lego set recreating the iconic Porsche 911. Build as Turbo or Targa variant with authentic details and opening features.',
     },
     {
         id: 22,
@@ -204,6 +225,7 @@ export const products: Product[] = [
         imageUrl: '/Leica Q3.webp',
         price: 5995,
         isStaffPick: true,
+        description: '60MP full-frame compact camera with legendary Summilux 28mm lens. Professional image quality in a portable, beautifully crafted German design.',
     },
     {
         id: 23,
@@ -212,6 +234,7 @@ export const products: Product[] = [
         name: 'Togo Loveseat',
         imageUrl: '/ligneroset_TogoLoveseat.webp',
         price: 5495,
+        description: 'Iconic 1970s French design with unique foam construction. Low-profile loveseat offering sculptural beauty and exceptional comfort.',
     },
     {
         id: 24,
@@ -220,6 +243,7 @@ export const products: Product[] = [
         name: 'Flow 2',
         imageUrl: '/Lofree_ Flow 2.webp',
         price: 149,
+        description: 'Low-profile ergonomic mouse reducing wrist strain. Precision tracking with wired and wireless options. Minimalist design for modern workspaces.',
     },
     {
         id: 25,
@@ -228,6 +252,7 @@ export const products: Product[] = [
         name: 'Noguchi Table',
         imageUrl: '/noguchi_table.webp',
         price: 3795,
+        description: 'Iconic 1947 design by Isamu Noguchi. Glass top on sculptural interlocking wood base blurring the line between furniture and art.',
     },
     {
         id: 26,
@@ -236,6 +261,7 @@ export const products: Product[] = [
         name: 'Base One Max 3-in-1',
         imageUrl: '/Nomad_ Base One Max 3-in-1.webp',
         price: 249,
+        description: '3-in-1 charging station for iPhone, Apple Watch, and AirPods. MagSafe fast charging with elegant design and organized cable management.',
     },
     {
         id: 27,
@@ -244,6 +270,7 @@ export const products: Product[] = [
         name: 'Ear (stick)',
         imageUrl: '/Nothing_Headphones(1).webp',
         price: 99,
+        description: 'Transparent earbuds with innovative fit design. Custom 12.6mm drivers deliver rich sound with advanced noise cancellation. Unique cylindrical charging case.',
     },
     {
         id: 28,
@@ -252,6 +279,7 @@ export const products: Product[] = [
         name: 'Nothing Phone (3)',
         imageUrl: '/Nothing_Phone(3).webp',
         price: 699,
+        description: 'Transparent smartphone with unique Glyph Interface LED notifications. Flagship performance with dual cameras and clean Nothing OS experience.',
     },
     {
         id: 29,
@@ -260,6 +288,7 @@ export const products: Product[] = [
         name: 'Dieter Rams: The Complete Works',
         imageUrl: '/Phaidon_Dieter Rams_ The Complete Works.webp',
         price: 75,
+        description: 'Comprehensive volume documenting Dieter Rams\' legendary Braun career. Features hundreds of photos, sketches, and insights into his "less but better" philosophy.',
     },
     {
         id: 30,
@@ -268,6 +297,7 @@ export const products: Product[] = [
         name: 'The Design Book',
         imageUrl: '/Phaidon_The Design Book.webp',
         price: 65,
+        description: 'Curated collection of 500 iconic design objects from the past 150 years. Essential reference for understanding great design across all categories.',
     },
     {
         id: 31,
@@ -277,6 +307,7 @@ export const products: Product[] = [
         imageUrl: '/Rimowa_Classic Cabin.webp',
         price: 1650,
         isStaffPick: true,
+        description: 'Iconic aluminum cabin suitcase with grooved design. Precision German engineering meets sophisticated style with smooth multi-wheel system.',
     },
     {
         id: 32,
@@ -286,6 +317,7 @@ export const products: Product[] = [
         imageUrl: '/Rolex_Datejust.webp',
         price: 8950,
         isStaffPick: true,
+        description: 'Iconic 1945 watch - first with automatic date. Classic Oyster case with fluted bezel and chronometer-certified movement. Timeless elegance.',
     },
     {
         id: 33,
@@ -294,6 +326,7 @@ export const products: Product[] = [
         name: 'Réf. 1174-1 Parade',
         imageUrl: '/Serica_Réf1174-1 Parade.webp',
         price: 899,
+        description: 'Vintage-inspired French watch with Swiss automatic movement. Clean dial design with luminescent markers. Versatile style for everyday wear.',
     },
     {
         id: 34,
@@ -302,6 +335,7 @@ export const products: Product[] = [
         name: 'BF',
         imageUrl: '/Sigma_BF.webp',
         price: 199,
+        description: 'Magnetic wireless charging base with minimalist design. Intelligent power delivery and subtle LED indicator. Keeps workspace clean and organized.',
     },
     {
         id: 35,
@@ -310,6 +344,7 @@ export const products: Product[] = [
         name: 'WH-1000XM5',
         imageUrl: '/Sony_WH 1000XM5.webp',
         price: 399,
+        description: 'Industry-leading noise cancellation with V1 processor. Custom 30mm drivers deliver rich sound. 30-hour battery life with exceptional comfort.',
     },
     {
         id: 36,
@@ -318,6 +353,7 @@ export const products: Product[] = [
         name: 'Subscale',
         imageUrl: '/Subminimal_Subscale.webp',
         price: 175,
+        description: 'Minimalist kitchen scale with sleek design. Precise measurements up to 3kg with 0.1g accuracy. Beautiful design object for any countertop.',
     },
     {
         id: 37,
@@ -326,6 +362,7 @@ export const products: Product[] = [
         name: 'Virgil Abloh. Nike. ICONS',
         imageUrl: '/Taschen_Virgil Abloh. Nike. ICONS.webp',
         price: 150,
+        description: 'Comprehensive volume documenting Virgil Abloh\'s revolutionary Nike collaborations. Features stunning photography, design sketches, and insights into sneaker culture.',
     },
     {
         id: 38,
@@ -334,6 +371,7 @@ export const products: Product[] = [
         name: 'Studio',
         imageUrl: '/xbloomstudio.webp',
         price: 1299,
+        description: 'Precision coffee brewing system with temperature control and programmable recipes. Supports pour-over, immersion, and hybrid methods for café-quality results.',
     },
     {
         id: 39,
@@ -342,5 +380,6 @@ export const products: Product[] = [
         name: 'Pro Display XDR',
         imageUrl: '/apple-pro-display-xdr.png',
         price: 4999,
+        description: '32-inch 6K Retina display with Extreme Dynamic Range. 1,000 nits sustained brightness, 576-zone local dimming. Reference-grade monitor for professionals.',
     },
 ];

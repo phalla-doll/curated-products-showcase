@@ -7,6 +7,7 @@ export interface Product {
     name: string;
     imageUrl: string;
     price: number;
+    description?: string;
     isStaffPick?: boolean;
 }
 

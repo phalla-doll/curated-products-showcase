@@ -1,4 +1,5 @@
-import { MinusIcon, PlusIcon, XIcon } from '@/components/icons/CoreIcons';
+import { useState } from 'react';
+import { MinusIcon, PlusIcon, SpinnerIcon, XIcon } from '@/components/icons/CoreIcons';
 import type { CartItem } from '@/types';
 
 interface CartItemsListProps {
@@ -16,6 +17,15 @@ const CartItemsList = ({
     onRemoveItem,
     onCheckout,
 }: CartItemsListProps) => {
+    const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+    const handleCheckout = () => {
+        setIsCheckingOut(true);
+        setTimeout(() => {
+            setIsCheckingOut(false);
+            onCheckout();
+        }, 2000);
+    };
     return (
         <>
             {/* Cart Items List - Scrollable */}
@@ -105,10 +115,18 @@ const CartItemsList = ({
                 </div>
                 <button
                     type="button"
-                    onClick={onCheckout}
-                    className="w-full px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200"
+                    onClick={handleCheckout}
+                    disabled={isCheckingOut}
+                    className="w-full px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                    Checkout
+                    {isCheckingOut ? (
+                        <>
+                            <SpinnerIcon className="size-5 animate-spin" />
+                            <span>Processing...</span>
+                        </>
+                    ) : (
+                        'Checkout'
+                    )}
                 </button>
             </div>
         </>

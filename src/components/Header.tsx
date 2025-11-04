@@ -92,7 +92,7 @@ function Header() {
             <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} title="Bag" ariaLabel="Bag drawer">
                 <div className="flex flex-col items-center justify-center h-full text-zinc-500">
                     <BagIcon className="size-16 mb-4 text-zinc-300" />
-                    <p className="text-sm">Your bag is empty. Start browsing our collection to add items to your cart.</p>
+                    <p className="text-sm text-center">Your bag is empty. Start browsing our collection to add items to your cart.</p>
                 </div>
             </Drawer>
         </>

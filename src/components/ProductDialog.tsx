@@ -15,11 +15,11 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
     const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
-        // Reset quantity when product changes
-        if (product) {
+        // Reset quantity when dialog opens or product changes
+        if (isOpen && product) {
             setQuantity(1);
         }
-    }, [product]);
+    }, [isOpen, product]);
 
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
@@ -208,7 +208,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                             className="p-2 hover:bg-zinc-100 transition-colors duration-200"
                                             aria-label="Increase quantity"
                                         >
-                                            <PlusIcon className="w-4 h-4 text-zinc-700" />
+                                            <PlusIcon className="size-4 text-zinc-700" />
                                         </button>
                                     </div>
                                 </div>

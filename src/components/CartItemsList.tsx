@@ -1,4 +1,3 @@
-import type React from 'react';
 import { MinusIcon, PlusIcon, XIcon } from '@/components/icons/CoreIcons';
 import type { CartItem } from '@/types';
 
@@ -39,9 +38,7 @@ const CartItemsList = ({
                                 <h3 className="text-sm font-medium text-zinc-900 truncate">
                                     {item.product.name}
                                 </h3>
-                                <p className="text-xs text-zinc-500 mt-1">
-                                    {item.product.brand}
-                                </p>
+                                <p className="text-xs text-zinc-500 mt-1">{item.product.brand}</p>
                                 <p className="text-base font-semibold text-zinc-900 mt-2">
                                     ${item.product.price.toLocaleString()}
                                 </p>
@@ -52,10 +49,7 @@ const CartItemsList = ({
                                         <button
                                             type="button"
                                             onClick={() =>
-                                                onUpdateQuantity(
-                                                    item.product.id,
-                                                    item.quantity - 1
-                                                )
+                                                onUpdateQuantity(item.product.id, item.quantity - 1)
                                             }
                                             className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
                                             aria-label="Decrease quantity"
@@ -68,10 +62,7 @@ const CartItemsList = ({
                                         <button
                                             type="button"
                                             onClick={() =>
-                                                onUpdateQuantity(
-                                                    item.product.id,
-                                                    item.quantity + 1
-                                                )
+                                                onUpdateQuantity(item.product.id, item.quantity + 1)
                                             }
                                             className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
                                             aria-label="Increase quantity"
@@ -116,4 +107,3 @@ const CartItemsList = ({
 };
 
 export default CartItemsList;
-

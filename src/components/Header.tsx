@@ -1,12 +1,8 @@
 import type React from 'react';
 import { useEffect, useState } from 'react';
-import Drawer from '@/components/Drawer';
 import CartItemsList from '@/components/CartItemsList';
-import {
-    AsteriskIcon,
-    BagIcon,
-    SearchIcon,
-} from '@/components/icons/CoreIcons';
+import Drawer from '@/components/Drawer';
+import { AsteriskIcon, BagIcon, SearchIcon } from '@/components/icons/CoreIcons';
 import type { CartItem } from '@/types';
 import { getCartItems, getCartTotal, removeFromCart, updateCartItemQuantity } from '@/utils/cart';
 

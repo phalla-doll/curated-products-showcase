@@ -89,7 +89,9 @@ function Drawer({ isOpen, onClose, title, children, ariaLabel }: DrawerProps) {
                 </div>
 
                 {/* Drawer Content */}
-                <div className="p-6 h-[calc(100%-5rem)] overflow-y-auto">{children}</div>
+                <div className="flex flex-col h-[calc(100%-5rem)] overflow-hidden">
+                    {children}
+                </div>
             </section>
         </div>
     );

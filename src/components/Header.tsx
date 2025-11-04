@@ -146,7 +146,7 @@ function Header() {
                 ariaLabel="Bag drawer"
             >
                 {cartItems.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center h-full text-zinc-500">
+                    <div className="flex flex-col items-center justify-center h-full text-zinc-500 p-6">
                         <BagIcon className="size-16 mb-4 text-zinc-300" />
                         <p className="text-base font-medium text-center mb-2">Your bag is empty.</p>
                         <p className="text-sm text-center">
@@ -162,85 +162,87 @@ function Header() {
                     </div>
                 ) : (
                     <>
-                        {/* Cart Items List */}
-                        <div className="space-y-4 mb-6">
-                            {cartItems.map((item) => (
-                                <div
-                                    key={item.product.id}
-                                    className="flex gap-4 p-4 border border-zinc-200 rounded-lg"
-                                >
-                                    {/* Product Image */}
-                                    <div className="w-20 h-20 bg-zinc-100 rounded-lg overflow-hidden flex-shrink-0">
-                                        <img
-                                            src={item.product.imageUrl}
-                                            alt={item.product.name}
-                                            className="w-full h-full object-contain p-2"
-                                        />
-                                    </div>
+                        {/* Cart Items List - Scrollable */}
+                        <div className="flex-1 overflow-y-auto p-6">
+                            <div className="space-y-4">
+                                {cartItems.map((item) => (
+                                    <div
+                                        key={item.product.id}
+                                        className="flex gap-4 p-4 border border-zinc-200 rounded-lg"
+                                    >
+                                        {/* Product Image */}
+                                        <div className="w-20 h-20 bg-zinc-100 rounded-lg overflow-hidden flex-shrink-0">
+                                            <img
+                                                src={item.product.imageUrl}
+                                                alt={item.product.name}
+                                                className="w-full h-full object-contain p-2"
+                                            />
+                                        </div>
 
-                                    {/* Product Details */}
-                                    <div className="flex-1 min-w-0">
-                                        <h3 className="text-sm font-medium text-zinc-900 truncate">
-                                            {item.product.name}
-                                        </h3>
-                                        <p className="text-xs text-zinc-500 mt-1">
-                                            {item.product.brand}
-                                        </p>
-                                        <p className="text-base font-semibold text-zinc-900 mt-2">
-                                            ${item.product.price.toLocaleString()}
-                                        </p>
+                                        {/* Product Details */}
+                                        <div className="flex-1 min-w-0">
+                                            <h3 className="text-sm font-medium text-zinc-900 truncate">
+                                                {item.product.name}
+                                            </h3>
+                                            <p className="text-xs text-zinc-500 mt-1">
+                                                {item.product.brand}
+                                            </p>
+                                            <p className="text-base font-semibold text-zinc-900 mt-2">
+                                                ${item.product.price.toLocaleString()}
+                                            </p>
 
-                                        {/* Quantity Controls */}
-                                        <div className="flex items-center gap-3 mt-3">
-                                            <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
+                                            {/* Quantity Controls */}
+                                            <div className="flex items-center gap-3 mt-3">
+                                                <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
+                                                    <button
+                                                        type="button"
+                                                        onClick={() =>
+                                                            handleUpdateQuantity(
+                                                                item.product.id,
+                                                                item.quantity - 1
+                                                            )
+                                                        }
+                                                        className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
+                                                        aria-label="Decrease quantity"
+                                                    >
+                                                        <MinusIcon className="w-3.5 h-3.5 text-zinc-700" />
+                                                    </button>
+                                                    <span className="w-8 text-center text-sm font-medium text-zinc-900">
+                                                        {item.quantity}
+                                                    </span>
+                                                    <button
+                                                        type="button"
+                                                        onClick={() =>
+                                                            handleUpdateQuantity(
+                                                                item.product.id,
+                                                                item.quantity + 1
+                                                            )
+                                                        }
+                                                        className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
+                                                        aria-label="Increase quantity"
+                                                    >
+                                                        <PlusIcon className="w-3.5 h-3.5 text-zinc-700" />
+                                                    </button>
+                                                </div>
+
+                                                {/* Remove Button */}
                                                 <button
                                                     type="button"
-                                                    onClick={() =>
-                                                        handleUpdateQuantity(
-                                                            item.product.id,
-                                                            item.quantity - 1
-                                                        )
-                                                    }
-                                                    className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
-                                                    aria-label="Decrease quantity"
+                                                    onClick={() => handleRemoveItem(item.product.id)}
+                                                    className="p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
+                                                    aria-label="Remove item"
                                                 >
-                                                    <MinusIcon className="w-3.5 h-3.5 text-zinc-700" />
-                                                </button>
-                                                <span className="w-8 text-center text-sm font-medium text-zinc-900">
-                                                    {item.quantity}
-                                                </span>
-                                                <button
-                                                    type="button"
-                                                    onClick={() =>
-                                                        handleUpdateQuantity(
-                                                            item.product.id,
-                                                            item.quantity + 1
-                                                        )
-                                                    }
-                                                    className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
-                                                    aria-label="Increase quantity"
-                                                >
-                                                    <PlusIcon className="w-3.5 h-3.5 text-zinc-700" />
+                                                    <XIcon className="w-4 h-4 text-zinc-500" />
                                                 </button>
                                             </div>
-
-                                            {/* Remove Button */}
-                                            <button
-                                                type="button"
-                                                onClick={() => handleRemoveItem(item.product.id)}
-                                                className="p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
-                                                aria-label="Remove item"
-                                            >
-                                                <XIcon className="w-4 h-4 text-zinc-500" />
-                                            </button>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
 
-                        {/* Cart Footer with Total - Sticky at bottom */}
-                        <div className="border-t border-zinc-200 pt-4 mt-auto">
+                        {/* Cart Footer with Total - Fixed at bottom */}
+                        <div className="border-t border-zinc-200 p-6 bg-white">
                             <div className="flex justify-between items-center mb-4">
                                 <span className="text-lg font-semibold text-zinc-900">Total</span>
                                 <span className="text-xl font-bold text-zinc-900">

@@ -1,7 +1,7 @@
 import type React from 'react';
 import { useState } from 'react';
-import { AsteriskIcon, SearchIcon, BagIcon } from '@/components/icons/CoreIcons';
 import Drawer from '@/components/Drawer';
+import { AsteriskIcon, BagIcon, SearchIcon } from '@/components/icons/CoreIcons';
 
 // FIX: Extracted props to a dedicated interface to resolve potential type inference issues with inline types.
 interface NavLinkProps {
@@ -89,7 +89,12 @@ function Header() {
                 </div>
             </header>
 
-            <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} title="Bag" ariaLabel="Bag drawer">
+            <Drawer
+                isOpen={isDrawerOpen}
+                onClose={() => setIsDrawerOpen(false)}
+                title="Bag"
+                ariaLabel="Bag drawer"
+            >
                 <div className="flex flex-col items-center justify-center h-full text-zinc-500">
                     <BagIcon className="size-16 mb-4 text-zinc-300" />
                     <p className="text-sm text-center">Your bag is empty.</p>

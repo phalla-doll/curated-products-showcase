@@ -96,4 +96,3 @@ function Drawer({ isOpen, onClose, title, children, ariaLabel }: DrawerProps) {
 }
 
 export default Drawer;
-

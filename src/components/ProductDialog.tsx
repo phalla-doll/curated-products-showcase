@@ -1,6 +1,13 @@
 import type React from 'react';
 import { useEffect, useState } from 'react';
-import { BagIcon, CheckIcon, MinusIcon, PlusIcon, StaffPickIcon, XIcon } from '@/components/icons/CoreIcons';
+import {
+    BagIcon,
+    CheckIcon,
+    MinusIcon,
+    PlusIcon,
+    StaffPickIcon,
+    XIcon,
+} from '@/components/icons/CoreIcons';
 import type { Product } from '@/types';
 import { addToCart } from '@/utils/cart';
 

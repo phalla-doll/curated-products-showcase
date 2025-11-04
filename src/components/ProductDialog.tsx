@@ -2,6 +2,7 @@ import type React from 'react';
 import { useEffect, useState } from 'react';
 import { BagIcon, MinusIcon, PlusIcon, StaffPickIcon, XIcon } from '@/components/icons/CoreIcons';
 import type { Product } from '@/types';
+import { addToCart } from '@/utils/cart';
 
 interface ProductDialogProps {
     product: Product | null;
@@ -53,8 +54,17 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
     };
 
     const handleAddToCart = () => {
-        if (product && onAddToCart) {
-            onAddToCart(product, quantity);
+        if (product) {
+            // Add to localStorage
+            addToCart(product, quantity);
+            
+            // Also call the optional callback if provided
+            if (onAddToCart) {
+                onAddToCart(product, quantity);
+            }
+            
+            // Close the dialog after adding to cart
+            onClose();
         }
     };
 

@@ -18,3 +18,8 @@ export interface Category {
     // FIX: Use ComponentType from react instead of React.ComponentType to resolve the namespace error.
     icon: ComponentType<{ className?: string }>;
 }
+
+export interface CartItem {
+    product: Product;
+    quantity: number;
+}

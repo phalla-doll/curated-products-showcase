@@ -79,7 +79,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
 
                 // Close the dialog after adding to cart
                 onClose();
-            }, 750);
+            }, 500);
         }
     };
 

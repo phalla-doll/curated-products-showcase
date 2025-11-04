@@ -1,0 +1,136 @@
+import type React from 'react';
+import { useEffect } from 'react';
+import { XIcon, StaffPickIcon } from '@/components/icons/CoreIcons';
+import type { Product } from '@/types';
+
+interface ProductDialogProps {
+    product: Product | null;
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose }) => {
+    useEffect(() => {
+        const handleEscape = (e: KeyboardEvent) => {
+            if (e.key === 'Escape' && isOpen) {
+                onClose();
+            }
+        };
+
+        if (isOpen) {
+            document.addEventListener('keydown', handleEscape);
+            document.body.style.overflow = 'hidden';
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleEscape);
+            document.body.style.overflow = '';
+        };
+    }, [isOpen, onClose]);
+
+    const handleBackdropClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
+
+    if (!isOpen || !product) return null;
+
+    return (
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Product details: ${product.name}`}
+        >
+            {/* Backdrop */}
+            <button
+                type="button"
+                className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300"
+                onClick={handleBackdropClick}
+                aria-label="Close dialog"
+                tabIndex={-1}
+            />
+
+            {/* Dialog */}
+            <div
+                className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden grid grid-cols-1 md:grid-cols-2"
+            >
+                {/* Close Button */}
+                <button
+                    type="button"
+                    onClick={onClose}
+                    className="absolute top-4 right-4 z-10 p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors duration-200 shadow-lg"
+                    aria-label="Close dialog"
+                >
+                    <XIcon className="size-5 text-zinc-800" />
+                </button>
+
+                {/* Image Block - Left */}
+                <div className="bg-zinc-100 flex items-center justify-center p-8 md:p-12">
+                    <img
+                        src={product.imageUrl}
+                        alt={product.name}
+                        className="w-full h-full object-contain max-h-[70vh]"
+                    />
+                </div>
+
+                {/* Info Block - Right */}
+                <div className="flex flex-col p-8 md:p-12 overflow-y-auto">
+                    <div className="flex-1">
+                        {/* Staff Pick Badge */}
+                        {product.isStaffPick && (
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-50 rounded-full text-xs font-medium text-amber-900 mb-4">
+                                <StaffPickIcon className="w-4 h-4 text-amber-600" />
+                                <span>Staff Pick</span>
+                            </div>
+                        )}
+
+                        {/* Brand & Category */}
+                        <p className="text-sm text-zinc-500 mb-2">
+                            {product.brand} &middot; {product.category}
+                        </p>
+
+                        {/* Product Name */}
+                        <h2 className="text-3xl font-semibold text-zinc-900 mb-4">
+                            {product.name}
+                        </h2>
+
+                        {/* Price */}
+                        <div className="mb-6">
+                            <p className="text-4xl font-bold text-zinc-900">
+                                ${product.price.toLocaleString()}
+                            </p>
+                        </div>
+
+                        {/* Additional Info Section */}
+                        <div className="pt-6 border-t border-zinc-200">
+                            <h3 className="text-sm font-semibold text-zinc-900 mb-3">
+                                Product Details
+                            </h3>
+                            <div className="space-y-2 text-sm text-zinc-600">
+                                <div className="flex justify-between">
+                                    <span className="text-zinc-500">Brand:</span>
+                                    <span className="font-medium">{product.brand}</span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <span className="text-zinc-500">Category:</span>
+                                    <span className="font-medium">{product.category}</span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <span className="text-zinc-500">Price:</span>
+                                    <span className="font-medium">
+                                        ${product.price.toLocaleString()}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ProductDialog;
+

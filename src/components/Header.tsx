@@ -118,7 +118,7 @@ function Header() {
                                     // Dispatch custom event to focus search input in Hero
                                     window.dispatchEvent(new CustomEvent('focussearch'));
                                 }}
-                                className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
+                                className="hidden md:block p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
                                 aria-label="Search"
                             >
                                 <SearchIcon className="size-5 text-zinc-500" />

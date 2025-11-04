@@ -421,4 +421,144 @@ export const products: Product[] = [
         description:
             '32-inch 6K Retina display with Extreme Dynamic Range. 1,000 nits sustained brightness, 576-zone local dimming. Reference-grade monitor for professionals.',
     },
+    {
+        id: 40,
+        brand: 'Elago',
+        category: 'Home',
+        name: 'NASA Titanium Mug 450ML',
+        imageUrl: '/Elago_NASA Titanium Mug 450ML.webp',
+        price: 49,
+        description:
+            'Space-inspired titanium mug with NASA branding. Lightweight and durable with excellent heat retention. Perfect for coffee enthusiasts and space enthusiasts alike.',
+    },
+    {
+        id: 41,
+        brand: 'Ember',
+        category: 'Home',
+        name: 'Cup',
+        imageUrl: '/Ember_Cup.webp',
+        price: 199,
+        description:
+            'Temperature-controlled smart mug that keeps your drink at your preferred temperature. Connects to app for precise control. Perfect for coffee, tea, or hot chocolate.',
+    },
+    {
+        id: 42,
+        brand: 'Fractal',
+        category: 'Tech',
+        name: 'Terra',
+        imageUrl: '/Fractal_Terra.webp',
+        price: 229,
+        description:
+            'Compact mini-ITX PC case with premium materials and intelligent airflow design. Showcases components beautifully while maintaining excellent thermal performance.',
+    },
+    {
+        id: 43,
+        brand: 'HMM',
+        category: 'Home',
+        name: 'Mugr',
+        imageUrl: '/HMM_Mugr.webp',
+        price: 65,
+        description:
+            'Modern minimalist mug with ergonomic handle design. Premium ceramic construction with sleek aesthetic. Perfect for daily coffee rituals.',
+    },
+    {
+        id: 44,
+        brand: 'Hardgraft',
+        category: 'Carry',
+        name: 'Long Haul Briefcase',
+        imageUrl: '/Hardgraft_Long Haul Briefcase.webp',
+        price: 895,
+        description:
+            'Premium leather briefcase with intelligent organization. Handcrafted with finest materials and attention to detail. Designed for professionals who appreciate quality.',
+    },
+    {
+        id: 45,
+        brand: 'Larq',
+        category: 'Home',
+        name: 'Bottle PureVis 2',
+        imageUrl: '/Larq_Bottle PureVis 2.webp',
+        price: 99,
+        description:
+            'Self-cleaning water bottle with PureVis UV-C technology. Eliminates up to 99.9999% of bacteria and viruses. Keeps water fresh and clean throughout the day.',
+    },
+    {
+        id: 46,
+        brand: 'Lofree',
+        category: 'Workspace',
+        name: 'Flow Lite84',
+        imageUrl: '/Lofree_ Flow Lite84.webp',
+        price: 199,
+        description:
+            'Compact 84-key mechanical keyboard with tactile switches. Low-profile design maximizes desk space while delivering exceptional typing experience.',
+    },
+    {
+        id: 47,
+        brand: 'New Balance',
+        category: 'Lifestyle',
+        name: '990v5',
+        imageUrl: '/New Balance_990v5.webp',
+        price: 185,
+        description:
+            'Iconic running shoe with premium materials and superior comfort. ENCAP midsole technology provides cushioning and support. Made in USA craftsmanship.',
+    },
+    {
+        id: 48,
+        brand: 'Apple',
+        category: 'Tech',
+        name: 'AirPods Max',
+        imageUrl: '/airpods max.webp',
+        price: 549,
+        description:
+            'Premium over-ear headphones with Active Noise Cancellation and spatial audio. Custom acoustic design with exceptional sound quality and comfort.',
+    },
+    {
+        id: 49,
+        brand: 'Blanked',
+        category: 'Workspace',
+        name: 'Monitor Stand',
+        imageUrl: '/blanked_monitorstand.webp',
+        price: 125,
+        description:
+            'Minimalist monitor stand that elevates your display for ergonomic viewing. Premium materials with cable management. Transforms any workspace.',
+    },
+    {
+        id: 50,
+        brand: 'IKEA',
+        category: 'Home',
+        name: 'Varmblixt',
+        imageUrl: '/ikea_varmblixt.webp',
+        price: 29,
+        description:
+            'Scandinavian-inspired floor lamp with modern design. Adjustable height and directional light. Affordable quality for contemporary homes.',
+    },
+    {
+        id: 51,
+        brand: 'Karlsson',
+        category: 'Home',
+        name: 'Flip Clock',
+        imageUrl: '/karlsson_flipclock.webp',
+        price: 199,
+        description:
+            'Retro-inspired flip clock with mechanical number display. Quartz movement with silent operation. Classic design that adds character to any room.',
+    },
+    {
+        id: 52,
+        brand: 'LoveFrom',
+        category: 'Home',
+        name: 'Sailing Lamp',
+        imageUrl: '/lovefrom_sailinglamp.webp',
+        price: 1295,
+        description:
+            'Elegant floor lamp inspired by sailing aesthetics. Beautiful form meets functional lighting. Premium materials and thoughtful design detail.',
+    },
+    {
+        id: 53,
+        brand: 'Steam',
+        category: 'Tech',
+        name: 'Steam Deck',
+        imageUrl: '/steam_steamdeck.webp',
+        price: 399,
+        description:
+            'Handheld gaming PC with powerful AMD processor and custom SteamOS. Play your entire Steam library on the go. High-resolution touchscreen and ergonomic controls.',
+    },
 ];

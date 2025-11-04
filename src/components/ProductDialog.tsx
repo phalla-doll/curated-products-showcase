@@ -162,7 +162,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                     <label htmlFor="quantity" className="text-sm font-medium text-zinc-900">
                                         Quantity:
                                     </label>
-                                    <div className="flex items-center gap-2 border border-zinc-300 rounded-lg">
+                                    <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
                                         <button
                                             type="button"
                                             onClick={handleDecrement}

@@ -81,7 +81,7 @@ function ProductGrid() {
                 {filteredProducts.length === 0 ? (
                     <div className="col-span-full flex items-center justify-center py-16">
                         <div className="max-w-md mx-auto text-center">
-                            <h2 className="text-2xl font-semibold text-zinc-900 tracking-tight mb-2">
+                            <h2 className="text-xl font-semibold text-zinc-900 tracking-tight mb-2">
                                 No products found
                             </h2>
                             <p className="text-zinc-600 text-sm">

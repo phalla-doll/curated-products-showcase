@@ -153,7 +153,7 @@ function Header() {
                 {cartItems.length === 0 ? (
                     <div className="flex flex-col items-center justify-center h-full text-zinc-500 p-6">
                         <BagIcon className="size-16 mb-4 text-zinc-300" />
-                        <p className="text-lg text-zinc-900 font-medium text-center mb-1">Your bag is empty</p>
+                        <p className="text-xl text-zinc-900 font-semibold text-center mb-1">Your bag is empty</p>
                         <p className="text-sm text-center mb-4">
                             Start browsing our collection to add items to your cart.
                         </p>

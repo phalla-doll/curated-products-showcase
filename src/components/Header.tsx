@@ -157,6 +157,7 @@ function Header() {
                 isOpen={isDrawerOpen}
                 onClose={() => setIsDrawerOpen(false)}
                 title="Bag"
+                cartItems={cartItems}
                 ariaLabel="Bag drawer"
             >
                 {cartItems.length === 0 ? (

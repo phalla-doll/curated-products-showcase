@@ -1,6 +1,7 @@
 import type React from 'react';
 import { useEffect } from 'react';
 import { XIcon } from '@/components/icons/CoreIcons';
+import type { CartItem } from '@/types';
 
 interface DrawerProps {
     isOpen: boolean;
@@ -8,9 +9,14 @@ interface DrawerProps {
     title: string;
     children: React.ReactNode;
     ariaLabel?: string;
+    cartItems: CartItem[];
 }
 
-function Drawer({ isOpen, onClose, title, children, ariaLabel }: DrawerProps) {
+function Drawer({ isOpen, onClose, title, children, ariaLabel, cartItems }: DrawerProps) {
+    const getCartItemsCount = (items: CartItem[]): string => {
+        return items.reduce((total, item) => total + item.quantity, 0).toLocaleString();
+    };
+
     // Handle Escape key to close drawer
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
@@ -77,7 +83,12 @@ function Drawer({ isOpen, onClose, title, children, ariaLabel }: DrawerProps) {
             >
                 {/* Drawer Header */}
                 <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-200">
-                    <h2 className="text-xl font-semibold text-zinc-900">{title}</h2>
+                    <h2 className="text-xl font-semibold text-zinc-900">
+                        {title}{' '}
+                        <span className="text-zinc-500 font-normal">
+                            ({getCartItemsCount(cartItems)})
+                        </span>
+                    </h2>
                     <button
                         type="button"
                         onClick={onClose}

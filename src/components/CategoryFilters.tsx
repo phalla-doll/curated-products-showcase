@@ -50,7 +50,7 @@ function CategoryFilters() {
             const categoryParam = params.get('category');
             setActiveCategory(categoryParam || 'all');
         };
-        
+
         const handleCategoryChange = () => {
             const params = new URLSearchParams(window.location.search);
             const categoryParam = params.get('category');

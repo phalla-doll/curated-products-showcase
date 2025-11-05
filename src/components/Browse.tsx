@@ -53,16 +53,14 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, product }) => {
         // Update URL with category parameter, preserving existing search parameters
         const params = new URLSearchParams(window.location.search);
         params.set('category', category.id);
-        const newUrl = params.toString()
-            ? `/?${params.toString()}`
-            : '/';
-        
-        // Update URL without page reload
-        window.history.pushState({}, '', newUrl);
-        
+        const newUrl = params.toString() ? `/?${params.toString()}` : '/';
+
+        // Update URL without page reload, storing tab state in history
+        window.history.pushState({ tab: 'Discover' }, '', newUrl);
+
         // Dispatch custom event to switch to Discover tab
         window.dispatchEvent(new CustomEvent('switchtab', { detail: 'Discover' }));
-        
+
         // Dispatch custom event to notify ProductGrid of category change
         window.dispatchEvent(new CustomEvent('categorychange'));
     };

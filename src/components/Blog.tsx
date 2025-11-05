@@ -67,7 +67,7 @@ const blogPosts: BlogPost[] = [
         id: 6,
         title: 'Home Office Essentials: What Really Matters',
         excerpt:
-            'After years of remote work, we\'ve learned what truly makes a difference in home office productivity. From ergonomics to aesthetics, here\'s what to prioritize.',
+            "After years of remote work, we've learned what truly makes a difference in home office productivity. From ergonomics to aesthetics, here's what to prioritize.",
         author: 'James Wilson',
         date: 'February 15, 2024',
         readTime: '5 min read',

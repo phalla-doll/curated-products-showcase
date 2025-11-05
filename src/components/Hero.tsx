@@ -116,7 +116,7 @@ function Hero() {
 
     return (
         <section className="text-center py-20 sm:py-28">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="px-4 sm:px-6 lg:px-8">
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-zinc-900 max-w-3xl mx-auto">
                     Discover well-designed, carefully curated products
                 </h1>

@@ -84,7 +84,7 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
     return (
         <>
             <header className="py-6">
-                <div className="container mx-auto px-2 sm:px-6 lg:px-8">
+                <div className="px-2 sm:px-6 lg:px-8">
                     <nav className="flex items-center gap-x-2 justify-between">
                         <div className="flex-1 flex items-center justify-start">
                             <button

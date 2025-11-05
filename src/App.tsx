@@ -86,7 +86,7 @@ function App() {
 
     return (
         <div className="bg-zinc-50 text-zinc-900 min-h-screen flex flex-col">
-            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex-1">
                 <Header activeTab={activeTab} setActiveTab={setActiveTab} />
                 <main>
                     {activeTab === 'Browse' ? (

@@ -20,7 +20,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({ category, isActive, onC
             className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 text-sm font-medium border rounded-full transition-colors duration-200 whitespace-nowrap ${
                 isActive
                     ? 'bg-zinc-900 text-white border-zinc-900'
-                    : 'bg-white text-zinc-700 border-zinc-200/80 hover:bg-zinc-100 hover:border-zinc-300'
+                    : 'bg-white text-zinc-600 border-zinc-200/80 hover:bg-zinc-100 hover:border-zinc-300'
             }`}
         >
             <Icon className="w-4 h-4" />

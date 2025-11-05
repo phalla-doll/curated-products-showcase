@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Blog from '@/components/Blog';
 import Browse from '@/components/Browse';
 import CategoryFilters from '@/components/CategoryFilters';
 import Footer from '@/components/Footer';
@@ -59,6 +60,8 @@ function App() {
                 <main>
                     {activeTab === 'Browse' ? (
                         <Browse />
+                    ) : activeTab === 'Blog' ? (
+                        <Blog />
                     ) : (
                         <>
                             <Hero />

@@ -107,7 +107,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                 <button
                     type="button"
                     onClick={onClose}
-                    className="absolute top-4 right-4 z-10 p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors duration-200 shadow-none hover:shadow-lg"
+                    className="absolute top-4 right-4 z-10 p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-all duration-200 shadow-none hover:shadow-lg"
                     aria-label="Close dialog"
                 >
                     <XIcon className="size-5 text-zinc-800" />

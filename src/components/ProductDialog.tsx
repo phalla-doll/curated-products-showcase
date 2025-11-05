@@ -180,7 +180,8 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                                 console.log('View all reviews');
                                             }}
                                         >
-                                            4.6&nbsp;&middot;&nbsp;<span className="text-zinc-500">58.2K</span>
+                                            4.6&nbsp;&middot;&nbsp;
+                                            <span className="text-zinc-500">58.2K</span>
                                         </button>
                                     </div>
                                 </div>

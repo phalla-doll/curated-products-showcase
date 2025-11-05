@@ -14,7 +14,7 @@ type Tab = 'Discover' | 'Browse' | 'Blog' | 'Orders';
 const getTabFromHash = (): Tab => {
     const hash = window.location.hash.slice(1).toLowerCase();
     if (hash === 'browse' || hash === 'blog' || hash === 'orders') {
-        return hash.charAt(0).toUpperCase() + hash.slice(1) as Tab;
+        return (hash.charAt(0).toUpperCase() + hash.slice(1)) as Tab;
     }
     return 'Discover';
 };
@@ -32,7 +32,7 @@ function App() {
         const initialTab = getTabFromHash();
         const hash = initialTab === 'Discover' ? '' : `#${initialTab.toLowerCase()}`;
         window.history.replaceState({ tab: initialTab }, '', hash || window.location.pathname);
-        
+
         // Mark as no longer initial mount
         isInitialMount.current = false;
     }, []);

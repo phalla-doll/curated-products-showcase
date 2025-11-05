@@ -48,10 +48,12 @@ export function createOrder(cartItems: CartItem[]): Order {
     const orderId = `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     const orderNumber = `#${Date.now().toString().slice(-8)}`;
     const createdAt = new Date().toISOString();
-    
+
     // Estimate delivery date (3-7 business days)
     const estimatedDeliveryDate = new Date();
-    estimatedDeliveryDate.setDate(estimatedDeliveryDate.getDate() + Math.floor(Math.random() * 5) + 3);
+    estimatedDeliveryDate.setDate(
+        estimatedDeliveryDate.getDate() + Math.floor(Math.random() * 5) + 3
+    );
     const estimatedDelivery = estimatedDeliveryDate.toISOString();
 
     const items: OrderItem[] = cartItems.map((item) => ({
@@ -65,7 +67,7 @@ export function createOrder(cartItems: CartItem[]): Order {
     // Determine initial status - randomly assign some as shipped/delivered for demo
     const statusOptions: OrderStatus[] = ['pending', 'processing', 'shipped', 'delivered'];
     const randomStatus = statusOptions[Math.floor(Math.random() * statusOptions.length)];
-    
+
     const order: Order = {
         id: orderId,
         orderNumber,
@@ -98,9 +100,7 @@ export function createOrder(cartItems: CartItem[]): Order {
  */
 export function getActiveOrders(): Order[] {
     const orders = getOrders();
-    return orders.filter(
-        (order) => order.status !== 'delivered' && order.status !== 'cancelled'
-    );
+    return orders.filter((order) => order.status !== 'delivered' && order.status !== 'cancelled');
 }
 
 /**
@@ -108,9 +108,7 @@ export function getActiveOrders(): Order[] {
  */
 export function getOrderHistory(): Order[] {
     const orders = getOrders();
-    return orders.filter(
-        (order) => order.status === 'delivered' || order.status === 'cancelled'
-    );
+    return orders.filter((order) => order.status === 'delivered' || order.status === 'cancelled');
 }
 
 /**
@@ -133,7 +131,7 @@ export function updateOrderStatus(orderId: string, status: OrderStatus): void {
 
         if (orderIndex >= 0) {
             orders[orderIndex].status = status;
-            
+
             // If status is delivered, add deliveredAt
             if (status === 'delivered' && !orders[orderIndex].deliveredAt) {
                 orders[orderIndex].deliveredAt = new Date().toISOString();

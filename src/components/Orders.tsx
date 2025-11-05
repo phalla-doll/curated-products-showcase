@@ -2,11 +2,11 @@ import type React from 'react';
 import { useEffect, useState } from 'react';
 import { BagIcon, ClockIcon } from '@/components/icons/CoreIcons';
 import {
-    type Order,
+    formatOrderDate,
     getActiveOrders,
     getOrderHistory,
-    formatOrderDate,
     getStatusColor,
+    type Order,
 } from '@/utils/orders';
 
 interface OrderCardProps {
@@ -25,9 +25,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                         <h3 className="text-lg font-semibold text-zinc-900 mb-1">
                             {order.orderNumber}
                         </h3>
-                        <p className="text-sm text-zinc-500">
-                            {formatOrderDate(order.createdAt)}
-                        </p>
+                        <p className="text-sm text-zinc-500">{formatOrderDate(order.createdAt)}</p>
                     </div>
                     <span
                         className={`px-3 py-1 text-xs font-medium rounded-full ${getStatusColor(
@@ -89,10 +87,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                     {order.estimatedDelivery && order.status !== 'delivered' && (
                         <div className="flex items-center gap-1.5 text-xs text-zinc-500">
                             <ClockIcon className="w-3.5 h-3.5" />
-                            <span>
-                                Est. delivery:{' '}
-                                {formatOrderDate(order.estimatedDelivery)}
-                            </span>
+                            <span>Est. delivery: {formatOrderDate(order.estimatedDelivery)}</span>
                         </div>
                     )}
                     {order.deliveredAt && (
@@ -133,12 +128,8 @@ function Orders() {
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="mb-8">
-                <h1 className="text-3xl font-bold text-zinc-900 tracking-tight mb-2">
-                    Orders
-                </h1>
-                <p className="text-zinc-600">
-                    Track your orders and view order history
-                </p>
+                <h1 className="text-3xl font-bold text-zinc-900 tracking-tight mb-2">Orders</h1>
+                <p className="text-zinc-600">Track your orders and view order history</p>
             </div>
 
             {/* Tabs */}
@@ -174,9 +165,7 @@ function Orders() {
                 <div className="flex flex-col items-center justify-center py-16 text-zinc-500">
                     <BagIcon className="size-16 mb-4 text-zinc-300" />
                     <p className="text-xl text-zinc-900 font-semibold text-center mb-1">
-                        {activeTab === 'active'
-                            ? 'No active orders'
-                            : 'No order history'}
+                        {activeTab === 'active' ? 'No active orders' : 'No order history'}
                     </p>
                     <p className="text-sm text-center">
                         {activeTab === 'active'

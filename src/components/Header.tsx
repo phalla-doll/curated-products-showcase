@@ -30,10 +30,12 @@ const getCartItemsCount = (items: CartItem[]): string => {
     return items.reduce((total, item) => total + item.quantity, 0).toLocaleString();
 };
 
-function Header() {
-    const [activeTab, setActiveTab] = useState<'Discover' | 'Browse' | 'Blog' | 'Orders'>(
-        'Discover'
-    );
+interface HeaderProps {
+    activeTab: 'Discover' | 'Browse' | 'Blog' | 'Orders';
+    setActiveTab: (tab: 'Discover' | 'Browse' | 'Blog' | 'Orders') => void;
+}
+
+function Header({ activeTab, setActiveTab }: HeaderProps) {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isConfirmationDialogOpen, setIsConfirmationDialogOpen] = useState(false);
     const [cartItems, setCartItems] = useState<CartItem[]>([]);

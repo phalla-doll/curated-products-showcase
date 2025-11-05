@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Browse from '@/components/Browse';
 import CategoryFilters from '@/components/CategoryFilters';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -7,6 +8,10 @@ import ProductGrid from '@/components/ProductGrid';
 import { trackPageView } from '@/utils/analytics';
 
 function App() {
+    const [activeTab, setActiveTab] = useState<'Discover' | 'Browse' | 'Blog' | 'Orders'>(
+        'Discover'
+    );
+
     useEffect(() => {
         // Track initial page view
         trackPageView(window.location.pathname);
@@ -15,11 +20,17 @@ function App() {
     return (
         <div className="bg-zinc-50 text-zinc-900 min-h-screen flex flex-col">
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
-                <Header />
+                <Header activeTab={activeTab} setActiveTab={setActiveTab} />
                 <main>
-                    <Hero />
-                    <CategoryFilters />
-                    <ProductGrid />
+                    {activeTab === 'Browse' ? (
+                        <Browse />
+                    ) : (
+                        <>
+                            <Hero />
+                            <CategoryFilters />
+                            <ProductGrid />
+                        </>
+                    )}
                 </main>
             </div>
             <Footer />

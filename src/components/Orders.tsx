@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { BagIcon, ClockIcon } from '@/components/icons/CoreIcons';
 import {
     formatOrderDate,
@@ -46,7 +46,10 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                     </div>
                     <div className="space-y-2">
                         {order.items.slice(0, 3).map((item, index) => (
-                            <div key={index} className="flex items-center justify-between text-sm">
+                            <div
+                                key={`${order.id}-${item.product.id}-${index}`}
+                                className="flex items-center justify-between text-sm"
+                            >
                                 <div className="flex items-center gap-3 flex-1 min-w-0">
                                     <img
                                         src={item.product.imageUrl}
@@ -107,10 +110,10 @@ function Orders() {
     const [orderHistory, setOrderHistory] = useState<Order[]>([]);
     const [activeTab, setActiveTab] = useState<'active' | 'history'>('active');
 
-    const loadOrders = () => {
+    const loadOrders = useCallback(() => {
         setActiveOrders(getActiveOrders());
         setOrderHistory(getOrderHistory());
-    };
+    }, []);
 
     useEffect(() => {
         loadOrders();
@@ -121,7 +124,7 @@ function Orders() {
         return () => {
             window.removeEventListener('orderupdated', loadOrders);
         };
-    }, []);
+    }, [loadOrders]);
 
     const allOrders = activeTab === 'active' ? activeOrders : orderHistory;
 

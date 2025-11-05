@@ -72,7 +72,7 @@ const CartItemsList = ({
                                 {/* Quantity Controls and Remove Button */}
                                 <div className="flex justify-between gap-2">
                                     <div className="flex items-center gap-3">
-                                        <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
+                                        <div className="flex items-center gap-1 border border-zinc-300 rounded-lg overflow-hidden">
                                             <button
                                                 type="button"
                                                 onClick={() =>

@@ -22,9 +22,10 @@ const getCategoryRepresentative = (categoryName: string): Product | null => {
 };
 
 // Type guard to ensure product is not null
-const hasProduct = (
-    item: { category: (typeof categories)[0]; product: Product | null }
-): item is { category: (typeof categories)[0]; product: Product } => {
+const hasProduct = (item: {
+    category: (typeof categories)[0];
+    product: Product | null;
+}): item is { category: (typeof categories)[0]; product: Product } => {
     return item.product !== null;
 };
 

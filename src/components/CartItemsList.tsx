@@ -48,7 +48,7 @@ const CartItemsList = ({
                             {/* Product Details - Left Side */}
                             <div className="flex-1 min-w-0 flex flex-col justify-between">
                                 <div className="flex justify-between gap-2">
-                                    <div className="flex flex-col gap-1">
+                                    <div className="flex flex-col gap-y-0.5">
                                         <h3 className="text-sm font-medium text-zinc-900 truncate">
                                             {item.product.name}
                                         </h3>

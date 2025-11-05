@@ -1,6 +1,8 @@
 import type React from 'react';
 import { useEffect } from 'react';
 import { XIcon } from '@/components/icons/CoreIcons';
+import { trackPurchase } from '@/utils/analytics';
+import { getCartItems, getCartTotal } from '@/utils/cart';
 
 interface OrderConfirmationDialogProps {
     isOpen: boolean;
@@ -18,6 +20,19 @@ const OrderConfirmationDialog: React.FC<OrderConfirmationDialogProps> = ({ isOpe
         if (isOpen) {
             document.addEventListener('keydown', handleEscape);
             document.body.style.overflow = 'hidden';
+
+            // Track purchase completion when dialog opens
+            const cartItems = getCartItems();
+            const cartTotal = getCartTotal();
+            if (cartItems.length > 0) {
+                const transactionId = `TXN-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+                const items = cartItems.map((item) => ({
+                    item_name: item.product.name,
+                    item_category: item.product.category,
+                    price: item.product.price,
+                }));
+                trackPurchase(transactionId, cartTotal, items);
+            }
         }
 
         return () => {

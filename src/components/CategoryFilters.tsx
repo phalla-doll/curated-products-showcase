@@ -2,6 +2,7 @@ import type React from 'react';
 import { useEffect, useState } from 'react';
 import { categories } from '@/constants';
 import type { Category } from '@/types';
+import { trackCategoryFilter } from '@/utils/analytics';
 
 // FIX: Defined a proper props interface and used React.FC to correctly type the component,
 // which resolves the issue with the 'key' prop and improves type safety for the 'category' prop.
@@ -56,6 +57,14 @@ function CategoryFilters() {
 
     const handleCategoryClick = (categoryId: string) => {
         setActiveCategory(categoryId);
+
+        // Track category filter selection
+        if (categoryId !== 'all') {
+            const category = categories.find((cat) => cat.id === categoryId);
+            if (category) {
+                trackCategoryFilter(category.name);
+            }
+        }
 
         // Update URL without page reload
         const params = new URLSearchParams(window.location.search);

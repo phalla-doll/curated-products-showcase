@@ -10,6 +10,7 @@ import {
 } from '@/components/icons/CoreIcons';
 import type { Product } from '@/types';
 import { addToCart } from '@/utils/cart';
+import { trackProductView, trackAddToCart } from '@/utils/analytics';
 
 interface ProductDialogProps {
     product: Product | null;
@@ -27,6 +28,8 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
         if (isOpen && product) {
             setQuantity(1);
             setIsAddedToCart(false);
+            // Track product view when dialog opens
+            trackProductView(product.name, product.category);
         }
     }, [isOpen, product]);
 
@@ -64,6 +67,9 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
 
     const handleAddToCart = () => {
         if (product) {
+            // Track add to cart event
+            trackAddToCart(product.name, product.category, product.price * quantity);
+
             // Update button state immediately
             setIsAddedToCart(true);
 

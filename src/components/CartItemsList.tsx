@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MinusIcon, PlusIcon, SpinnerIcon, XIcon } from '@/components/icons/CoreIcons';
 import type { CartItem } from '@/types';
+import { trackBeginCheckout, trackRemoveFromCart } from '@/utils/analytics';
 
 interface CartItemsListProps {
     cartItems: CartItem[];
@@ -20,6 +21,9 @@ const CartItemsList = ({
     const [isCheckingOut, setIsCheckingOut] = useState(false);
 
     const handleCheckout = () => {
+        // Track begin checkout event
+        trackBeginCheckout(cartTotal, cartItems.length);
+        
         setIsCheckingOut(true);
         setTimeout(() => {
             setIsCheckingOut(false);
@@ -60,7 +64,10 @@ const CartItemsList = ({
                                     <div>
                                         <button
                                             type="button"
-                                            onClick={() => onRemoveItem(item.product.id)}
+                                            onClick={() => {
+                                                trackRemoveFromCart(item.product.name, item.product.category);
+                                                onRemoveItem(item.product.id);
+                                            }}
                                             className="p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
                                             aria-label="Remove item"
                                         >

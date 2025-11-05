@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ExpandIcon, StaffPickIcon } from '@/components/icons/CoreIcons';
 import ProductDialog from '@/components/ProductDialog';
 import type { Product } from '@/types';
+import { trackProductClick } from '@/utils/analytics';
 
 interface ProductCardProps {
     product: Product;
@@ -12,12 +13,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const handleClick = () => {
+        trackProductClick(product.name, product.category);
         setIsDialogOpen(true);
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
+            trackProductClick(product.name, product.category);
             setIsDialogOpen(true);
         }
     };

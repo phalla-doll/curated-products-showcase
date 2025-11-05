@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { SearchIcon, XIcon } from '@/components/icons/CoreIcons';
+import { trackSearch } from '@/utils/analytics';
 
 // Helper to get initial search value from URL
 function getInitialSearchValue(): string {
@@ -90,10 +91,17 @@ function Hero() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        const trimmedSearch = searchValue.trim();
+
+        // Track search if there's a search term
+        if (trimmedSearch) {
+            trackSearch(trimmedSearch);
+        }
+
         const params = new URLSearchParams(window.location.search);
 
-        if (searchValue.trim()) {
-            params.set('search', searchValue.trim());
+        if (trimmedSearch) {
+            params.set('search', trimmedSearch);
         } else {
             params.delete('search');
         }

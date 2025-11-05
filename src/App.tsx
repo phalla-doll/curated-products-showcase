@@ -1,10 +1,17 @@
+import { useEffect } from 'react';
 import CategoryFilters from '@/components/CategoryFilters';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import ProductGrid from '@/components/ProductGrid';
+import { trackPageView } from '@/utils/analytics';
 
 function App() {
+    useEffect(() => {
+        // Track initial page view
+        trackPageView(window.location.pathname);
+    }, []);
+
     return (
         <div className="bg-zinc-50 text-zinc-900 min-h-screen flex flex-col">
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">

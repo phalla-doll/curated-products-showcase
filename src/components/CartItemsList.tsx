@@ -23,7 +23,7 @@ const CartItemsList = ({
     const handleCheckout = () => {
         // Track begin checkout event
         trackBeginCheckout(cartTotal, cartItems.length);
-        
+
         setIsCheckingOut(true);
         setTimeout(() => {
             setIsCheckingOut(false);
@@ -65,7 +65,10 @@ const CartItemsList = ({
                                         <button
                                             type="button"
                                             onClick={() => {
-                                                trackRemoveFromCart(item.product.name, item.product.category);
+                                                trackRemoveFromCart(
+                                                    item.product.name,
+                                                    item.product.category
+                                                );
                                                 onRemoveItem(item.product.id);
                                             }}
                                             className="p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"

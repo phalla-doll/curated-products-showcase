@@ -9,8 +9,8 @@ import {
     XIcon,
 } from '@/components/icons/CoreIcons';
 import type { Product } from '@/types';
+import { trackAddToCart, trackProductView } from '@/utils/analytics';
 import { addToCart } from '@/utils/cart';
-import { trackProductView, trackAddToCart } from '@/utils/analytics';
 
 interface ProductDialogProps {
     product: Product | null;

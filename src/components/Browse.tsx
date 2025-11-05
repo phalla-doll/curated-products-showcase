@@ -1,10 +1,7 @@
 import type React from 'react';
-import { useState } from 'react';
 import { ExpandIcon } from '@/components/icons/CoreIcons';
-import ProductDialog from '@/components/ProductDialog';
 import { categories, products } from '@/constants';
 import type { Product } from '@/types';
-import { trackProductClick } from '@/utils/analytics';
 
 // Get representative product for each category
 const getCategoryRepresentative = (categoryName: string): Product | null => {
@@ -52,63 +49,64 @@ interface CategoryCardProps {
 }
 
 const CategoryCard: React.FC<CategoryCardProps> = ({ category, product }) => {
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
-
     const handleClick = () => {
-        trackProductClick(product.name, product.category);
-        setIsDialogOpen(true);
+        // Update URL with category parameter, navigating to root path
+        const params = new URLSearchParams();
+        params.set('category', category.id);
+        const newUrl = `/?${params.toString()}`;
+        
+        // Update URL without page reload
+        window.history.pushState({}, '', newUrl);
+        
+        // Dispatch custom event to switch to Discover tab
+        window.dispatchEvent(new CustomEvent('switchtab', { detail: 'Discover' }));
+        
+        // Dispatch custom event to notify ProductGrid of category change
+        window.dispatchEvent(new CustomEvent('categorychange'));
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            trackProductClick(product.name, product.category);
-            setIsDialogOpen(true);
+            handleClick();
         }
     };
 
     return (
-        <>
-            {/* biome-ignore lint/a11y/useSemanticElements: Card needs to be clickable but contains nested content */}
-            <div
-                className="group cursor-pointer focus-visible:outline-none"
-                onClick={handleClick}
-                onKeyDown={handleKeyDown}
-                role="button"
-                tabIndex={0}
-                aria-label={`Browse ${category.name} category`}
-            >
-                <div className="relative bg-zinc-100 rounded-xl overflow-hidden aspect-[4/3]">
-                    <img
-                        src={product.imageUrl}
-                        alt={product.name}
-                        className="w-full h-full object-contain p-8 transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div
-                        className="absolute top-3 right-3 p-2 bg-white/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                        aria-hidden="true"
-                    >
-                        <ExpandIcon className="w-4 h-4 text-zinc-800" />
-                    </div>
-                    <div className="absolute top-3 left-3 flex items-center gap-2 px-3 py-1.5 bg-white/50 backdrop-blur-sm rounded-full text-xs font-medium text-zinc-900">
-                        <category.icon className="w-4 h-4 text-zinc-700" />
-                        <span>{category.name}</span>
-                    </div>
+        /* biome-ignore lint/a11y/useSemanticElements: Card needs to be clickable but contains nested content */
+        <div
+            className="group cursor-pointer focus-visible:outline-none"
+            onClick={handleClick}
+            onKeyDown={handleKeyDown}
+            role="button"
+            tabIndex={0}
+            aria-label={`Browse ${category.name} category`}
+        >
+            <div className="relative bg-zinc-100 rounded-xl overflow-hidden aspect-[4/3]">
+                <img
+                    src={product.imageUrl}
+                    alt={product.name}
+                    className="w-full h-full object-contain p-8 transition-transform duration-300 group-hover:scale-105"
+                />
+                <div
+                    className="absolute top-3 right-3 p-2 bg-white/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    aria-hidden="true"
+                >
+                    <ExpandIcon className="w-4 h-4 text-zinc-800" />
                 </div>
-                <div className="pt-4">
-                    <p className="text-sm text-zinc-500">
-                        {category.name} &middot; {category.count}{' '}
-                        {category.count === 1 ? 'item' : 'items'}
-                    </p>
-                    <h3 className="text-base font-medium text-zinc-900">{category.name}</h3>
+                <div className="absolute top-3 left-3 flex items-center gap-2 px-3 py-1.5 bg-white/50 backdrop-blur-sm rounded-full text-xs font-medium text-zinc-900">
+                    <category.icon className="w-4 h-4 text-zinc-700" />
+                    <span>{category.name}</span>
                 </div>
             </div>
-            <ProductDialog
-                product={product}
-                isOpen={isDialogOpen}
-                onClose={() => setIsDialogOpen(false)}
-            />
-        </>
+            <div className="pt-4">
+                <p className="text-sm text-zinc-500">
+                    {category.name} &middot; {category.count}{' '}
+                    {category.count === 1 ? 'item' : 'items'}
+                </p>
+                <h3 className="text-base font-medium text-zinc-900">{category.name}</h3>
+            </div>
+        </div>
     );
 };
 

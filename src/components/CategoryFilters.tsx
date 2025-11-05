@@ -43,16 +43,26 @@ function CategoryFilters() {
         }
     }, []);
 
-    // Listen for popstate events (back/forward button)
+    // Listen for popstate events (back/forward button) and categorychange events
     useEffect(() => {
         const handlePopState = () => {
             const params = new URLSearchParams(window.location.search);
             const categoryParam = params.get('category');
             setActiveCategory(categoryParam || 'all');
         };
+        
+        const handleCategoryChange = () => {
+            const params = new URLSearchParams(window.location.search);
+            const categoryParam = params.get('category');
+            setActiveCategory(categoryParam || 'all');
+        };
 
         window.addEventListener('popstate', handlePopState);
-        return () => window.removeEventListener('popstate', handlePopState);
+        window.addEventListener('categorychange', handleCategoryChange);
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+            window.removeEventListener('categorychange', handleCategoryChange);
+        };
     }, []);
 
     const handleCategoryClick = (categoryId: string) => {

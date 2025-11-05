@@ -15,6 +15,19 @@ function App() {
     useEffect(() => {
         // Track initial page view
         trackPageView(window.location.pathname);
+        
+        // Listen for tab switch events from category cards
+        const handleTabSwitch = (event: CustomEvent) => {
+            if (event.detail === 'Discover') {
+                setActiveTab('Discover');
+            }
+        };
+        
+        window.addEventListener('switchtab', handleTabSwitch as EventListener);
+        
+        return () => {
+            window.removeEventListener('switchtab', handleTabSwitch as EventListener);
+        };
     }, []);
 
     return (

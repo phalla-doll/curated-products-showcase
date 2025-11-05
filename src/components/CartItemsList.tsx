@@ -58,49 +58,55 @@ const CartItemsList = ({
                                     </div>
                                     {/* Remove Button */}
                                     <div>
-                                    <button
-                                        type="button"
-                                        onClick={() => onRemoveItem(item.product.id)}
-                                        className="p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
-                                        aria-label="Remove item"
-                                    >
-                                        <XIcon className="size-4 text-zinc-500" />
-                                    </button>
+                                        <button
+                                            type="button"
+                                            onClick={() => onRemoveItem(item.product.id)}
+                                            className="p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
+                                            aria-label="Remove item"
+                                        >
+                                            <XIcon className="size-4 text-zinc-500" />
+                                        </button>
                                     </div>
                                 </div>
 
                                 {/* Quantity Controls and Remove Button */}
                                 <div className="flex justify-between gap-2">
-                                <div className="flex items-center gap-3">
-                                    <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
-                                        <button
-                                            type="button"
-                                            onClick={() =>
-                                                onUpdateQuantity(item.product.id, item.quantity - 1)
-                                            }
-                                            className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
-                                            aria-label="Decrease quantity"
-                                        >
-                                            <MinusIcon className="size-3.5 text-zinc-700" />
-                                        </button>
-                                        <span className="w-8 text-center text-sm font-medium text-zinc-900">
-                                            {item.quantity}
-                                        </span>
-                                        <button
-                                            type="button"
-                                            onClick={() =>
-                                                onUpdateQuantity(item.product.id, item.quantity + 1)
-                                            }
-                                            className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
-                                            aria-label="Increase quantity"
-                                        >
-                                            <PlusIcon className="size-3.5 text-zinc-700" />
-                                        </button>
+                                    <div className="flex items-center gap-3">
+                                        <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
+                                            <button
+                                                type="button"
+                                                onClick={() =>
+                                                    onUpdateQuantity(
+                                                        item.product.id,
+                                                        item.quantity - 1
+                                                    )
+                                                }
+                                                className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
+                                                aria-label="Decrease quantity"
+                                            >
+                                                <MinusIcon className="size-3.5 text-zinc-700" />
+                                            </button>
+                                            <span className="w-8 text-center text-sm font-medium text-zinc-900">
+                                                {item.quantity}
+                                            </span>
+                                            <button
+                                                type="button"
+                                                onClick={() =>
+                                                    onUpdateQuantity(
+                                                        item.product.id,
+                                                        item.quantity + 1
+                                                    )
+                                                }
+                                                className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
+                                                aria-label="Increase quantity"
+                                            >
+                                                <PlusIcon className="size-3.5 text-zinc-700" />
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                                <p className="text-base font-semibold text-zinc-900">
-                                    ${item.product.price.toLocaleString()}
-                                </p>
+                                    <p className="text-base font-semibold text-zinc-900">
+                                        ${item.product.price.toLocaleString()}
+                                    </p>
                                 </div>
                             </div>
                         </div>

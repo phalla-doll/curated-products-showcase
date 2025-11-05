@@ -104,12 +104,6 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
                                     active={activeTab === 'Discover'}
                                     onClick={() => {
                                         setActiveTab('Discover');
-                                        // Store tab state in history for back/forward navigation
-                                        window.history.replaceState(
-                                            { tab: 'Discover' },
-                                            '',
-                                            window.location.href
-                                        );
                                     }}
                                 >
                                     Discover
@@ -118,12 +112,6 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
                                     active={activeTab === 'Browse'}
                                     onClick={() => {
                                         setActiveTab('Browse');
-                                        // Store tab state in history for back/forward navigation
-                                        window.history.replaceState(
-                                            { tab: 'Browse' },
-                                            '',
-                                            window.location.href
-                                        );
                                     }}
                                 >
                                     Browse
@@ -132,12 +120,6 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
                                     active={activeTab === 'Blog'}
                                     onClick={() => {
                                         setActiveTab('Blog');
-                                        // Store tab state in history for back/forward navigation
-                                        window.history.replaceState(
-                                            { tab: 'Blog' },
-                                            '',
-                                            window.location.href
-                                        );
                                     }}
                                 >
                                     Blog
@@ -146,12 +128,6 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
                                     active={activeTab === 'Orders'}
                                     onClick={() => {
                                         setActiveTab('Orders');
-                                        // Store tab state in history for back/forward navigation
-                                        window.history.replaceState(
-                                            { tab: 'Orders' },
-                                            '',
-                                            window.location.href
-                                        );
                                     }}
                                 >
                                     Orders

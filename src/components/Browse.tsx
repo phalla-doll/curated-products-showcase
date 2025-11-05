@@ -21,6 +21,13 @@ const getCategoryRepresentative = (categoryName: string): Product | null => {
     return categoryProduct || null;
 };
 
+// Type guard to ensure product is not null
+const hasProduct = (
+    item: { category: (typeof categories)[0]; product: Product | null }
+): item is { category: (typeof categories)[0]; product: Product } => {
+    return item.product !== null;
+};
+
 // Get all categories with their representative products
 const getCategoryCards = () => {
     return categories
@@ -35,7 +42,7 @@ const getCategoryCards = () => {
                 product: representativeProduct,
             };
         })
-        .filter((item) => item.product !== null); // Only include categories with products
+        .filter(hasProduct); // Only include categories with products
 };
 
 interface CategoryCardProps {
@@ -119,7 +126,7 @@ function Browse() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px]">
                 {categoryCards.map(({ category, product }) => (
-                    <CategoryCard key={category.id} category={category} product={product!} />
+                    <CategoryCard key={category.id} category={category} product={product} />
                 ))}
             </div>
         </div>

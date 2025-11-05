@@ -50,10 +50,12 @@ interface CategoryCardProps {
 
 const CategoryCard: React.FC<CategoryCardProps> = ({ category, product }) => {
     const handleClick = () => {
-        // Update URL with category parameter, navigating to root path
-        const params = new URLSearchParams();
+        // Update URL with category parameter, preserving existing search parameters
+        const params = new URLSearchParams(window.location.search);
         params.set('category', category.id);
-        const newUrl = `/?${params.toString()}`;
+        const newUrl = params.toString()
+            ? `/?${params.toString()}`
+            : '/';
         
         // Update URL without page reload
         window.history.pushState({}, '', newUrl);

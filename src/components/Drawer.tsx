@@ -85,8 +85,8 @@ function Drawer({ isOpen, onClose, title, children, ariaLabel, cartItems }: Draw
                 <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-200">
                     <h2 className="text-xl font-semibold text-zinc-900">
                         {title}{' '}
-                        <span className="text-zinc-500 font-normal">
-                            ({getCartItemsCount(cartItems)})
+                        <span className="text-zinc-500 text-base font-normal">
+                            [{getCartItemsCount(cartItems)}]
                         </span>
                     </h2>
                     <button

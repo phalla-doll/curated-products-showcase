@@ -9,7 +9,17 @@ A modern, responsive web application for discovering well-designed, carefully cu
 ## ✨ Features
 
 - **Product Discovery**: Browse through a curated collection of premium products
-- **Category Filtering**: Filter products by categories (All, New, Picks, Tech, Workspace, Home, Carry, Books, Lifestyle)
+- **Category Filtering**: Filter products by categories (All, New, Picks, Tech, Workspace, Home, Carry, Books, Lifestyle) with URL-based navigation
+- **Search Functionality**: Search products by brand, name, category, or description
+- **Product Details Modal**: Click on any product to view detailed information including price, description, and product details
+- **Shopping Cart**: Full shopping cart functionality with:
+  - Add products to cart with quantity selection
+  - View cart items in a slide-out drawer
+  - Update item quantities
+  - Remove items from cart
+  - Persistent cart storage using localStorage
+  - Cart item count badge in header
+- **Order Confirmation**: Checkout flow with order confirmation dialog
 - **Staff Picks**: Highlighted products marked as staff favorites
 - **Email Subscription**: Hero section with newsletter subscription form
 - **Responsive Design**: Fully responsive layout optimized for mobile, tablet, and desktop
@@ -21,7 +31,8 @@ A modern, responsive web application for discovering well-designed, carefully cu
 - **React** 19.2.0 - UI library
 - **TypeScript** 5.8.2 - Type safety
 - **Vite** 6.2.0 - Build tool and dev server
-- **Tailwind CSS** - Utility-first CSS framework (via className)
+- **Tailwind CSS** 4.0.0 - Utility-first CSS framework
+- **Biome** 2.3.2 - Fast linter and formatter
 - **Bona Nova & Space Grotesk** - Modern typography (from Google Fonts)
 
 ## 📁 Project Structure
@@ -30,30 +41,37 @@ A modern, responsive web application for discovering well-designed, carefully cu
 product-showcase/
 ├── src/                  # Source code directory
 │   ├── components/       # React components
-│   │   ├── Header.tsx    # Navigation header with search
+│   │   ├── Header.tsx    # Navigation header with search and cart
 │   │   ├── Hero.tsx      # Hero section with subscription form
 │   │   ├── CategoryFilters.tsx  # Category filter buttons
-│   │   ├── ProductGrid.tsx      # Product grid layout
+│   │   ├── ProductGrid.tsx      # Product grid layout with filtering
 │   │   ├── ProductCard.tsx      # Individual product card component
+│   │   ├── ProductDialog.tsx    # Product detail modal dialog
+│   │   ├── Drawer.tsx           # Slide-out drawer component (for cart)
+│   │   ├── CartItemsList.tsx    # Cart items display component
+│   │   ├── OrderConfirmationDialog.tsx  # Order confirmation modal
+│   │   ├── Footer.tsx           # Footer component
 │   │   └── icons/        # Icon components
 │   │       ├── CategoryIcons.tsx  # Category-specific icons
 │   │       └── CoreIcons.tsx      # Core UI icons
 │   ├── hooks/            # Custom React hooks (ready for future use)
 │   ├── lib/              # Utility libraries
 │   │   └── fonts.ts      # Font configuration
-│   ├── utils/            # Utility functions (ready for future use)
+│   ├── utils/            # Utility functions
+│   │   └── cart.ts       # Cart management utilities (localStorage)
 │   ├── App.tsx           # Main application component
 │   ├── index.tsx         # Application entry point
 │   ├── index.css         # Global styles
 │   ├── types.ts          # TypeScript type definitions
 │   └── constants.ts      # App constants (products, categories)
-├── public/               # Static assets
-│   └── workLouder.webp   # Product images
-├── .env.example          # Environment variables template
+├── public/               # Static assets (product images)
+├── dist/                 # Production build output
 ├── index.html            # HTML entry point
 ├── vite.config.ts        # Vite configuration
 ├── tsconfig.json         # TypeScript configuration
-└── package.json          # Dependencies and scripts
+├── biome.json            # Biome linter/formatter configuration
+├── package.json          # Dependencies and scripts
+└── metadata.json         # Project metadata
 ```
 
 ## 🚀 Getting Started
@@ -78,17 +96,12 @@ product-showcase/
 
 3. **Set up environment variables** (optional)
    
-   Copy `.env.example` to `.env.local` and configure your Gemini API key:
-   ```bash
-   cp .env.example .env.local
-   ```
-   
-   Then edit `.env.local` and add your API key:
+   The project supports environment variables for the Gemini API key (configured in `vite.config.ts`). If needed, create a `.env.local` file:
    ```env
    GEMINI_API_KEY=your_api_key_here
    ```
    
-   Note: The Gemini API key is configured in `vite.config.ts` but may not be actively used in the current implementation.
+   Note: Currently, the Gemini API key is not actively used in the application implementation.
 
 4. **Start the development server**
    ```bash
@@ -104,6 +117,13 @@ product-showcase/
 - `npm run dev` - Start the development server (runs on port 3000)
 - `npm run build` - Build the application for production
 - `npm run preview` - Preview the production build locally
+- `npm run lint` - Run Biome linter and auto-fix issues
+- `npm run lint:check` - Check for linting issues without fixing
+- `npm run format` - Format code using Biome
+- `npm run format:check` - Check code formatting without fixing
+- `npm run check` - Run both linter and formatter with auto-fix
+- `npm run check:ci` - Run both linter and formatter (CI mode, no auto-fix)
+- `npm run fix` - Alias for `check` command
 
 ## 🎨 Key Components
 
@@ -136,6 +156,32 @@ product-showcase/
 - Product name
 - Hover effects (scale and expand button)
 - Staff pick badge indicator
+- Click to open product detail dialog
+
+### Product Dialog
+- Full-screen modal dialog for product details
+- Product image with staff pick badge
+- Product information (brand, category, name, price)
+- Product description
+- Quantity selector (increment/decrement)
+- Add to cart functionality
+- Keyboard navigation (ESC to close)
+- Backdrop click to close
+
+### Shopping Cart (Drawer)
+- Slide-out drawer component from the right
+- Cart items list with product images
+- Quantity management (increase/decrease)
+- Remove items functionality
+- Cart total calculation
+- Empty cart state
+- Checkout button with loading state
+- Persistent storage using localStorage
+
+### Order Confirmation Dialog
+- Success confirmation after checkout
+- Developer note with social links
+- Smooth animations and transitions
 
 ## 🎯 Product Data Structure
 
@@ -148,7 +194,14 @@ interface Product {
   category: string;
   name: string;
   imageUrl: string;
+  price: number;
+  description?: string;
   isStaffPick?: boolean;
+}
+
+interface CartItem {
+  product: Product;
+  quantity: number;
 }
 ```
 
@@ -178,14 +231,25 @@ Categories include:
 - Development server runs on port 3000
 - Host set to `0.0.0.0` for network access
 - React plugin enabled
-- Path alias `@` configured for root directory
+- Path alias `@` configured for root directory (`./src/*`)
 - Environment variables support for Gemini API key
 - Source files organized in `src/` directory (standard Vite convention)
 
 ### TypeScript Configuration
+- Target: ES2022
 - Strict type checking enabled
-- React types included
-- Path aliases configured
+- React JSX transform enabled
+- Path aliases configured (`@/*` → `./src/*`)
+- Module resolution: bundler
+- Experimental decorators enabled
+
+### Biome Configuration
+- Fast linter and formatter (alternative to ESLint + Prettier)
+- 4-space indentation
+- Single quotes for JavaScript/TypeScript
+- Double quotes for JSX
+- Line width: 100 characters
+- Organized imports enabled
 
 ## 📱 Browser Support
 
@@ -225,23 +289,29 @@ The built application can be deployed to any static hosting service:
 - Component props are properly typed
 - Icons are implemented as React components
 - Product data is currently static (stored in `src/constants.ts`)
-- Category filtering state is managed locally in `CategoryFilters` component
+- Category filtering and search use URL parameters for shareable links
+- Cart state is persisted in localStorage and synchronized across components using custom events
+- Custom events: `cartupdated`, `categorychange`, `searchchange`, `focussearch`
+- Product filtering supports both category and search parameters simultaneously
 - Project follows standard React/Vite folder structure with `src/` directory organization
-- Ready-to-use folders (`hooks/`, `utils/`) for future expansion
+- Biome is used for linting and formatting (faster alternative to ESLint + Prettier)
+- All components are accessible with proper ARIA labels and keyboard navigation
 
 ## 🔮 Future Enhancements
 
 Potential improvements:
 - Connect to a backend API for dynamic product data
-- Implement search functionality
-- Add product detail pages
 - Add user authentication
-- Implement shopping cart functionality
+- Integrate with payment gateway for real checkout
 - Add product reviews and ratings
-- Integrate with payment gateway
 - Add admin panel for product management
 - Implement filtering by price, brand, etc.
-- Add sorting options
+- Add sorting options (price, name, date added)
+- Product comparison feature
+- Wishlist functionality
+- Product recommendations
+- Analytics and tracking
+- Internationalization (i18n)
 
 ## 📄 License
 

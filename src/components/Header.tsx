@@ -31,7 +31,9 @@ const getCartItemsCount = (items: CartItem[]): string => {
 };
 
 function Header() {
-    const [activeTab, setActiveTab] = useState<'Discover' | 'Browse' | 'Blog' | 'Orders'>('Discover');
+    const [activeTab, setActiveTab] = useState<'Discover' | 'Browse' | 'Blog' | 'Orders'>(
+        'Discover'
+    );
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isConfirmationDialogOpen, setIsConfirmationDialogOpen] = useState(false);
     const [cartItems, setCartItems] = useState<CartItem[]>([]);

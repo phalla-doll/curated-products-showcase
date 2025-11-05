@@ -47,14 +47,30 @@ const CartItemsList = ({
 
                             {/* Product Details - Left Side */}
                             <div className="flex-1 min-w-0 flex flex-col justify-between">
-                                <div className="flex flex-col gap-1">
-                                    <h3 className="text-sm font-medium text-zinc-900 truncate">
-                                        {item.product.name}
-                                    </h3>
-                                    <p className="text-xs text-zinc-500">{item.product.brand}</p>
+                                <div className="flex justify-between gap-2">
+                                    <div className="flex flex-col gap-1">
+                                        <h3 className="text-sm font-medium text-zinc-900 truncate">
+                                            {item.product.name}
+                                        </h3>
+                                        <p className="text-xs text-zinc-500">
+                                            {item.product.brand}
+                                        </p>
+                                    </div>
+                                    {/* Remove Button */}
+                                    <div>
+                                    <button
+                                        type="button"
+                                        onClick={() => onRemoveItem(item.product.id)}
+                                        className="p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
+                                        aria-label="Remove item"
+                                    >
+                                        <XIcon className="size-4 text-zinc-500" />
+                                    </button>
+                                    </div>
                                 </div>
 
                                 {/* Quantity Controls and Remove Button */}
+                                <div className="flex justify-between gap-2">
                                 <div className="flex items-center gap-3">
                                     <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
                                         <button
@@ -81,24 +97,11 @@ const CartItemsList = ({
                                             <PlusIcon className="size-3.5 text-zinc-700" />
                                         </button>
                                     </div>
-
-                                    {/* Remove Button */}
-                                    <button
-                                        type="button"
-                                        onClick={() => onRemoveItem(item.product.id)}
-                                        className="p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
-                                        aria-label="Remove item"
-                                    >
-                                        <XIcon className="size-4 text-zinc-500" />
-                                    </button>
                                 </div>
-                            </div>
-
-                            {/* Right Side - Price */}
-                            <div className="flex items-start">
                                 <p className="text-base font-semibold text-zinc-900">
                                     ${item.product.price.toLocaleString()}
                                 </p>
+                                </div>
                             </div>
                         </div>
                     ))}

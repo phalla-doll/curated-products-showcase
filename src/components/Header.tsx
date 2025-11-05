@@ -31,7 +31,7 @@ const getCartItemsCount = (items: CartItem[]): string => {
 };
 
 function Header() {
-    const [activeTab, setActiveTab] = useState<'Discover' | 'Browse' | 'Blog' | 'Info'>('Discover');
+    const [activeTab, setActiveTab] = useState<'Discover' | 'Browse' | 'Blog' | 'Orders'>('Discover');
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isConfirmationDialogOpen, setIsConfirmationDialogOpen] = useState(false);
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -115,10 +115,10 @@ function Header() {
                                     Blog
                                 </NavLink>
                                 <NavLink
-                                    active={activeTab === 'Info'}
-                                    onClick={() => setActiveTab('Info')}
+                                    active={activeTab === 'Orders'}
+                                    onClick={() => setActiveTab('Orders')}
                                 >
-                                    Info
+                                    Orders
                                 </NavLink>
                             </div>
                         </div>

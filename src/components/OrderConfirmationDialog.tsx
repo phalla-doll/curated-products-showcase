@@ -2,7 +2,8 @@ import type React from 'react';
 import { useEffect } from 'react';
 import { XIcon } from '@/components/icons/CoreIcons';
 import { trackPurchase } from '@/utils/analytics';
-import { getCartItems, getCartTotal } from '@/utils/cart';
+import { getCartItems, getCartTotal, clearCart } from '@/utils/cart';
+import { createOrder } from '@/utils/orders';
 
 interface OrderConfirmationDialogProps {
     isOpen: boolean;
@@ -32,6 +33,10 @@ const OrderConfirmationDialog: React.FC<OrderConfirmationDialogProps> = ({ isOpe
                     price: item.product.price,
                 }));
                 trackPurchase(transactionId, cartTotal, items);
+                
+                // Create order and clear cart
+                createOrder(cartItems);
+                clearCart();
             }
         }
 

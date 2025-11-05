@@ -5,6 +5,7 @@ import CategoryFilters from '@/components/CategoryFilters';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import Orders from '@/components/Orders';
 import ProductGrid from '@/components/ProductGrid';
 import { trackPageView } from '@/utils/analytics';
 
@@ -92,6 +93,8 @@ function App() {
                         <Browse />
                     ) : activeTab === 'Blog' ? (
                         <Blog />
+                    ) : activeTab === 'Orders' ? (
+                        <Orders />
                     ) : (
                         <>
                             <Hero />

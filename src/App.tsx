@@ -84,17 +84,13 @@ function App() {
         params.delete('category');
         const queryString = params.toString();
         newUrl = window.location.pathname + (queryString ? `?${queryString}` : '') + urlHash;
-        
+
         // Dispatch event to notify CategoryFilters to update to "All" when on Discover tab
         if (route.tab === 'Discover') {
             window.dispatchEvent(new CustomEvent('categorychange'));
         }
 
-        window.history.replaceState(
-            { tab: route.tab, blogId: route.blogId },
-            '',
-            newUrl
-        );
+        window.history.replaceState({ tab: route.tab, blogId: route.blogId }, '', newUrl);
 
         // Mark as no longer initial mount
         isInitialMount.current = false;
@@ -129,7 +125,7 @@ function App() {
         params.delete('category');
         const queryString = params.toString();
         newUrl = window.location.pathname + (queryString ? `?${queryString}` : '') + hash;
-        
+
         // Dispatch event to notify CategoryFilters to update to "All" when switching to Discover tab
         if (activeTab === 'Discover') {
             window.dispatchEvent(new CustomEvent('categorychange'));
@@ -175,10 +171,12 @@ function App() {
                 params.delete('category');
                 const queryString = params.toString();
                 const newUrl =
-                    window.location.pathname + (queryString ? `?${queryString}` : '') + window.location.hash;
+                    window.location.pathname +
+                    (queryString ? `?${queryString}` : '') +
+                    window.location.hash;
                 window.history.replaceState({ tab: newTab, blogId: newBlogId }, '', newUrl);
             }
-            
+
             // Dispatch event to notify CategoryFilters to update to "All" when navigating to Discover tab
             if (newTab === 'Discover') {
                 window.dispatchEvent(new CustomEvent('categorychange'));
@@ -203,7 +201,7 @@ function App() {
             const queryString = params.toString();
             const newUrl =
                 window.location.pathname + (queryString ? `?${queryString}` : '') + fullHash;
-            
+
             // Dispatch event to notify CategoryFilters to update to "All" when switching to Discover tab
             if (route.tab === 'Discover') {
                 window.dispatchEvent(new CustomEvent('categorychange'));

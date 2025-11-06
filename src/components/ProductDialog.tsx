@@ -53,7 +53,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                 clearTimeout(shareTimeoutRef.current);
                 shareTimeoutRef.current = null;
             }
-            
+
             // Clear add-to-cart timeout if product changed to a different product
             // (not if dialog is just closing - product becomes null)
             // This prevents stale product data from being added when switching products quickly
@@ -156,7 +156,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
             // This ensures we use the correct values even if product changes
             addToCartProductRef.current = product;
             addToCartQuantityRef.current = quantity;
-            
+
             // Wait 500ms before actually adding to cart
             // Note: This timeout is NOT cleared when dialog closes (to ensure product is added),
             // but IS cleared when product changes (to prevent stale product data)
@@ -164,7 +164,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                 // Get the product and quantity from refs (these are the values when button was clicked)
                 const productToAdd = addToCartProductRef.current;
                 const quantityToAdd = addToCartQuantityRef.current;
-                
+
                 // Verify we still have valid product data
                 if (!productToAdd) {
                     addToCartTimeoutRef.current = null;

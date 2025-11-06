@@ -132,6 +132,16 @@ const OrderConfirmationDialog: React.FC<OrderConfirmationDialogProps> = ({ isOpe
 
                     <button
                         type="button"
+                        onClick={() => {
+                            onClose();
+                            window.location.hash = '#orders';
+                        }}
+                        className="w-full mb-2 px-6 py-3 bg-zinc-50 border border-zinc-100 text-zinc-900 font-medium rounded-lg hover:bg-zinc-100 transition-colors duration-200"
+                    >
+                        View Orders
+                    </button>
+                    <button
+                        type="button"
                         onClick={onClose}
                         className="w-full px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200"
                     >

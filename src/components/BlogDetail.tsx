@@ -1,4 +1,4 @@
-import { ClockIcon, XIcon } from '@/components/icons/CoreIcons';
+import { ClockIcon, ArrowLeftIcon } from '@/components/icons/CoreIcons';
 
 export interface BlogPost {
     id: number;
@@ -476,7 +476,7 @@ function BlogDetail({ postId, onBack }: BlogDetailProps) {
                 className="flex items-center gap-2 text-zinc-600 hover:text-zinc-900 mb-6 transition-colors group"
                 aria-label="Back to blog"
             >
-                <XIcon className="w-5 h-5 rotate-45 group-hover:rotate-0 transition-transform" />
+                <ArrowLeftIcon className="w-5 h-5" />
                 <span className="font-medium">Back to Blog</span>
             </button>
 

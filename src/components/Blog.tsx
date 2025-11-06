@@ -81,8 +81,8 @@ interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
     return (
-        <article className="group cursor-pointer focus-visible:outline-none">
-            <div className="bg-white rounded-xl overflow-hidden border border-zinc-200/80 shadow-sm hover:shadow-md transition-shadow duration-300">
+        <article className="group cursor-pointer focus-visible:outline-none h-full flex flex-col">
+            <div className="bg-white rounded-xl overflow-hidden border border-zinc-200/80 shadow-sm hover:shadow-md transition-shadow duration-300 h-full flex flex-col">
                 {post.imageUrl ? (
                     <div className="aspect-video bg-zinc-100 overflow-hidden">
                         <img
@@ -96,7 +96,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
                         <span className="text-4xl font-bold text-zinc-400">{post.title[0]}</span>
                     </div>
                 )}
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-grow">
                     <div className="flex items-center gap-3 mb-3">
                         <span className="px-3 py-1 bg-zinc-100 text-zinc-700 text-xs font-medium rounded-full">
                             {post.category}
@@ -106,13 +106,13 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
                             <span>{post.readTime}</span>
                         </div>
                     </div>
-                    <h2 className="text-xl font-semibold text-zinc-900 mb-2 group-hover:text-zinc-700 transition-colors duration-200">
+                    <h2 className="text-xl font-semibold text-zinc-900 mb-2 group-hover:text-zinc-700 transition-colors duration-200 line-clamp-2 min-h-[3.5rem]">
                         {post.title}
                     </h2>
-                    <p className="text-zinc-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                    <p className="text-zinc-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">
                         {post.excerpt}
                     </p>
-                    <div className="flex items-center justify-between pt-4 border-t border-zinc-100">
+                    <div className="flex items-center justify-between pt-4 border-t border-zinc-100 mt-auto">
                         <div className="flex items-center gap-2">
                             <div className="w-8 h-8 rounded-full bg-zinc-200 flex items-center justify-center">
                                 <span className="text-xs font-medium text-zinc-700">
@@ -140,14 +140,14 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
 
 function Blog() {
     return (
-        <div className="px-4 sm:px-6 lg:px-8 py-8">
+        <div className="px-4 sm:px-6 lg:px-8 py-8 max-w-screen-xl mx-auto">
             <div className="mb-8">
                 <h1 className="text-3xl font-bold text-zinc-900 tracking-tight mb-2">Blog</h1>
                 <p className="text-zinc-600">
                     Insights, stories, and inspiration from the world of design
                 </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px] items-stretch">
                 {blogPosts.map((post) => (
                     <BlogCard key={post.id} post={post} />
                 ))}

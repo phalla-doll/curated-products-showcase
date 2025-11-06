@@ -5,6 +5,7 @@ import {
     CheckIcon,
     MinusIcon,
     PlusIcon,
+    ShareIcon,
     StaffPickIcon,
     XIcon,
 } from '@/components/icons/CoreIcons';
@@ -109,15 +110,25 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
 
             {/* Dialog */}
             <div className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto md:overflow-hidden grid grid-cols-1 md:grid-cols-2">
-                {/* Close Button */}
-                <button
-                    type="button"
-                    onClick={onClose}
-                    className="absolute top-4 right-4 z-10 p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-all duration-200 shadow-none hover:shadow-lg"
-                    aria-label="Close dialog"
-                >
-                    <XIcon className="size-5 text-zinc-800" />
-                </button>
+                <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+                    {/* Share Button */}
+                    <button
+                        type="button"
+                        className="p-2 bg-white backdrop-blur-sm rounded-full hover:bg-zinc-100 transition-colors duration-200"
+                        aria-label="Share product"
+                    >
+                        <ShareIcon className="size-5 text-zinc-800" />
+                    </button>
+                    {/* Close Button */}
+                    <button
+                        type="button"
+                        onClick={onClose}
+                        className="p-2 bg-white backdrop-blur-sm rounded-full hover:bg-zinc-100 transition-colors duration-200"
+                        aria-label="Close dialog"
+                    >
+                        <XIcon className="size-5 text-zinc-800" />
+                    </button>
+                </div>
 
                 {/* Image Block - Left */}
                 <div className="bg-zinc-100 flex items-center justify-center p-8 md:p-12 relative">

@@ -14,7 +14,15 @@ interface OrderCardProps {
 }
 
 const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
     const itemCount = order.items.reduce((sum, item) => sum + item.quantity, 0);
+    const hasMoreItems = order.items.length > 3;
+    const visibleItems = isExpanded ? order.items : order.items.slice(0, 3);
+    const remainingCount = order.items.length - 3;
+
+    const toggleExpand = () => {
+        setIsExpanded(!isExpanded);
+    };
 
     return (
         <div className="bg-white rounded-xl border border-zinc-200/80 shadow-sm hover:shadow-md transition-shadow duration-300 h-full flex flex-col">
@@ -45,10 +53,12 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                         </span>
                     </div>
                     <div className="space-y-2">
-                        {order.items.slice(0, 3).map((item, index) => (
+                        {visibleItems.map((item, index) => (
                             <div
                                 key={`${order.id}-${item.product.id}-${index}`}
-                                className="flex items-center justify-between text-sm"
+                                className={`flex items-center justify-between text-sm ${
+                                    index >= 3 && isExpanded ? 'animate-fade-in' : ''
+                                }`}
                             >
                                 <div className="flex items-center gap-3 flex-1 min-w-0">
                                     <img
@@ -70,11 +80,27 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                                 </span>
                             </div>
                         ))}
-                        {order.items.length > 3 && (
-                            <p className="text-xs text-zinc-500 pt-1">
-                                +{order.items.length - 3} more{' '}
-                                {order.items.length - 3 === 1 ? 'item' : 'items'}
-                            </p>
+                        {hasMoreItems && (
+                            <button
+                                type="button"
+                                onClick={toggleExpand}
+                                className="text-xs text-zinc-500 pt-1 hover:text-zinc-900 transition-colors duration-200 underline-offset-2 hover:underline focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2 rounded px-1 py-0.5 -ml-1"
+                                aria-label={
+                                    isExpanded
+                                        ? `Hide ${remainingCount} more items`
+                                        : `Show ${remainingCount} more items`
+                                }
+                                aria-expanded={isExpanded}
+                            >
+                                {isExpanded ? (
+                                    <>Show less</>
+                                ) : (
+                                    <>
+                                        +{remainingCount} more{' '}
+                                        {remainingCount === 1 ? 'item' : 'items'}
+                                    </>
+                                )}
+                            </button>
                         )}
                     </div>
                 </div>

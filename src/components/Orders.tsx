@@ -17,8 +17,8 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
     const itemCount = order.items.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
-        <div className="bg-white rounded-xl border border-zinc-200/80 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="p-6">
+        <div className="bg-white rounded-xl border border-zinc-200/80 shadow-sm hover:shadow-md transition-shadow duration-300 h-full flex flex-col">
+            <div className="p-6 flex flex-col flex-1 min-h-0">
                 {/* Order Header */}
                 <div className="flex items-start justify-between mb-4">
                     <div>
@@ -37,7 +37,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                 </div>
 
                 {/* Order Items Preview */}
-                <div className="mb-4">
+                <div className="mb-4 flex-1">
                     <div className="flex items-center gap-2 mb-3">
                         <BagIcon className="w-4 h-4 text-zinc-500" />
                         <span className="text-sm font-medium text-zinc-700">
@@ -80,7 +80,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                 </div>
 
                 {/* Order Footer */}
-                <div className="pt-4 border-t border-zinc-100">
+                <div className="pt-4 border-t border-zinc-100 mt-auto">
                     <div className="flex items-center justify-between mb-2">
                         <span className="text-sm font-medium text-zinc-700">Total</span>
                         <span className="text-lg font-bold text-zinc-900">

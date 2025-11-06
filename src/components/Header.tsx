@@ -84,7 +84,7 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
     return (
         <>
             <header className="py-6">
-                <div className="max-w-screen-xl mx-auto px-2 sm:px-6 lg:px-8">
+                <div className="container mx-auto px-2 sm:px-6 lg:px-8">
                     <nav className="flex items-center gap-x-2 justify-between">
                         <div className="flex-1 flex items-center justify-start">
                             <button
@@ -94,7 +94,8 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
                                 }}
                                 aria-label="Home"
                             >
-                                <AsteriskIcon className="size-6 text-zinc-900" />
+                                <AsteriskIcon className="size-6 text-zinc-900 min-w-[32px]" />
+                                <span className="sr-only">Home</span>
                             </button>
                         </div>
 

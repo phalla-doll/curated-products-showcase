@@ -26,8 +26,17 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
     const [isLinkCopied, setIsLinkCopied] = useState(false);
     const shareTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const addToCartTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const addToCartProductRef = useRef<Product | null>(null);
+    const addToCartQuantityRef = useRef<number>(1);
+    const currentProductRef = useRef<Product | null>(null);
 
     useEffect(() => {
+        // Capture the previous product value before updating the ref
+        // This allows cleanup to detect product changes
+        const previousProduct = currentProductRef.current;
+        // Update currentProductRef synchronously at the start
+        currentProductRef.current = product;
+
         // Reset quantity and added state when dialog opens or product changes
         if (isOpen && product) {
             setQuantity(1);
@@ -37,16 +46,32 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
             trackProductView(product.name, product.category);
         }
 
-        // Cleanup: Clear any pending timeouts when dialog closes or component unmounts
+        // Cleanup: Clear timeouts appropriately
         return () => {
+            // Always clear share timeout
             if (shareTimeoutRef.current) {
                 clearTimeout(shareTimeoutRef.current);
                 shareTimeoutRef.current = null;
             }
-            if (addToCartTimeoutRef.current) {
+            
+            // Clear add-to-cart timeout if product changed to a different product
+            // (not if dialog is just closing - product becomes null)
+            // This prevents stale product data from being added when switching products quickly
+            // We compare addToCartProductRef (product that was clicked) with previousProduct
+            // (the product that was displayed before this effect ran)
+            // If they're different, it means the user switched products, so cancel the pending add-to-cart
+            if (
+                addToCartTimeoutRef.current &&
+                addToCartProductRef.current &&
+                previousProduct !== null && // Only clear if there was a previous product (not initial mount)
+                previousProduct !== product && // Product changed (previousProduct is old, product is new)
+                addToCartProductRef.current !== product // Clicked product is different from new product
+            ) {
                 clearTimeout(addToCartTimeoutRef.current);
                 addToCartTimeoutRef.current = null;
+                addToCartProductRef.current = null;
             }
+            // If product matches or is null (dialog closing), let the timeout complete
         };
     }, [isOpen, product]);
 
@@ -127,21 +152,41 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
             // Update button state immediately
             setIsAddedToCart(true);
 
+            // Store the product and quantity in refs for the timeout callback
+            // This ensures we use the correct values even if product changes
+            addToCartProductRef.current = product;
+            addToCartQuantityRef.current = quantity;
+            
             // Wait 500ms before actually adding to cart
+            // Note: This timeout is NOT cleared when dialog closes (to ensure product is added),
+            // but IS cleared when product changes (to prevent stale product data)
             addToCartTimeoutRef.current = setTimeout(() => {
+                // Get the product and quantity from refs (these are the values when button was clicked)
+                const productToAdd = addToCartProductRef.current;
+                const quantityToAdd = addToCartQuantityRef.current;
+                
+                // Verify we still have valid product data
+                if (!productToAdd) {
+                    addToCartTimeoutRef.current = null;
+                    addToCartProductRef.current = null;
+                    return;
+                }
+
                 // Add to localStorage
-                addToCart(product, quantity);
+                addToCart(productToAdd, quantityToAdd);
 
                 // Also call the optional callback if provided
                 if (onAddToCart) {
-                    onAddToCart(product, quantity);
+                    onAddToCart(productToAdd, quantityToAdd);
                 }
 
                 // Close the dialog after adding to cart
+                // Safe to call even if dialog was already closed manually (idempotent)
                 onClose();
 
-                // Clear the ref after timeout completes
+                // Clear the refs after timeout completes
                 addToCartTimeoutRef.current = null;
+                addToCartProductRef.current = null;
             }, 500);
         }
     };

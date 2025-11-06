@@ -77,10 +77,23 @@ function App() {
             urlHash = `#${route.tab.toLowerCase()}`;
         }
 
+        // Build the new URL
+        // Remove category parameter for all tabs (category filters only apply to Discover tab)
+        let newUrl = window.location.pathname;
+        const params = new URLSearchParams(window.location.search);
+        params.delete('category');
+        const queryString = params.toString();
+        newUrl = window.location.pathname + (queryString ? `?${queryString}` : '') + urlHash;
+        
+        // Dispatch event to notify CategoryFilters to update to "All" when on Discover tab
+        if (route.tab === 'Discover') {
+            window.dispatchEvent(new CustomEvent('categorychange'));
+        }
+
         window.history.replaceState(
             { tab: route.tab, blogId: route.blogId },
             '',
-            urlHash || window.location.pathname
+            newUrl
         );
 
         // Mark as no longer initial mount
@@ -108,15 +121,17 @@ function App() {
             hash = `#${activeTab.toLowerCase()}`;
         }
 
-        let newUrl = window.location.pathname + hash;
-
-        // When switching to Discover, clear category parameter
+        // Build the new URL
+        // Remove category parameter for all tabs (category filters only apply to Discover tab)
+        // Preserve other search parameters like 'search'
+        let newUrl = window.location.pathname;
+        const params = new URLSearchParams(window.location.search);
+        params.delete('category');
+        const queryString = params.toString();
+        newUrl = window.location.pathname + (queryString ? `?${queryString}` : '') + hash;
+        
+        // Dispatch event to notify CategoryFilters to update to "All" when switching to Discover tab
         if (activeTab === 'Discover') {
-            const params = new URLSearchParams(window.location.search);
-            params.delete('category');
-            const queryString = params.toString();
-            newUrl = window.location.pathname + (queryString ? `?${queryString}` : '') + hash;
-            // Dispatch event to notify CategoryFilters to update to "All"
             window.dispatchEvent(new CustomEvent('categorychange'));
         }
 
@@ -153,18 +168,20 @@ function App() {
             setActiveTab(newTab);
             setBlogPostId(newBlogId);
 
-            // When navigating to Discover, clear category parameter and notify CategoryFilters
+            // Remove category parameter for all tabs (category filters only apply to Discover tab)
+            // Preserve other search parameters like 'search'
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('category')) {
+                params.delete('category');
+                const queryString = params.toString();
+                const newUrl =
+                    window.location.pathname + (queryString ? `?${queryString}` : '') + window.location.hash;
+                window.history.replaceState({ tab: newTab, blogId: newBlogId }, '', newUrl);
+            }
+            
+            // Dispatch event to notify CategoryFilters to update to "All" when navigating to Discover tab
             if (newTab === 'Discover') {
-                const params = new URLSearchParams(window.location.search);
-                if (params.has('category')) {
-                    params.delete('category');
-                    const queryString = params.toString();
-                    const newUrl =
-                        window.location.pathname + (queryString ? `?${queryString}` : '');
-                    window.history.replaceState({ tab: newTab, blogId: null }, '', newUrl);
-                    // Dispatch event to notify CategoryFilters to update to "All"
-                    window.dispatchEvent(new CustomEvent('categorychange'));
-                }
+                window.dispatchEvent(new CustomEvent('categorychange'));
             }
         };
 
@@ -178,18 +195,17 @@ function App() {
             setActiveTab(route.tab);
             setBlogPostId(route.blogId);
 
-            // Clear query parameters, keep only the hash
+            // Remove category parameter for all tabs (category filters only apply to Discover tab)
+            // Preserve other search parameters like 'search'
             const fullHash = window.location.hash;
-            let newUrl = window.location.pathname + fullHash;
-
-            // When switching to Discover, clear category parameter
+            const params = new URLSearchParams(window.location.search);
+            params.delete('category');
+            const queryString = params.toString();
+            const newUrl =
+                window.location.pathname + (queryString ? `?${queryString}` : '') + fullHash;
+            
+            // Dispatch event to notify CategoryFilters to update to "All" when switching to Discover tab
             if (route.tab === 'Discover') {
-                const params = new URLSearchParams(window.location.search);
-                params.delete('category');
-                const queryString = params.toString();
-                newUrl =
-                    window.location.pathname + (queryString ? `?${queryString}` : '') + fullHash;
-                // Dispatch event to notify CategoryFilters to update to "All"
                 window.dispatchEvent(new CustomEvent('categorychange'));
             }
 

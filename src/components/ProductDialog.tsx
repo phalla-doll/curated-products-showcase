@@ -36,7 +36,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
             // Track product view when dialog opens
             trackProductView(product.name, product.category);
         }
-        
+
         // Cleanup: Clear any pending timeouts when dialog closes or component unmounts
         return () => {
             if (shareTimeoutRef.current) {
@@ -89,18 +89,18 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                 clearTimeout(shareTimeoutRef.current);
                 shareTimeoutRef.current = null;
             }
-            
+
             // Create shareable URL with product name as search query
             const searchQuery = product.name.replace(/\s+/g, '+');
             const shareUrl = `${window.location.origin}${window.location.pathname}?search=${searchQuery}`;
-            
+
             try {
                 // Copy to clipboard
                 await navigator.clipboard.writeText(shareUrl);
-                
+
                 // Update button state to show check icon
                 setIsLinkCopied(true);
-                
+
                 // Reset back to share icon after 2 seconds
                 shareTimeoutRef.current = setTimeout(() => {
                     setIsLinkCopied(false);
@@ -139,7 +139,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
 
                 // Close the dialog after adding to cart
                 onClose();
-                
+
                 // Clear the ref after timeout completes
                 addToCartTimeoutRef.current = null;
             }, 500);
@@ -172,7 +172,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                         type="button"
                         onClick={handleShare}
                         className="p-2 bg-white backdrop-blur-sm rounded-full hover:bg-zinc-100 active:opacity-75 transition-colors duration-200"
-                        aria-label={isLinkCopied ? "Link copied to clipboard" : "Share product"}
+                        aria-label={isLinkCopied ? 'Link copied to clipboard' : 'Share product'}
                     >
                         {isLinkCopied ? (
                             <CheckIcon className="size-5 text-zinc-800" />

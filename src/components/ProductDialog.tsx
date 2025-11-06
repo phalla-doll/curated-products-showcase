@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
     BagIcon,
     CheckIcon,
@@ -23,15 +23,31 @@ interface ProductDialogProps {
 const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose, onAddToCart }) => {
     const [quantity, setQuantity] = useState(1);
     const [isAddedToCart, setIsAddedToCart] = useState(false);
+    const [isLinkCopied, setIsLinkCopied] = useState(false);
+    const shareTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const addToCartTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
         // Reset quantity and added state when dialog opens or product changes
         if (isOpen && product) {
             setQuantity(1);
             setIsAddedToCart(false);
+            setIsLinkCopied(false);
             // Track product view when dialog opens
             trackProductView(product.name, product.category);
         }
+        
+        // Cleanup: Clear any pending timeouts when dialog closes or component unmounts
+        return () => {
+            if (shareTimeoutRef.current) {
+                clearTimeout(shareTimeoutRef.current);
+                shareTimeoutRef.current = null;
+            }
+            if (addToCartTimeoutRef.current) {
+                clearTimeout(addToCartTimeoutRef.current);
+                addToCartTimeoutRef.current = null;
+            }
+        };
     }, [isOpen, product]);
 
     useEffect(() => {
@@ -66,16 +82,53 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
         setQuantity((prev) => Math.max(1, prev - 1));
     };
 
+    const handleShare = async () => {
+        if (product) {
+            // Clear any existing timeout before creating a new one
+            if (shareTimeoutRef.current) {
+                clearTimeout(shareTimeoutRef.current);
+                shareTimeoutRef.current = null;
+            }
+            
+            // Create shareable URL with product name as search query
+            const searchQuery = product.name.replace(/\s+/g, '+');
+            const shareUrl = `${window.location.origin}${window.location.pathname}?search=${searchQuery}`;
+            
+            try {
+                // Copy to clipboard
+                await navigator.clipboard.writeText(shareUrl);
+                
+                // Update button state to show check icon
+                setIsLinkCopied(true);
+                
+                // Reset back to share icon after 2 seconds
+                shareTimeoutRef.current = setTimeout(() => {
+                    setIsLinkCopied(false);
+                    shareTimeoutRef.current = null;
+                }, 2000);
+            } catch (err) {
+                // Fallback for browsers that don't support clipboard API
+                console.error('Failed to copy link:', err);
+            }
+        }
+    };
+
     const handleAddToCart = () => {
         if (product) {
+            // Clear any existing timeout before creating a new one
+            if (addToCartTimeoutRef.current) {
+                clearTimeout(addToCartTimeoutRef.current);
+                addToCartTimeoutRef.current = null;
+            }
+
             // Track add to cart event
             trackAddToCart(product.name, product.category, product.price * quantity);
 
             // Update button state immediately
             setIsAddedToCart(true);
 
-            // Wait 750ms before actually adding to cart
-            setTimeout(() => {
+            // Wait 500ms before actually adding to cart
+            addToCartTimeoutRef.current = setTimeout(() => {
                 // Add to localStorage
                 addToCart(product, quantity);
 
@@ -86,6 +139,9 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
 
                 // Close the dialog after adding to cart
                 onClose();
+                
+                // Clear the ref after timeout completes
+                addToCartTimeoutRef.current = null;
             }, 500);
         }
     };
@@ -114,10 +170,15 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                     {/* Share Button */}
                     <button
                         type="button"
-                        className="p-2 bg-white backdrop-blur-sm rounded-full hover:bg-zinc-100 transition-colors duration-200"
-                        aria-label="Share product"
+                        onClick={handleShare}
+                        className="p-2 bg-white backdrop-blur-sm rounded-full hover:bg-zinc-100 active:opacity-75 transition-colors duration-200"
+                        aria-label={isLinkCopied ? "Link copied to clipboard" : "Share product"}
                     >
-                        <ShareIcon className="size-5 text-zinc-800" />
+                        {isLinkCopied ? (
+                            <CheckIcon className="size-5 text-zinc-800" />
+                        ) : (
+                            <ShareIcon className="size-5 text-zinc-800" />
+                        )}
                     </button>
                     {/* Close Button */}
                     <button

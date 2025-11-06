@@ -97,7 +97,8 @@ function App() {
                 if (params.has('category')) {
                     params.delete('category');
                     const queryString = params.toString();
-                    const newUrl = window.location.pathname + (queryString ? `?${queryString}` : '');
+                    const newUrl =
+                        window.location.pathname + (queryString ? `?${queryString}` : '');
                     window.history.replaceState({ tab: newTab }, '', newUrl);
                     // Dispatch event to notify CategoryFilters to update to "All"
                     window.dispatchEvent(new CustomEvent('categorychange'));

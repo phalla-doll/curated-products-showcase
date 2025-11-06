@@ -1,4 +1,4 @@
-import { ClockIcon, ArrowLeftIcon } from '@/components/icons/CoreIcons';
+import { ArrowLeftIcon, ClockIcon } from '@/components/icons/CoreIcons';
 
 export interface BlogPost {
     id: number;

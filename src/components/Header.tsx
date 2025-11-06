@@ -94,7 +94,7 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
                                 }}
                                 aria-label="Home"
                             >
-                                <AsteriskIcon className="size-6 text-zinc-900 min-w-[36px]" />
+                                <AsteriskIcon className="size-6 text-zinc-900" />
                             </button>
                         </div>
 

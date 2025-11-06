@@ -84,7 +84,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                             <button
                                 type="button"
                                 onClick={toggleExpand}
-                                className="text-xs text-zinc-500 pt-1 hover:text-zinc-900 transition-colors duration-200 underline-offset-2 hover:underline focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2 rounded px-1 py-0.5 -ml-1"
+                                className="text-xs text-zinc-500 pt-1 hover:text-zinc-900 transition-colors duration-200 underline-offset-2 hover:underline rounded px-1 py-0.5 -ml-1"
                                 aria-label={
                                     isExpanded
                                         ? `Hide ${remainingCount} more items`

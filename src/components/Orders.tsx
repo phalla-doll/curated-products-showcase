@@ -129,7 +129,7 @@ function Orders() {
     const allOrders = activeTab === 'active' ? activeOrders : orderHistory;
 
     return (
-        <div className="px-4 sm:px-6 lg:px-8 py-8">
+        <div className="px-4 sm:px-6 lg:px-8 py-8 max-w-screen-xl mx-auto">
             <div className="mb-8">
                 <h1 className="text-3xl font-bold text-zinc-900 tracking-tight mb-2">Orders</h1>
                 <p className="text-zinc-600">Track your orders and view order history</p>
@@ -137,7 +137,7 @@ function Orders() {
 
             {/* Tabs */}
             <div className="mb-8">
-                <div className="flex items-center gap-2 bg-white border border-zinc-200/80 rounded-full shadow-sm p-1 inline-flex">
+                <div className="inline-flex items-center gap-2 bg-white border border-zinc-200/80 rounded-full shadow-sm p-1">
                     <button
                         type="button"
                         onClick={() => setActiveTab('active')}

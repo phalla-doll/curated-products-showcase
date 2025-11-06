@@ -1,7 +1,7 @@
 import type React from 'react';
 import { ClockIcon } from '@/components/icons/CoreIcons';
-import type { BlogPost } from './BlogDetail';
-import { blogPosts } from './BlogDetail';
+import type { BlogPost } from '@/components/BlogDetail';
+import { blogPosts } from '@/components/BlogDetail';
 
 interface BlogCardProps {
     post: BlogPost;

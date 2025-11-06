@@ -107,7 +107,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
 
                 {/* Order Footer */}
                 <div className="pt-4 border-t border-zinc-100 mt-auto">
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-0.5">
                         <span className="text-sm font-medium text-zinc-700">Total</span>
                         <span className="text-lg font-bold text-zinc-900">
                             ${order.total.toLocaleString()}

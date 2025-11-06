@@ -454,7 +454,9 @@ function BlogDetail({ postId, onBack }: BlogDetailProps) {
             <div className="px-4 sm:px-6 lg:px-8 py-8 max-w-screen-xl mx-auto">
                 <div className="text-center py-12">
                     <h1 className="text-2xl font-bold text-zinc-900 mb-2">Post Not Found</h1>
-                    <p className="text-zinc-600 mb-6">The blog post you're looking for doesn't exist.</p>
+                    <p className="text-zinc-600 mb-6">
+                        The blog post you're looking for doesn't exist.
+                    </p>
                     <button
                         type="button"
                         onClick={onBack}
@@ -511,7 +513,9 @@ function BlogDetail({ postId, onBack }: BlogDetailProps) {
 
                     <div className="flex items-center gap-3 mb-8 pb-8 border-b border-zinc-200">
                         <div className="w-10 h-10 rounded-full bg-zinc-200 flex items-center justify-center">
-                            <span className="text-sm font-medium text-zinc-700">{post.author[0]}</span>
+                            <span className="text-sm font-medium text-zinc-700">
+                                {post.author[0]}
+                            </span>
                         </div>
                         <div>
                             <p className="text-sm font-medium text-zinc-900">{post.author}</p>
@@ -551,4 +555,3 @@ function BlogDetail({ postId, onBack }: BlogDetailProps) {
 
 export default BlogDetail;
 export { blogPosts };
-

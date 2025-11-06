@@ -15,23 +15,26 @@ type Tab = 'Discover' | 'Browse' | 'Blog' | 'Orders';
 // Helper function to parse blog detail route from hash
 const parseBlogRoute = (hash: string): { tab: Tab; blogId: number | null } => {
     const normalizedHash = hash.toLowerCase();
-    
+
     // Check for blog detail route: #blog/:id
     const blogDetailMatch = normalizedHash.match(/^blog\/(\d+)$/);
     if (blogDetailMatch) {
         return { tab: 'Blog', blogId: parseInt(blogDetailMatch[1], 10) };
     }
-    
+
     // Check for regular blog route
     if (normalizedHash === 'blog') {
         return { tab: 'Blog', blogId: null };
     }
-    
+
     // Check for other tabs
     if (normalizedHash === 'browse' || normalizedHash === 'orders') {
-        return { tab: (normalizedHash.charAt(0).toUpperCase() + normalizedHash.slice(1)) as Tab, blogId: null };
+        return {
+            tab: (normalizedHash.charAt(0).toUpperCase() + normalizedHash.slice(1)) as Tab,
+            blogId: null,
+        };
     }
-    
+
     return { tab: 'Discover', blogId: null };
 };
 
@@ -62,10 +65,10 @@ function App() {
         // Parse route from hash
         const hash = window.location.hash.slice(1);
         const route = parseBlogRoute(hash);
-        
+
         setActiveTab(route.tab);
         setBlogPostId(route.blogId);
-        
+
         // Update URL using replaceState (doesn't add to history)
         let urlHash = '';
         if (route.tab === 'Blog' && route.blogId !== null) {
@@ -73,8 +76,12 @@ function App() {
         } else if (route.tab !== 'Discover') {
             urlHash = `#${route.tab.toLowerCase()}`;
         }
-        
-        window.history.replaceState({ tab: route.tab, blogId: route.blogId }, '', urlHash || window.location.pathname);
+
+        window.history.replaceState(
+            { tab: route.tab, blogId: route.blogId },
+            '',
+            urlHash || window.location.pathname
+        );
 
         // Mark as no longer initial mount
         isInitialMount.current = false;
@@ -100,7 +107,7 @@ function App() {
         } else if (activeTab !== 'Discover') {
             hash = `#${activeTab.toLowerCase()}`;
         }
-        
+
         let newUrl = window.location.pathname + hash;
 
         // When switching to Discover, clear category parameter
@@ -128,7 +135,7 @@ function App() {
         const handlePopState = (event: PopStateEvent) => {
             let newTab: Tab;
             let newBlogId: number | null = null;
-            
+
             // Try to restore tab state from history state
             if (event.state?.tab) {
                 newTab = event.state.tab;
@@ -140,7 +147,7 @@ function App() {
                 newTab = route.tab;
                 newBlogId = route.blogId;
             }
-            
+
             // Set flag to prevent tab-change effect from running
             isNavigating.current = true;
             setActiveTab(newTab);
@@ -165,12 +172,12 @@ function App() {
         const handleHashChange = () => {
             const hash = window.location.hash.slice(1);
             const route = parseBlogRoute(hash);
-            
+
             // Set flag to prevent tab-change effect from running
             isNavigating.current = true;
             setActiveTab(route.tab);
             setBlogPostId(route.blogId);
-            
+
             // Clear query parameters, keep only the hash
             const fullHash = window.location.hash;
             let newUrl = window.location.pathname + fullHash;
@@ -180,7 +187,8 @@ function App() {
                 const params = new URLSearchParams(window.location.search);
                 params.delete('category');
                 const queryString = params.toString();
-                newUrl = window.location.pathname + (queryString ? `?${queryString}` : '') + fullHash;
+                newUrl =
+                    window.location.pathname + (queryString ? `?${queryString}` : '') + fullHash;
                 // Dispatch event to notify CategoryFilters to update to "All"
                 window.dispatchEvent(new CustomEvent('categorychange'));
             }

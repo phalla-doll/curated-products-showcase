@@ -23,6 +23,7 @@ const getTabFromHash = (): Tab => {
 function App() {
     const [activeTab, setActiveTab] = useState<Tab>(getTabFromHash());
     const isInitialMount = useRef(true);
+    const isNavigating = useRef(false);
 
     // Initialize tab from URL hash on mount
     useEffect(() => {
@@ -45,8 +46,27 @@ function App() {
             return;
         }
 
+        // Skip if this change is due to browser navigation (popstate/hashchange)
+        // to prevent double history manipulation
+        if (isNavigating.current) {
+            isNavigating.current = false;
+            return;
+        }
+
         const hash = activeTab === 'Discover' ? '' : `#${activeTab.toLowerCase()}`;
-        window.history.pushState({ tab: activeTab }, '', hash || window.location.pathname);
+        let newUrl = window.location.pathname + hash;
+
+        // When switching to Discover, clear category parameter
+        if (activeTab === 'Discover') {
+            const params = new URLSearchParams(window.location.search);
+            params.delete('category');
+            const queryString = params.toString();
+            newUrl = window.location.pathname + (queryString ? `?${queryString}` : '') + hash;
+            // Dispatch event to notify CategoryFilters to update to "All"
+            window.dispatchEvent(new CustomEvent('categorychange'));
+        }
+
+        window.history.pushState({ tab: activeTab }, '', newUrl);
     }, [activeTab]);
 
     useEffect(() => {
@@ -59,18 +79,53 @@ function App() {
 
         // Listen for browser back/forward navigation to sync activeTab with URL
         const handlePopState = (event: PopStateEvent) => {
+            let newTab: Tab;
             // Try to restore tab state from history state
             if (event.state?.tab) {
-                setActiveTab(event.state.tab);
+                newTab = event.state.tab;
             } else {
                 // Fall back to reading from URL hash
-                setActiveTab(getTabFromHash());
+                newTab = getTabFromHash();
+            }
+            // Set flag to prevent tab-change effect from running
+            isNavigating.current = true;
+            setActiveTab(newTab);
+
+            // When navigating to Discover, clear category parameter and notify CategoryFilters
+            if (newTab === 'Discover') {
+                const params = new URLSearchParams(window.location.search);
+                if (params.has('category')) {
+                    params.delete('category');
+                    const queryString = params.toString();
+                    const newUrl = window.location.pathname + (queryString ? `?${queryString}` : '');
+                    window.history.replaceState({ tab: newTab }, '', newUrl);
+                    // Dispatch event to notify CategoryFilters to update to "All"
+                    window.dispatchEvent(new CustomEvent('categorychange'));
+                }
             }
         };
 
         // Listen for hash changes (in case user manually changes URL)
         const handleHashChange = () => {
-            setActiveTab(getTabFromHash());
+            const newTab = getTabFromHash();
+            // Set flag to prevent tab-change effect from running
+            isNavigating.current = true;
+            setActiveTab(newTab);
+            // Clear query parameters, keep only the hash
+            const hash = window.location.hash;
+            let newUrl = window.location.pathname + hash;
+
+            // When switching to Discover, clear category parameter
+            if (newTab === 'Discover') {
+                const params = new URLSearchParams(window.location.search);
+                params.delete('category');
+                const queryString = params.toString();
+                newUrl = window.location.pathname + (queryString ? `?${queryString}` : '') + hash;
+                // Dispatch event to notify CategoryFilters to update to "All"
+                window.dispatchEvent(new CustomEvent('categorychange'));
+            }
+
+            window.history.replaceState({ tab: newTab }, '', newUrl);
         };
 
         window.addEventListener('switchtab', handleTabSwitch as EventListener);

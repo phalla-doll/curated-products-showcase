@@ -171,23 +171,23 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                     <button
                         type="button"
                         onClick={handleShare}
-                        className="p-2 bg-white backdrop-blur-sm rounded-full hover:bg-zinc-100 active:opacity-75 transition-colors duration-200"
+                        className="p-2 bg-white rounded-full hover:bg-zinc-100 text-zinc-600 hover:text-zinc-800 transition-colors duration-200"
                         aria-label={isLinkCopied ? 'Link copied to clipboard' : 'Share product'}
                     >
                         {isLinkCopied ? (
-                            <CheckIcon className="size-5 text-zinc-800" />
+                            <CheckIcon className="size-5" />
                         ) : (
-                            <ShareIcon className="size-5 text-zinc-800" />
+                            <ShareIcon className="size-5" />
                         )}
                     </button>
                     {/* Close Button */}
                     <button
                         type="button"
                         onClick={onClose}
-                        className="p-2 bg-white backdrop-blur-sm rounded-full hover:bg-zinc-100 transition-colors duration-200"
+                        className="p-2 bg-white rounded-full hover:bg-zinc-100 text-zinc-600 hover:text-zinc-800 transition-colors duration-200"
                         aria-label="Close dialog"
                     >
-                        <XIcon className="size-5 text-zinc-800" />
+                        <XIcon className="size-5" />
                     </button>
                 </div>
 

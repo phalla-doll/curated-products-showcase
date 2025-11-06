@@ -89,13 +89,13 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                     </div>
                     {order.estimatedDelivery && order.status !== 'delivered' && (
                         <div className="flex items-center gap-1.5 text-xs text-zinc-500">
-                            <ClockIcon className="w-3.5 h-3.5" />
+                            <ClockIcon className="size-3.5" />
                             <span>Est. delivery: {formatOrderDate(order.estimatedDelivery)}</span>
                         </div>
                     )}
                     {order.deliveredAt && (
                         <div className="flex items-center gap-1.5 text-xs text-zinc-500">
-                            <ClockIcon className="w-3.5 h-3.5" />
+                            <ClockIcon className="size-3.5" />
                             <span>Delivered: {formatOrderDate(order.deliveredAt)}</span>
                         </div>
                     )}

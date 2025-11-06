@@ -1,4 +1,3 @@
-import type React from 'react';
 import { ClockIcon, XIcon } from '@/components/icons/CoreIcons';
 
 export interface BlogPost {
@@ -525,26 +524,49 @@ function BlogDetail({ postId, onBack }: BlogDetailProps) {
 
                     <div className="prose prose-zinc max-w-none">
                         <div className="text-zinc-700 leading-relaxed space-y-6 whitespace-pre-line">
-                            {post.content.split('\n').map((paragraph, index) => {
-                                if (paragraph.startsWith('## ')) {
+                            {(() => {
+                                const paragraphs = post.content.split('\n');
+                                let emptyCounter = 0;
+
+                                return paragraphs.map((paragraph) => {
+                                    // Create a unique key based on content
+                                    const createKey = (prefix: string, content: string) => {
+                                        if (content.length > 0) {
+                                            // Use content hash for non-empty paragraphs
+                                            const contentHash = content
+                                                .slice(0, 50)
+                                                .replace(/\s+/g, '-')
+                                                .replace(/[^a-z0-9-]/gi, '');
+                                            return `${postId}-${prefix}-${contentHash}`;
+                                        }
+                                        // For empty paragraphs, use a counter that increments
+                                        emptyCounter += 1;
+                                        return `${postId}-${prefix}-empty-${emptyCounter}`;
+                                    };
+
+                                    if (paragraph.startsWith('## ')) {
+                                        return (
+                                            <h2
+                                                key={createKey('heading', paragraph)}
+                                                className="text-2xl font-bold text-zinc-900 mt-8 mb-4 first:mt-0"
+                                            >
+                                                {paragraph.replace('## ', '')}
+                                            </h2>
+                                        );
+                                    }
+                                    if (paragraph.trim() === '') {
+                                        return <br key={createKey('br', paragraph)} />;
+                                    }
                                     return (
-                                        <h2
-                                            key={index}
-                                            className="text-2xl font-bold text-zinc-900 mt-8 mb-4 first:mt-0"
+                                        <p
+                                            key={createKey('para', paragraph)}
+                                            className="text-base leading-relaxed"
                                         >
-                                            {paragraph.replace('## ', '')}
-                                        </h2>
+                                            {paragraph}
+                                        </p>
                                     );
-                                }
-                                if (paragraph.trim() === '') {
-                                    return <br key={index} />;
-                                }
-                                return (
-                                    <p key={index} className="text-base leading-relaxed">
-                                        {paragraph}
-                                    </p>
-                                );
-                            })}
+                                });
+                            })()}
                         </div>
                     </div>
                 </div>

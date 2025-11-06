@@ -96,11 +96,11 @@ function App() {
                     ) : activeTab === 'Orders' ? (
                         <Orders />
                     ) : (
-                        <>
+                        <div className="max-w-screen-xl mx-auto">
                             <Hero />
                             <CategoryFilters />
                             <ProductGrid />
-                        </>
+                        </div>
                     )}
                 </main>
             </div>

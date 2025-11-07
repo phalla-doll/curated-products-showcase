@@ -7,6 +7,7 @@ import {
     PlusIcon,
     ShareIcon,
     StaffPickIcon,
+    StarIcon,
     XIcon,
 } from '@/components/icons/CoreIcons';
 import type { Product } from '@/types';
@@ -297,14 +298,15 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                     <div className="flex items-center gap-1">
                                         <button
                                             type="button"
-                                            className="text-sm font-medium text-zinc-600 hover:text-zinc-900 underline-offset-2 hover:underline transition-colors"
+                                            className="text-sm font-medium text-zinc-600 hover:text-zinc-900 underline-offset-2 hover:underline transition-colors flex items-center gap-1"
                                             onClick={() => {
                                                 // Handle view all reviews
                                                 console.log('View all reviews');
                                             }}
                                         >
-                                            4.6&nbsp;&middot;&nbsp;
-                                            <span className="text-zinc-500">58.2K</span>
+                                            <StarIcon className="size-3.5 text-zinc-500/80" />
+                                            <span>4.6</span>
+                                            <span className="text-zinc-500">(58.2K)</span>
                                         </button>
                                     </div>
                                 </div>

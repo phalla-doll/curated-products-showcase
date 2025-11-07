@@ -2,6 +2,7 @@ import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import {
     BagIcon,
+    BookmarkIcon,
     CheckIcon,
     MinusIcon,
     PlusIcon,
@@ -25,6 +26,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
     const [quantity, setQuantity] = useState(1);
     const [isAddedToCart, setIsAddedToCart] = useState(false);
     const [isLinkCopied, setIsLinkCopied] = useState(false);
+    const [isBookmarked, setIsBookmarked] = useState(false);
     const shareTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const addToCartTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const addToCartProductRef = useRef<Product | null>(null);
@@ -43,6 +45,9 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
             setQuantity(1);
             setIsAddedToCart(false);
             setIsLinkCopied(false);
+            // Check if product is bookmarked (from localStorage)
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            setIsBookmarked(bookmarks.some((b: Product) => b.id === product.id));
             // Track product view when dialog opens
             trackProductView(product.name, product.category);
         }
@@ -139,6 +144,25 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
         }
     };
 
+    const handleBookmark = () => {
+        if (product) {
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            const isCurrentlyBookmarked = bookmarks.some((b: Product) => b.id === product.id);
+
+            if (isCurrentlyBookmarked) {
+                // Remove bookmark
+                const updatedBookmarks = bookmarks.filter((b: Product) => b.id !== product.id);
+                localStorage.setItem('bookmarks', JSON.stringify(updatedBookmarks));
+                setIsBookmarked(false);
+            } else {
+                // Add bookmark
+                bookmarks.push(product);
+                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+                setIsBookmarked(true);
+            }
+        }
+    };
+
     const handleAddToCart = () => {
         if (product) {
             // Clear any existing timeout before creating a new one
@@ -213,24 +237,6 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
             {/* Dialog */}
             <div className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto md:overflow-hidden grid grid-cols-1 md:grid-cols-2">
                 <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
-                    {/* Share Button */}
-                    <button
-                        type="button"
-                        onClick={handleShare}
-                        className="p-2 bg-white rounded-full hover:bg-zinc-100 text-zinc-600 hover:text-zinc-800 transition-colors duration-200"
-                        aria-label={isLinkCopied ? 'Link copied to clipboard' : 'Share product'}
-                    >
-                        {isLinkCopied ? (
-                            <span className="flex items-center gap-1.5 pl-2">
-                                <span className="text-sm font-medium text-zinc-600">
-                                    Link copied
-                                </span>
-                                <CheckIcon className="size-5" />
-                            </span>
-                        ) : (
-                            <ShareIcon className="size-5" />
-                        )}
-                    </button>
                     {/* Close Button */}
                     <button
                         type="button"
@@ -323,38 +329,82 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                         </div>
                         <div className="pt-6 border-t border-zinc-200">
                             <div className="flex flex-col gap-6">
-                                {/* Quantity Selector */}
-                                <div className="flex items-center gap-4">
-                                    <label
-                                        htmlFor="quantity"
-                                        className="text-sm font-medium text-zinc-900"
-                                    >
-                                        Quantity:
-                                    </label>
-                                    <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
+                                <div className="flex justify-between gap-2">
+                                    {/* Quantity Selector */}
+                                    <div className="flex items-center gap-4">
+                                        <label
+                                            htmlFor="quantity"
+                                            className="text-sm font-medium text-zinc-900"
+                                        >
+                                            Quantity:
+                                        </label>
+                                        <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
+                                            <button
+                                                type="button"
+                                                onClick={handleDecrement}
+                                                disabled={quantity <= 1}
+                                                className="p-2 hover:bg-zinc-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                                                aria-label="Decrease quantity"
+                                            >
+                                                <MinusIcon className="w-4 h-4 text-zinc-700" />
+                                            </button>
+                                            <span
+                                                id="quantity"
+                                                className="w-12 text-center text-base font-medium text-zinc-900"
+                                                aria-live="polite"
+                                            >
+                                                {quantity}
+                                            </span>
+                                            <button
+                                                type="button"
+                                                onClick={handleIncrement}
+                                                className="p-2 hover:bg-zinc-100 transition-colors duration-200"
+                                                aria-label="Increase quantity"
+                                            >
+                                                <PlusIcon className="size-4 text-zinc-700" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-1">
+                                        {/* Bookmark Button */}
                                         <button
                                             type="button"
-                                            onClick={handleDecrement}
-                                            disabled={quantity <= 1}
-                                            className="p-2 hover:bg-zinc-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-                                            aria-label="Decrease quantity"
+                                            onClick={handleBookmark}
+                                            className={`p-2 rounded-full transition-colors duration-200 ${
+                                                isBookmarked
+                                                    ? 'bg-amber-100 text-amber-600 hover:bg-amber-200'
+                                                    : 'bg-white hover:bg-zinc-100 text-zinc-600 hover:text-zinc-800'
+                                            }`}
+                                            aria-label={
+                                                isBookmarked ? 'Remove bookmark' : 'Add bookmark'
+                                            }
                                         >
-                                            <MinusIcon className="w-4 h-4 text-zinc-700" />
+                                            <BookmarkIcon
+                                                className={`size-5 ${isBookmarked ? 'fill-current' : ''}`}
+                                            />
                                         </button>
-                                        <span
-                                            id="quantity"
-                                            className="w-12 text-center text-base font-medium text-zinc-900"
-                                            aria-live="polite"
-                                        >
-                                            {quantity}
-                                        </span>
+
+                                        {/* Share Button */}
                                         <button
                                             type="button"
-                                            onClick={handleIncrement}
-                                            className="p-2 hover:bg-zinc-100 transition-colors duration-200"
-                                            aria-label="Increase quantity"
+                                            onClick={handleShare}
+                                            className="p-2 bg-white rounded-full hover:bg-zinc-100 text-zinc-600 hover:text-zinc-800 transition-colors duration-200"
+                                            aria-label={
+                                                isLinkCopied
+                                                    ? 'Link copied to clipboard'
+                                                    : 'Share product'
+                                            }
                                         >
-                                            <PlusIcon className="size-4 text-zinc-700" />
+                                            {isLinkCopied ? (
+                                                <span className="flex items-center gap-1.5 pl-2">
+                                                    <span className="text-sm font-medium text-zinc-600">
+                                                        Link copied
+                                                    </span>
+                                                    <CheckIcon className="size-5" />
+                                                </span>
+                                            ) : (
+                                                <ShareIcon className="size-5" />
+                                            )}
                                         </button>
                                     </div>
                                 </div>

@@ -25,7 +25,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
     };
 
     return (
-        <div className="bg-white rounded-xl border border-zinc-200/80 shadow-sm hover:shadow-md transition-shadow duration-300 h-full flex flex-col">
+        <div className="bg-white rounded-xl border border-zinc-200/80 shadow-xs hover:shadow-sm transition-shadow duration-300 h-full flex flex-col">
             <div className="p-6 flex flex-col flex-1 min-h-0">
                 {/* Order Header */}
                 <div className="flex items-start justify-between mb-4">

@@ -76,3 +76,30 @@ export const MixIcon = (props: React.SVGProps<SVGSVGElement>) => (
         <path d="m12 22.08V12" />
     </IconWrapper>
 );
+export const HeadphonesIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <IconWrapper {...props}>
+        <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
+    </IconWrapper>
+);
+export const GamepadIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <IconWrapper {...props}>
+        <line x1="6" y1="12" x2="4" y2="10" />
+        <line x1="4" y1="6" x2="6" y2="8" />
+        <line x1="18" y1="8" x2="20" y2="6" />
+        <line x1="20" y1="12" x2="18" y2="10" />
+        <line x1="12" y1="4" x2="12" y2="6" />
+        <line x1="12" y1="18" x2="12" y2="20" />
+        <circle cx="12" cy="12" r="3" />
+    </IconWrapper>
+);
+export const CameraIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <IconWrapper {...props}>
+        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+        <circle cx="12" cy="13" r="3" />
+    </IconWrapper>
+);
+export const ShirtIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <IconWrapper {...props}>
+        <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
+    </IconWrapper>
+);

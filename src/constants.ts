@@ -1,10 +1,14 @@
 import {
     BackpackIcon,
     BookIcon,
+    CameraIcon,
     DesktopIcon,
+    GamepadIcon,
+    HeadphonesIcon,
     HomeIcon,
     LayersIcon,
     MixIcon,
+    ShirtIcon,
     SmartphoneIcon,
     SparklesIcon,
     TagIcon,
@@ -23,6 +27,10 @@ export const categories: Category[] = [
     { id: 'carry', name: 'Carry', count: 85, icon: BackpackIcon },
     { id: 'books', name: 'Books', count: 31, icon: BookIcon },
     { id: 'lifestyle', name: 'Lifestyle', count: 21, icon: MixIcon },
+    { id: 'audio', name: 'Audio', count: 0, icon: HeadphonesIcon },
+    { id: 'gaming', name: 'Gaming', count: 0, icon: GamepadIcon },
+    { id: 'photography', name: 'Photography', count: 0, icon: CameraIcon },
+    { id: 'fashion', name: 'Fashion', count: 0, icon: ShirtIcon },
 ];
 
 export const products: Product[] = [

@@ -171,21 +171,17 @@ function Orders() {
 
     const loadOrders = useCallback(() => {
         const allOrders = getOrders();
-        
+
         // Filter based on computed status from order date
-        const active = allOrders.filter(
-            (order) => {
-                const status = getStatusFromDate(order.createdAt);
-                return status !== 'delivered' && status !== 'cancelled';
-            }
-        );
-        const history = allOrders.filter(
-            (order) => {
-                const status = getStatusFromDate(order.createdAt);
-                return status === 'delivered' || status === 'cancelled';
-            }
-        );
-        
+        const active = allOrders.filter((order) => {
+            const status = getStatusFromDate(order.createdAt);
+            return status !== 'delivered' && status !== 'cancelled';
+        });
+        const history = allOrders.filter((order) => {
+            const status = getStatusFromDate(order.createdAt);
+            return status === 'delivered' || status === 'cancelled';
+        });
+
         setActiveOrders(active);
         setOrderHistory(history);
     }, []);

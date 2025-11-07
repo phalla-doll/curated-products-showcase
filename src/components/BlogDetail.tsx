@@ -1,5 +1,5 @@
-import { ArrowLeftIcon, ClockIcon } from '@/components/icons/CoreIcons';
 import { BlogCard } from '@/components/Blog';
+import { ArrowLeftIcon, ClockIcon } from '@/components/icons/CoreIcons';
 
 export interface BlogPost {
     id: number;
@@ -451,9 +451,7 @@ function BlogDetail({ postId, onBack, onPostClick }: BlogDetailProps) {
     const post = blogPosts.find((p) => p.id === postId);
 
     // Get 3 suggested articles (excluding the current post)
-    const suggestedPosts = blogPosts
-        .filter((p) => p.id !== postId)
-        .slice(0, 3);
+    const suggestedPosts = blogPosts.filter((p) => p.id !== postId).slice(0, 3);
 
     if (!post) {
         return (

@@ -39,6 +39,10 @@ function ProductGrid() {
                 carry: 'Carry',
                 books: 'Books',
                 lifestyle: 'Lifestyle',
+                audio: 'Audio',
+                gaming: 'Gaming',
+                photography: 'Photography',
+                fashion: 'Fashion',
                 picks: 'Picks', // Filter by isStaffPick
                 new: 'New', // You might want to add a date field for this
             };

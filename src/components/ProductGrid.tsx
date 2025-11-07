@@ -1,9 +1,24 @@
 import { useCallback, useEffect, useState } from 'react';
 import ProductCard from '@/components/ProductCard';
 import { products } from '@/constants';
+import type { Product } from '@/types';
 
 function ProductGrid() {
     const [filteredProducts, setFilteredProducts] = useState(products);
+    const [isBookmarksCategory, setIsBookmarksCategory] = useState(false);
+
+    // Get bookmarks from localStorage
+    const getBookmarks = useCallback((): Product[] => {
+        if (typeof window === 'undefined') return [];
+        try {
+            const stored = localStorage.getItem('bookmarks');
+            if (!stored) return [];
+            return JSON.parse(stored) as Product[];
+        } catch (error) {
+            console.error('Error reading bookmarks from localStorage:', error);
+            return [];
+        }
+    }, []);
 
     // Filter products based on URL category and search parameters
     const filterProducts = useCallback(() => {
@@ -12,6 +27,7 @@ function ProductGrid() {
         const searchParam = params.get('search');
 
         let filtered = products;
+        let isBookmarks = false;
 
         // Apply category filter
         if (categoryParam && categoryParam !== 'all') {
@@ -29,7 +45,11 @@ function ProductGrid() {
 
             const categoryName = categoryMap[categoryParam];
 
-            if (categoryParam === 'picks') {
+            if (categoryParam === 'bookmarks') {
+                // Load bookmarks from localStorage
+                filtered = getBookmarks();
+                isBookmarks = true;
+            } else if (categoryParam === 'picks') {
                 // Filter by staff picks
                 filtered = filtered.filter((product) => product.isStaffPick === true);
             } else if (categoryName) {
@@ -50,8 +70,9 @@ function ProductGrid() {
             });
         }
 
+        setIsBookmarksCategory(isBookmarks);
         setFilteredProducts(filtered);
-    }, []);
+    }, [getBookmarks]);
 
     // Initial filter on mount
     useEffect(() => {
@@ -64,14 +85,25 @@ function ProductGrid() {
             filterProducts();
         };
 
+        const handleBookmarkChange = () => {
+            // Refresh bookmarks if we're on the bookmarks category
+            const params = new URLSearchParams(window.location.search);
+            const categoryParam = params.get('category');
+            if (categoryParam === 'bookmarks') {
+                filterProducts();
+            }
+        };
+
         window.addEventListener('popstate', handleUrlChange);
         window.addEventListener('categorychange', handleUrlChange);
         window.addEventListener('searchchange', handleUrlChange);
+        window.addEventListener('bookmarkchange', handleBookmarkChange);
 
         return () => {
             window.removeEventListener('popstate', handleUrlChange);
             window.removeEventListener('categorychange', handleUrlChange);
             window.removeEventListener('searchchange', handleUrlChange);
+            window.removeEventListener('bookmarkchange', handleBookmarkChange);
         };
     }, [filterProducts]);
 
@@ -81,13 +113,26 @@ function ProductGrid() {
                 {filteredProducts.length === 0 ? (
                     <div className="col-span-full flex items-center justify-center py-16">
                         <div className="max-w-md mx-auto text-center">
-                            <h2 className="text-xl font-semibold text-zinc-900 tracking-tight mb-2">
-                                No products found
-                            </h2>
-                            <p className="text-zinc-600 text-sm">
-                                We couldn't find any products matching your filter. Try selecting a
-                                different category or browse all products.
-                            </p>
+                            {isBookmarksCategory ? (
+                                <>
+                                    <h2 className="text-xl font-semibold text-zinc-900 tracking-tight mb-2">
+                                        Your bookmark is empty
+                                    </h2>
+                                    <p className="text-zinc-600 text-sm">
+                                        Start bookmarking products you love to see them here.
+                                    </p>
+                                </>
+                            ) : (
+                                <>
+                                    <h2 className="text-xl font-semibold text-zinc-900 tracking-tight mb-2">
+                                        No products found
+                                    </h2>
+                                    <p className="text-zinc-600 text-sm">
+                                        We couldn't find any products matching your filter. Try selecting a
+                                        different category or browse all products.
+                                    </p>
+                                </>
+                            )}
                         </div>
                     </div>
                 ) : (

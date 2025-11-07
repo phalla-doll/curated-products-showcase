@@ -10,9 +10,11 @@ import {
     TagIcon,
 } from '@/components/icons/CategoryIcons';
 import type { Category, Product } from '@/types';
+import { BookmarkIcon } from '@/components/icons/CoreIcons';
 
 export const categories: Category[] = [
     { id: 'all', name: 'All', count: 0, icon: LayersIcon },
+    { id: 'bookmarks', name: 'Bookmarks', count: 0, icon: BookmarkIcon },
     { id: 'new', name: 'New', count: 0, icon: SparklesIcon },
     { id: 'picks', name: 'Picks', count: 0, icon: TagIcon },
     { id: 'tech', name: 'Tech', count: 116, icon: SmartphoneIcon },

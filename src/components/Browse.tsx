@@ -6,7 +6,7 @@ import type { Product } from '@/types';
 // Get representative product for each category
 const getCategoryRepresentative = (categoryName: string): Product | null => {
     // Filter out special categories
-    const excludedCategories = ['all', 'new', 'picks'];
+    const excludedCategories = ['all', 'new', 'picks', 'bookmarks'];
     const category = categories.find((cat) => cat.name === categoryName);
 
     if (!category || excludedCategories.includes(category.id)) {
@@ -31,7 +31,7 @@ const getCategoryCards = () => {
     return categories
         .filter((category) => {
             // Exclude special categories that don't have actual products
-            return !['all', 'new', 'picks'].includes(category.id);
+            return !['all', 'new', 'picks', 'bookmarks'].includes(category.id);
         })
         .map((category) => {
             const representativeProduct = getCategoryRepresentative(category.name);

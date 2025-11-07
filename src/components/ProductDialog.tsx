@@ -160,6 +160,9 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                 localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
                 setIsBookmarked(true);
             }
+
+            // Dispatch custom event to notify ProductGrid of bookmark change
+            window.dispatchEvent(new CustomEvent('bookmarkchange'));
         }
     };
 

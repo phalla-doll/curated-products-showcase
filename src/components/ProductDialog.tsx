@@ -372,7 +372,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                             onClick={handleBookmark}
                                             className={`p-2 rounded-full transition-colors duration-200 ${
                                                 isBookmarked
-                                                    ? 'bg-amber-100 text-amber-600 hover:bg-amber-200'
+                                                    ? 'bg-white text-amber-600 hover:bg-amber-100'
                                                     : 'bg-white hover:bg-zinc-100 text-zinc-600 hover:text-zinc-800'
                                             }`}
                                             aria-label={

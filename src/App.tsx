@@ -235,6 +235,9 @@ function App() {
                                 onBack={() => {
                                     setBlogPostId(null);
                                 }}
+                                onPostClick={(postId) => {
+                                    setBlogPostId(postId);
+                                }}
                             />
                         ) : (
                             <Blog

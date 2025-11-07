@@ -8,7 +8,7 @@ interface BlogCardProps {
     onPostClick: (postId: number) => void;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ post, onPostClick }) => {
+export const BlogCard: React.FC<BlogCardProps> = ({ post, onPostClick }) => {
     const handleClick = () => {
         onPostClick(post.id);
     };

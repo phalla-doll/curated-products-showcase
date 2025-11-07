@@ -1,4 +1,5 @@
 import { ArrowLeftIcon, ClockIcon } from '@/components/icons/CoreIcons';
+import { BlogCard } from '@/components/Blog';
 
 export interface BlogPost {
     id: number;
@@ -443,10 +444,16 @@ After years of remote work, we've learned: the essentials matter most. Ergonomic
 interface BlogDetailProps {
     postId: number;
     onBack: () => void;
+    onPostClick: (postId: number) => void;
 }
 
-function BlogDetail({ postId, onBack }: BlogDetailProps) {
+function BlogDetail({ postId, onBack, onPostClick }: BlogDetailProps) {
     const post = blogPosts.find((p) => p.id === postId);
+
+    // Get 3 suggested articles (excluding the current post)
+    const suggestedPosts = blogPosts
+        .filter((p) => p.id !== postId)
+        .slice(0, 3);
 
     if (!post) {
         return (
@@ -571,6 +578,22 @@ function BlogDetail({ postId, onBack }: BlogDetailProps) {
                     </div>
                 </div>
             </article>
+
+            {/* Suggested Articles Section */}
+            {suggestedPosts.length > 0 && (
+                <div className="mt-16">
+                    <h2 className="text-2xl font-bold text-zinc-900 mb-8">Suggested Articles</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {suggestedPosts.map((suggestedPost) => (
+                            <BlogCard
+                                key={suggestedPost.id}
+                                post={suggestedPost}
+                                onPostClick={onPostClick}
+                            />
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

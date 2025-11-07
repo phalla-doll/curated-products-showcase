@@ -480,7 +480,7 @@ function BlogDetail({ postId, onBack }: BlogDetailProps) {
                 <span className="font-medium">Back to Blog</span>
             </button>
 
-            <article className="bg-white rounded-xl border border-zinc-200/80 shadow-none overflow-hidden">
+            <article className="bg-white rounded-xl border border-zinc-200/80 overflow-hidden">
                 {post.imageUrl ? (
                     <div className="aspect-video bg-zinc-100 overflow-hidden">
                         <img

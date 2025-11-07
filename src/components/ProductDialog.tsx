@@ -222,7 +222,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                     >
                         {isLinkCopied ? (
                             <span className="flex items-center gap-1.5 pl-2">
-                                <span className="text-xs font-medium text-zinc-600">
+                                <span className="text-sm font-medium text-zinc-600">
                                     Link copied
                                 </span>
                                 <CheckIcon className="size-5" />

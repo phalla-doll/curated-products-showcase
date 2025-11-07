@@ -9,8 +9,8 @@ import {
     SparklesIcon,
     TagIcon,
 } from '@/components/icons/CategoryIcons';
-import type { Category, Product } from '@/types';
 import { BookmarkIcon } from '@/components/icons/CoreIcons';
+import type { Category, Product } from '@/types';
 
 export const categories: Category[] = [
     { id: 'all', name: 'All', count: 0, icon: LayersIcon },

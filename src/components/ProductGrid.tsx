@@ -128,8 +128,8 @@ function ProductGrid() {
                                         No products found
                                     </h2>
                                     <p className="text-zinc-600 text-sm">
-                                        We couldn't find any products matching your filter. Try selecting a
-                                        different category or browse all products.
+                                        We couldn't find any products matching your filter. Try
+                                        selecting a different category or browse all products.
                                     </p>
                                 </>
                             )}

@@ -3,11 +3,41 @@ import { useCallback, useEffect, useState } from 'react';
 import { BagIcon, ClockIcon } from '@/components/icons/CoreIcons';
 import {
     formatOrderDate,
-    getActiveOrders,
-    getOrderHistory,
+    getOrders,
     getStatusColor,
     type Order,
+    type OrderStatus,
 } from '@/utils/orders';
+
+/**
+ * Determine order status based on order date for mockup variety
+ */
+function getStatusFromDate(createdAt: string): OrderStatus {
+    const orderDate = new Date(createdAt);
+    const now = new Date();
+    const daysDiff = Math.floor((now.getTime() - orderDate.getTime()) / (1000 * 60 * 60 * 24));
+
+    // Use order ID hash to add some randomness for variety
+    // This ensures the same order always gets the same status
+    const orderIdHash = createdAt.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+
+    if (daysDiff <= 1) {
+        // Very recent orders: pending or processing
+        return orderIdHash % 2 === 0 ? 'pending' : 'processing';
+    } else if (daysDiff <= 4) {
+        // Orders from 2-4 days ago: processing or shipped
+        return orderIdHash % 2 === 0 ? 'processing' : 'shipped';
+    } else if (daysDiff <= 10) {
+        // Orders from 5-10 days ago: shipped or delivered
+        return orderIdHash % 3 === 0 ? 'shipped' : 'delivered';
+    } else if (daysDiff <= 30) {
+        // Orders from 11-30 days ago: mostly delivered, some cancelled
+        return orderIdHash % 10 === 0 ? 'cancelled' : 'delivered';
+    } else {
+        // Very old orders: mostly delivered, some cancelled
+        return orderIdHash % 5 === 0 ? 'cancelled' : 'delivered';
+    }
+}
 
 interface OrderCardProps {
     order: Order;
@@ -19,6 +49,9 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
     const hasMoreItems = order.items.length > 3;
     const visibleItems = isExpanded ? order.items : order.items.slice(0, 3);
     const remainingCount = order.items.length - 3;
+
+    // Compute status based on order date for variety
+    const displayStatus = getStatusFromDate(order.createdAt);
 
     const toggleExpand = () => {
         setIsExpanded(!isExpanded);
@@ -37,10 +70,10 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                     </div>
                     <span
                         className={`px-3 py-1 text-xs font-medium rounded-full ${getStatusColor(
-                            order.status
+                            displayStatus
                         )}`}
                     >
-                        {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                        {displayStatus.charAt(0).toUpperCase() + displayStatus.slice(1)}
                     </span>
                 </div>
 
@@ -113,7 +146,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                             ${order.total.toLocaleString()}
                         </span>
                     </div>
-                    {order.estimatedDelivery && order.status !== 'delivered' && (
+                    {order.estimatedDelivery && displayStatus !== 'delivered' && (
                         <div className="flex items-center gap-1.5 text-xs text-zinc-500">
                             <ClockIcon className="size-3.5" />
                             <span>Est. delivery: {formatOrderDate(order.estimatedDelivery)}</span>
@@ -137,8 +170,24 @@ function Orders() {
     const [activeTab, setActiveTab] = useState<'active' | 'history'>('active');
 
     const loadOrders = useCallback(() => {
-        setActiveOrders(getActiveOrders());
-        setOrderHistory(getOrderHistory());
+        const allOrders = getOrders();
+        
+        // Filter based on computed status from order date
+        const active = allOrders.filter(
+            (order) => {
+                const status = getStatusFromDate(order.createdAt);
+                return status !== 'delivered' && status !== 'cancelled';
+            }
+        );
+        const history = allOrders.filter(
+            (order) => {
+                const status = getStatusFromDate(order.createdAt);
+                return status === 'delivered' || status === 'cancelled';
+            }
+        );
+        
+        setActiveOrders(active);
+        setOrderHistory(history);
     }, []);
 
     useEffect(() => {

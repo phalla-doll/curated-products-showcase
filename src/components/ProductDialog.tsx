@@ -341,7 +341,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                         >
                                             Quantity:
                                         </label>
-                                        <div className="flex items-center gap-2 border border-zinc-300 squircle rounded-lg overflow-hidden">
+                                        <div className="flex items-center gap-2 border border-zinc-300 rounded-lg squircle overflow-hidden">
                                             <button
                                                 type="button"
                                                 onClick={handleDecrement}

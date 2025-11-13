@@ -69,7 +69,7 @@ function Drawer({ isOpen, onClose, title, children, ariaLabel, cartItems }: Draw
             {/* Drawer */}
             <section
                 aria-label={`${title} drawer content`}
-                className="absolute right-4 left-4 top-0 bottom-0 w-auto sm:left-auto sm:max-w-md h-[calc(100vh-4rem)] sm:h-[calc(100vh-2rem)] my-4 bg-white rounded-lg shadow-2xl transform overflow-hidden"
+                className="absolute right-4 left-4 top-0 bottom-0 w-auto sm:left-auto sm:w-96 h-[calc(100vh-4rem)] sm:h-[calc(100vh-2rem)] my-4 bg-white rounded-lg shadow-2xl transform overflow-hidden"
                 style={{
                     animation: 'slideInRight 0.3s ease-out',
                 }}

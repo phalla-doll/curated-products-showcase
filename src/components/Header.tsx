@@ -185,7 +185,7 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
                         <button
                             onClick={() => setIsDrawerOpen(false)}
                             type="button"
-                            className="px-4 py-2 bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm font-medium rounded-lg"
+                            className="squircle px-4 py-2 bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm font-medium rounded-lg"
                         >
                             Browse Collection
                         </button>

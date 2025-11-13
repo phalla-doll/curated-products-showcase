@@ -412,7 +412,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                     type="button"
                                     onClick={handleAddToCart}
                                     disabled={isAddedToCart}
-                                    className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200 disabled:opacity-75 disabled:cursor-not-allowed"
+                                    className="squircle w-full flex items-center justify-center gap-2 px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200 disabled:opacity-75 disabled:cursor-not-allowed"
                                 >
                                     {isAddedToCart ? (
                                         <>

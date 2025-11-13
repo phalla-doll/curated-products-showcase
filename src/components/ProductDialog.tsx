@@ -244,7 +244,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                     <button
                         type="button"
                         onClick={onClose}
-                        className="p-2 bg-white rounded-full hover:bg-zinc-100 text-zinc-600 hover:text-zinc-800 transition-colors duration-200"
+                        className="p-2 bg-white squircle rounded-full hover:bg-zinc-100 text-zinc-600 hover:text-zinc-800 transition-colors duration-200"
                         aria-label="Close dialog"
                     >
                         <XIcon className="size-5" />
@@ -341,7 +341,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                         >
                                             Quantity:
                                         </label>
-                                        <div className="flex items-center gap-2 border border-zinc-300 rounded-lg overflow-hidden">
+                                        <div className="flex items-center gap-2 border border-zinc-300 squircle rounded-lg overflow-hidden">
                                             <button
                                                 type="button"
                                                 onClick={handleDecrement}
@@ -373,7 +373,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                         <button
                                             type="button"
                                             onClick={handleBookmark}
-                                            className={`p-2 rounded-full transition-colors duration-200 ${
+                                            className={`p-2 squircle rounded-full transition-colors duration-200 ${
                                                 isBookmarked
                                                     ? 'bg-white text-amber-600 hover:bg-amber-100'
                                                     : 'bg-white hover:bg-zinc-100 text-zinc-600 hover:text-zinc-800'
@@ -391,7 +391,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                         <button
                                             type="button"
                                             onClick={handleShare}
-                                            className="p-2 bg-white rounded-full hover:bg-zinc-100 text-zinc-600 hover:text-zinc-800 transition-colors duration-200"
+                                            className="p-2 bg-white squircle rounded-full hover:bg-zinc-100 text-zinc-600 hover:text-zinc-800 transition-colors duration-200"
                                             aria-label={
                                                 isLinkCopied
                                                     ? 'Link copied to clipboard'

@@ -24,6 +24,12 @@ button.squircle {
     border-radius: 15px;
 }
 
+/* Ensure squircle border-radius takes precedence over Tailwind rounded utilities */
+button.squircle.rounded-lg,
+.squircle.rounded-lg {
+    border-radius: 15px !important;
+}
+
 body {
     font-family: var(--font-space-grotesk);
     -webkit-font-smoothing: antialiased;

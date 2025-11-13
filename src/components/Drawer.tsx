@@ -92,7 +92,7 @@ function Drawer({ isOpen, onClose, title, children, ariaLabel, cartItems }: Draw
                     <button
                         type="button"
                         onClick={onClose}
-                        className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
+                        className="squircle p-1.5 rounded-full hover:bg-zinc-100 transition-colors duration-200"
                         aria-label="Close drawer"
                     >
                         <XIcon className="size-5 text-zinc-500" />

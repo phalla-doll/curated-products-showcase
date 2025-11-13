@@ -14,7 +14,7 @@
     box-sizing: border-box;
 }
 
-button.squircle {
+.squircle {
     corner-shape: squircle;
     border-radius: 15px;
 }

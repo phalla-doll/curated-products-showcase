@@ -47,7 +47,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, onPostClick }) => {
                     )}
                     <div className="p-6 flex flex-col flex-grow">
                         <div className="flex items-center gap-3 mb-3">
-                            <span className="px-3 py-1 bg-zinc-100 text-zinc-700 text-xs font-medium rounded-full">
+                            <span className="px-3 py-1 bg-zinc-100 text-zinc-700 text-xs font-medium squircle rounded-full">
                                 {post.category}
                             </span>
                             <div className="flex items-center gap-1.5 text-xs text-zinc-500">

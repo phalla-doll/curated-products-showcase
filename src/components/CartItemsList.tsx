@@ -136,7 +136,7 @@ const CartItemsList = ({
                     type="button"
                     onClick={handleCheckout}
                     disabled={isCheckingOut}
-                    className="w-full px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="squircle w-full px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                     {isCheckingOut ? (
                         <>

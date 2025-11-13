@@ -24,6 +24,11 @@
             "recommended": true
         }
     },
+    "css": {
+        "linter": {
+            "enabled": false
+        }
+    },
     "javascript": {
         "formatter": {
             "jsxQuoteStyle": "double",

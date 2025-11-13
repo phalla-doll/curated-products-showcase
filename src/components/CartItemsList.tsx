@@ -71,7 +71,7 @@ const CartItemsList = ({
                                                 );
                                                 onRemoveItem(item.product.id);
                                             }}
-                                            className="squircle p-1 hover:bg-zinc-100 rounded transition-colors duration-200"
+                                            className="squircle p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
                                             aria-label="Remove item"
                                         >
                                             <XIcon className="size-4 text-zinc-500" />

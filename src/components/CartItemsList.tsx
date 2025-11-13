@@ -71,7 +71,7 @@ const CartItemsList = ({
                                                 );
                                                 onRemoveItem(item.product.id);
                                             }}
-                                            className="p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
+                                            className="squircle p-1 hover:bg-zinc-100 rounded transition-colors duration-200"
                                             aria-label="Remove item"
                                         >
                                             <XIcon className="size-4 text-zinc-500" />
@@ -82,7 +82,7 @@ const CartItemsList = ({
                                 {/* Quantity Selector */}
                                 <div className="flex justify-between gap-2">
                                     <div className="flex items-center gap-3">
-                                        <div className="flex items-center gap-1 border border-zinc-300 rounded-lg overflow-hidden">
+                                        <div className="flex items-center gap-1 border border-zinc-300 squircle rounded-lg overflow-hidden">
                                             <button
                                                 type="button"
                                                 onClick={() =>
@@ -136,7 +136,7 @@ const CartItemsList = ({
                     type="button"
                     onClick={handleCheckout}
                     disabled={isCheckingOut}
-                    className="squircle w-full px-6 py-3 bg-zinc-900 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full px-6 py-3 bg-zinc-900 text-white font-medium squircle rounded-lg hover:bg-zinc-800 transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                     {isCheckingOut ? (
                         <>

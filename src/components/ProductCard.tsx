@@ -1,6 +1,7 @@
+import { Maximize01Icon, StarIcon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import type React from 'react';
 import { useState } from 'react';
-import { ExpandIcon, StaffPickIcon } from '@/components/icons/CoreIcons';
 import ProductDialog from '@/components/ProductDialog';
 import type { Product } from '@/types';
 import { trackProductClick } from '@/utils/analytics';
@@ -46,11 +47,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         className="absolute top-3 right-3 p-2 bg-white/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                         aria-hidden="true"
                     >
-                        <ExpandIcon className="w-4 h-4 text-zinc-800" />
+                        <HugeiconsIcon icon={Maximize01Icon} size={16} className="text-zinc-800" />
                     </div>
                     {product.isStaffPick && (
                         <div className="absolute top-3 left-3 flex items-center gap-2 px-3 py-1.5 bg-white/50 backdrop-blur-sm rounded-full text-xs font-medium text-amber-900">
-                            <StaffPickIcon className="w-4 h-4 text-amber-600" />
+                            <HugeiconsIcon
+                                icon={StarIcon}
+                                size={16}
+                                className="text-amber-600"
+                                type="solid"
+                            />
                             <span>Staff Pick</span>
                         </div>
                     )}

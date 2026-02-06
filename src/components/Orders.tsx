@@ -1,6 +1,7 @@
+import { Clock01Icon, ShoppingBag01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import type React from 'react';
 import { useCallback, useEffect, useState } from 'react';
-import { BagIcon, ClockIcon } from '@/components/icons/CoreIcons';
 import {
     formatOrderDate,
     getOrders,
@@ -80,7 +81,11 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                 {/* Order Items Preview */}
                 <div className="mb-4 flex-1">
                     <div className="flex items-center gap-2 mb-3">
-                        <BagIcon className="w-4 h-4 text-zinc-500" />
+                        <HugeiconsIcon
+                            icon={ShoppingBag01Icon}
+                            size={16}
+                            className="w-4 h-4 text-zinc-500"
+                        />
                         <span className="text-sm font-medium text-zinc-700">
                             {itemCount} {itemCount === 1 ? 'item' : 'items'}
                         </span>
@@ -148,13 +153,13 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
                     </div>
                     {order.estimatedDelivery && displayStatus !== 'delivered' && (
                         <div className="flex items-center gap-1.5 text-xs text-zinc-500">
-                            <ClockIcon className="size-3.5" />
+                            <HugeiconsIcon icon={Clock01Icon} size={14} className="size-3.5" />
                             <span>Est. delivery: {formatOrderDate(order.estimatedDelivery)}</span>
                         </div>
                     )}
                     {order.deliveredAt && (
                         <div className="flex items-center gap-1.5 text-xs text-zinc-500">
-                            <ClockIcon className="size-3.5" />
+                            <HugeiconsIcon icon={Clock01Icon} size={14} className="size-3.5" />
                             <span>Delivered: {formatOrderDate(order.deliveredAt)}</span>
                         </div>
                     )}
@@ -237,7 +242,11 @@ function Orders() {
             {/* Orders List */}
             {allOrders.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-16 text-zinc-500">
-                    <BagIcon className="size-16 mb-4 text-zinc-300" />
+                    <HugeiconsIcon
+                        icon={ShoppingBag01Icon}
+                        size={64}
+                        className="mb-4 text-zinc-300"
+                    />
                     <p className="text-xl text-zinc-900 font-semibold text-center mb-1">
                         {activeTab === 'active' ? 'No active orders' : 'No order history'}
                     </p>

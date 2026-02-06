@@ -1,8 +1,9 @@
+import { AsteriskIcon, Search01Icon, ShoppingBag01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import CartItemsList from '@/components/CartItemsList';
 import Drawer from '@/components/Drawer';
-import { AsteriskIcon, BagIcon, SearchIcon } from '@/components/icons/CoreIcons';
 import OrderConfirmationDialog from '@/components/OrderConfirmationDialog';
 import type { CartItem } from '@/types';
 import { getCartItems, getCartTotal, removeFromCart, updateCartItemQuantity } from '@/utils/cart';
@@ -94,7 +95,11 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
                                 }}
                                 aria-label="Home"
                             >
-                                <AsteriskIcon className="size-6 text-zinc-900 min-w-[32px]" />
+                                <HugeiconsIcon
+                                    icon={AsteriskIcon}
+                                    size={24}
+                                    className="text-zinc-900 min-w-[24px]"
+                                />
                                 <span className="sr-only">Home</span>
                             </button>
                         </div>
@@ -146,7 +151,11 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
                                 className="p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
                                 aria-label="Search"
                             >
-                                <SearchIcon className="size-5 text-zinc-500" />
+                                <HugeiconsIcon
+                                    icon={Search01Icon}
+                                    size={20}
+                                    className="text-zinc-500"
+                                />
                             </button>
                             <button
                                 type="button"
@@ -154,7 +163,11 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
                                 className="relative p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
                                 aria-label="Open bag"
                             >
-                                <BagIcon className="size-5 text-zinc-500" />
+                                <HugeiconsIcon
+                                    icon={ShoppingBag01Icon}
+                                    size={20}
+                                    className="text-zinc-500"
+                                />
                                 {cartItems.length > 0 && (
                                     <span className="absolute top-0 right-0 flex items-center justify-center min-w-[18px] h-[18px] px-1 bg-zinc-900 text-white text-[10px] font-semibold rounded-full">
                                         {getCartItemsCount(cartItems)}
@@ -175,7 +188,11 @@ function Header({ activeTab, setActiveTab }: HeaderProps) {
             >
                 {cartItems.length === 0 ? (
                     <div className="flex flex-col items-center justify-center h-full text-zinc-500 p-6">
-                        <BagIcon className="size-16 mb-4 text-zinc-300" />
+                        <HugeiconsIcon
+                            icon={ShoppingBag01Icon}
+                            size={64}
+                            className="text-zinc-300 mb-4"
+                        />
                         <p className="text-xl text-zinc-900 font-semibold text-center mb-1">
                             Your bag is empty
                         </p>

@@ -1,5 +1,6 @@
+import { Cancel01Icon, Search01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import { useEffect, useRef, useState } from 'react';
-import { SearchIcon, XIcon } from '@/components/icons/CoreIcons';
 import { trackSearch } from '@/utils/analytics';
 
 // Helper to get initial search value from URL
@@ -143,7 +144,11 @@ function Hero() {
                             className="px-3 flex items-center text-zinc-400 hover:text-zinc-600 transition-colors"
                             aria-label="Clear search"
                         >
-                            <XIcon className="size-5" />
+                            <HugeiconsIcon
+                                icon={Cancel01Icon}
+                                size={20}
+                                className="text-zinc-400 hover:text-zinc-600 transition-colors"
+                            />
                         </button>
                     ) : (
                         <button
@@ -151,7 +156,11 @@ function Hero() {
                             className="px-3 flex items-center text-zinc-400 hover:text-zinc-600 transition-colors"
                             aria-label="Search"
                         >
-                            <SearchIcon className="size-5" />
+                            <HugeiconsIcon
+                                icon={Search01Icon}
+                                size={20}
+                                className="text-zinc-400 hover:text-zinc-600 transition-colors"
+                            />
                         </button>
                     )}
                 </form>

@@ -1,6 +1,7 @@
+import { AsteriskIcon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import type React from 'react';
 import { useState } from 'react';
-import { AsteriskIcon } from '@/components/icons/CoreIcons';
 
 function Footer() {
     const [email, setEmail] = useState('');
@@ -19,7 +20,11 @@ function Footer() {
                     {/* Left Column */}
                     <div className="flex flex-col">
                         {/* Asterisk Icon */}
-                        <AsteriskIcon className="size-6 text-zinc-900 mb-6" />
+                        <HugeiconsIcon
+                            icon={AsteriskIcon}
+                            size={24}
+                            className="text-zinc-900 mb-6"
+                        />
 
                         {/* Subscription Section */}
                         <div className="mb-6 w-full max-w-md">

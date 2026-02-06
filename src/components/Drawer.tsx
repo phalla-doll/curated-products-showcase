@@ -1,6 +1,7 @@
+import { Cancel01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import type React from 'react';
 import { useEffect } from 'react';
-import { XIcon } from '@/components/icons/CoreIcons';
 import type { CartItem } from '@/types';
 
 interface DrawerProps {
@@ -95,7 +96,7 @@ function Drawer({ isOpen, onClose, title, children, ariaLabel, cartItems }: Draw
                         className="squircle p-1.5 rounded-full hover:bg-zinc-100 transition-colors duration-200"
                         aria-label="Close drawer"
                     >
-                        <XIcon className="size-5 text-zinc-500" />
+                        <HugeiconsIcon icon={Cancel01Icon} size={20} className="text-zinc-500" />
                     </button>
                 </div>
 

@@ -1,16 +1,16 @@
+import {
+    Bookmark01Icon,
+    Cancel01Icon,
+    CheckmarkCircle01Icon,
+    MinusSignIcon,
+    PlusSignIcon,
+    Share01Icon,
+    ShoppingBag01Icon,
+    StarIcon,
+} from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
-import {
-    BagIcon,
-    BookmarkIcon,
-    CheckIcon,
-    MinusIcon,
-    PlusIcon,
-    ShareIcon,
-    StaffPickIcon,
-    StarIcon,
-    XIcon,
-} from '@/components/icons/CoreIcons';
 import type { Product } from '@/types';
 import { trackAddToCart, trackProductView } from '@/utils/analytics';
 import { addToCart } from '@/utils/cart';
@@ -247,7 +247,11 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                         className="p-2 bg-white squircle rounded-full hover:bg-zinc-100 text-zinc-600 hover:text-zinc-800 transition-colors duration-200"
                         aria-label="Close dialog"
                     >
-                        <XIcon className="size-5" />
+                        <HugeiconsIcon
+                            icon={Cancel01Icon}
+                            size={20}
+                            className="text-zinc-600 hover:text-zinc-800 transition-colors duration-200"
+                        />
                     </button>
                 </div>
 
@@ -256,7 +260,12 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                     {/* Staff Pick Badge */}
                     {product.isStaffPick && (
                         <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-2 px-3 py-1.5 border border-amber-500/20 bg-amber-50 rounded-full text-xs font-medium text-amber-900">
-                            <StaffPickIcon className="w-4 h-4 text-amber-600" />
+                            <HugeiconsIcon
+                                icon={StarIcon}
+                                size={16}
+                                className="text-amber-600"
+                                type="solid"
+                            />
                             <span>Staff Pick</span>
                         </div>
                     )}
@@ -318,7 +327,11 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                                 console.log('View all reviews');
                                             }}
                                         >
-                                            <StarIcon className="size-3.5 text-zinc-500/80" />
+                                            <HugeiconsIcon
+                                                icon={StarIcon}
+                                                size={14}
+                                                className="text-zinc-500/80"
+                                            />
                                             <span>4.6</span>
                                             <span className="text-zinc-500">(58.2K)</span>
                                         </button>
@@ -349,7 +362,11 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                                 className="p-2 hover:bg-zinc-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                                                 aria-label="Decrease quantity"
                                             >
-                                                <MinusIcon className="w-4 h-4 text-zinc-700" />
+                                                <HugeiconsIcon
+                                                    icon={MinusSignIcon}
+                                                    size={16}
+                                                    className="text-zinc-700"
+                                                />
                                             </button>
                                             <span
                                                 id="quantity"
@@ -364,7 +381,11 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                                 className="p-2 hover:bg-zinc-100 transition-colors duration-200"
                                                 aria-label="Increase quantity"
                                             >
-                                                <PlusIcon className="size-4 text-zinc-700" />
+                                                <HugeiconsIcon
+                                                    icon={PlusSignIcon}
+                                                    size={16}
+                                                    className="text-zinc-700"
+                                                />
                                             </button>
                                         </div>
                                     </div>
@@ -382,8 +403,10 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                                 isBookmarked ? 'Remove bookmark' : 'Add bookmark'
                                             }
                                         >
-                                            <BookmarkIcon
-                                                className={`size-5 ${isBookmarked ? 'fill-current' : ''}`}
+                                            <HugeiconsIcon
+                                                icon={Bookmark01Icon}
+                                                size={20}
+                                                type={isBookmarked ? 'solid' : 'stroke'}
                                             />
                                         </button>
 
@@ -399,9 +422,12 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                             }
                                         >
                                             {isLinkCopied ? (
-                                                <CheckIcon className="size-5" />
+                                                <HugeiconsIcon
+                                                    icon={CheckmarkCircle01Icon}
+                                                    size={20}
+                                                />
                                             ) : (
-                                                <ShareIcon className="size-5" />
+                                                <HugeiconsIcon icon={Share01Icon} size={20} />
                                             )}
                                         </button>
                                     </div>
@@ -416,12 +442,12 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ product, isOpen, onClose,
                                 >
                                     {isAddedToCart ? (
                                         <>
-                                            <CheckIcon className="size-5" />
+                                            <HugeiconsIcon icon={CheckmarkCircle01Icon} size={20} />
                                             <span>Added to Cart</span>
                                         </>
                                     ) : (
                                         <>
-                                            <BagIcon className="size-5" />
+                                            <HugeiconsIcon icon={ShoppingBag01Icon} size={20} />
                                             <span>Add to Cart</span>
                                         </>
                                     )}

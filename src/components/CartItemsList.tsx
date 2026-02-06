@@ -1,5 +1,11 @@
+import {
+    Cancel01Icon,
+    Loading01Icon,
+    MinusSignIcon,
+    PlusSignIcon,
+} from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import { useState } from 'react';
-import { MinusIcon, PlusIcon, SpinnerIcon, XIcon } from '@/components/icons/CoreIcons';
 import type { CartItem } from '@/types';
 import { trackBeginCheckout, trackRemoveFromCart } from '@/utils/analytics';
 
@@ -74,7 +80,11 @@ const CartItemsList = ({
                                             className="squircle p-1.5 hover:bg-zinc-100 rounded transition-colors duration-200"
                                             aria-label="Remove item"
                                         >
-                                            <XIcon className="size-4 text-zinc-500" />
+                                            <HugeiconsIcon
+                                                icon={Cancel01Icon}
+                                                size={16}
+                                                className="text-zinc-500"
+                                            />
                                         </button>
                                     </div>
                                 </div>
@@ -94,7 +104,11 @@ const CartItemsList = ({
                                                 className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
                                                 aria-label="Decrease quantity"
                                             >
-                                                <MinusIcon className="size-3.5 text-zinc-700" />
+                                                <HugeiconsIcon
+                                                    icon={MinusSignIcon}
+                                                    size={14}
+                                                    className="text-zinc-700"
+                                                />
                                             </button>
                                             <span className="w-8 text-center text-sm font-medium text-zinc-900">
                                                 {item.quantity}
@@ -110,7 +124,11 @@ const CartItemsList = ({
                                                 className="p-1.5 hover:bg-zinc-100 transition-colors duration-200"
                                                 aria-label="Increase quantity"
                                             >
-                                                <PlusIcon className="size-3.5 text-zinc-700" />
+                                                <HugeiconsIcon
+                                                    icon={PlusSignIcon}
+                                                    size={14}
+                                                    className="text-zinc-700"
+                                                />
                                             </button>
                                         </div>
                                     </div>
@@ -140,7 +158,11 @@ const CartItemsList = ({
                 >
                     {isCheckingOut ? (
                         <>
-                            <SpinnerIcon className="size-5 animate-spin" />
+                            <HugeiconsIcon
+                                icon={Loading01Icon}
+                                size={20}
+                                className="animate-spin"
+                            />
                             <span>Processing...</span>
                         </>
                     ) : (

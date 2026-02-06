@@ -1,5 +1,6 @@
+import { ArrowLeft01Icon, Clock01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import { BlogCard } from '@/components/Blog';
-import { ArrowLeftIcon, ClockIcon } from '@/components/icons/CoreIcons';
 
 export interface BlogPost {
     id: number;
@@ -481,7 +482,7 @@ function BlogDetail({ postId, onBack, onPostClick }: BlogDetailProps) {
                 className="flex items-center gap-2 text-zinc-600 hover:text-zinc-900 mb-6 transition-colors group"
                 aria-label="Back to blog"
             >
-                <ArrowLeftIcon className="w-5 h-5" />
+                <HugeiconsIcon icon={ArrowLeft01Icon} size={20} className="w-5 h-5" />
                 <span className="font-medium">Back to Blog</span>
             </button>
 
@@ -506,7 +507,7 @@ function BlogDetail({ postId, onBack, onPostClick }: BlogDetailProps) {
                             {post.category}
                         </span>
                         <div className="flex items-center gap-1.5 text-sm text-zinc-500">
-                            <ClockIcon className="w-4 h-4" />
+                            <HugeiconsIcon icon={Clock01Icon} size={16} className="w-4 h-4" />
                             <span>{post.readTime}</span>
                         </div>
                     </div>

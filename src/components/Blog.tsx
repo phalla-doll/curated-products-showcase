@@ -1,7 +1,8 @@
+import { Clock01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import type React from 'react';
 import type { BlogPost } from '@/components/BlogDetail';
 import { blogPosts } from '@/components/BlogDetail';
-import { ClockIcon } from '@/components/icons/CoreIcons';
 
 interface BlogCardProps {
     post: BlogPost;
@@ -51,7 +52,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, onPostClick }) => {
                                 {post.category}
                             </span>
                             <div className="flex items-center gap-1.5 text-xs text-zinc-500">
-                                <ClockIcon className="w-3.5 h-3.5" />
+                                <HugeiconsIcon icon={Clock01Icon} size={14} />
                                 <span>{post.readTime}</span>
                             </div>
                         </div>

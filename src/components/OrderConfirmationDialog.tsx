@@ -1,6 +1,7 @@
+import { Cancel01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import type React from 'react';
 import { useEffect } from 'react';
-import { XIcon } from '@/components/icons/CoreIcons';
 import { trackPurchase } from '@/utils/analytics';
 import { clearCart, getCartItems, getCartTotal } from '@/utils/cart';
 import { createOrder } from '@/utils/orders';
@@ -79,7 +80,7 @@ const OrderConfirmationDialog: React.FC<OrderConfirmationDialogProps> = ({ isOpe
                     className="absolute top-4 right-4 p-2 rounded-full hover:bg-zinc-100 transition-colors duration-200"
                     aria-label="Close dialog"
                 >
-                    <XIcon className="size-5 text-zinc-500" />
+                    <HugeiconsIcon icon={Cancel01Icon} size={20} className="text-zinc-500" />
                 </button>
 
                 {/* Content */}

@@ -1,5 +1,6 @@
+import { Maximize01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import type React from 'react';
-import { ExpandIcon } from '@/components/icons/CoreIcons';
 import { categories, products } from '@/constants';
 import type { Product } from '@/types';
 
@@ -92,7 +93,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, product }) => {
                     className="absolute top-3 right-3 p-2 bg-white/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                     aria-hidden="true"
                 >
-                    <ExpandIcon className="w-4 h-4 text-zinc-800" />
+                    <HugeiconsIcon icon={Maximize01Icon} size={16} className="text-zinc-800" />
                 </div>
                 <div className="absolute top-3 left-3 flex items-center gap-2 px-3 py-1.5 bg-white/50 backdrop-blur-sm rounded-full text-xs font-medium text-zinc-900">
                     <category.icon className="w-4 h-4 text-zinc-700" />
